@@ -1,0 +1,150 @@
+[
+    {
+        "name": "Car On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "Bike On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "AC On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "Bed On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "Refrigerator On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "TV On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "Room On Rent",
+        "category": "Hire On"
+    },
+    {
+        "name": "Plumber",
+        "category": "Daily Needs"
+    },
+    {
+        "name": "Electricians",
+        "category": "Daily Needs"
+    },
+    {
+        "name": "Carpenters",
+        "category": "Daily Needs"
+    },
+    {
+        "name": "Beauty Parlours",
+        "category": "Personal Care"
+    },
+    {
+        "name": "Salon",
+        "category": "Personal Care"
+    },
+    {
+        "name": "Spas",
+        "category": "Personal Care"
+    },
+    {
+        "name": "Doctors",
+        "category": "Medical"
+    },
+    {
+        "name": "Hospitals",
+        "category": "Medical"
+    },
+    {
+        "name": "Chemists",
+        "category": "Medical"
+    },
+    {
+        "name": "Schools",
+        "category": "Education"
+    },
+    {
+        "name": "Colleges",
+        "category": "Education"
+    },
+    {
+        "name": "Universities",
+        "category": "Education"
+    },
+    {
+        "name": "Cooks",
+        "category": "House Holds"
+    },
+    {
+        "name": "Maids",
+        "category": "House Holds"
+    },
+    {
+        "name": "Banks",
+        "category": "Public Services"
+    },
+    {
+        "name": "Police",
+        "category": "Public Services"
+    },
+    {
+        "name": "Railways",
+        "category": "Public Services"
+    },
+    {
+        "name": "Bus Station",
+        "category": "Public Services"
+    },
+    {
+        "name": "Post Office",
+        "category": "Public Services"
+    },
+    {
+        "name": "Banquet Halls",
+        "category": "Marriage"
+    },
+    {
+        "name": "Photographers",
+        "category": "Marriage"
+    },
+    {
+        "name": "DJ Service",
+        "category": "Marriage"
+    },
+    {
+        "name": "Dance Classes",
+        "category": "Hobbies"
+    },
+    {
+        "name": "Music Classes",
+        "category": "Hobbies"
+    },
+    {
+        "name": "Yoga Classes",
+        "category": "Hobbies"
+    },
+    {
+        "name": "Internet Service Provider",
+        "category": "Internet"
+    },
+    {
+        "name": "Cyber Cafes",
+        "category": "Internet"
+    },
+    {
+        "name": "Chinese Restaurants",
+        "category": "Restaurants"
+    },
+    {
+        "name": "South Indian Restaurants",
+        "category": "Restaurants"
+    },
+    {
+        "name": "North Indian Restaurants",
+        "category": "Restaurants"
+    }
+]

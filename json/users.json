@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Super Admin",
+    "email": "sadmin@example.com",
+    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
+    "status": 1,
+    "role": "Super Admin"
+  },
+  {
+    "name": "Admin",
+    "email": "admin@example.com",
+    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
+    "status": 1,
+    "role": "Admin"
+  },
+  {
+    "name": "Staff",
+    "email": "staff@example.com",
+    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
+    "status": 1,
+    "role": "Staff"
+  },
+  {
+    "name": "User",
+    "email": "user@example.com",
+    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
+    "status": 1,
+    "role": "User"
+  }
+  
+]
