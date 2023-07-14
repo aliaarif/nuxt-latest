@@ -117,7 +117,7 @@ useHead({
             </div>
         </template>
         <template v-if="dflag">
-
+            {{ query }}
 
             <div class="columns">
                 <div class="column">
