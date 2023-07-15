@@ -78,7 +78,7 @@ useHead({
 
 
         <template v-if="!bflag">
-            <div class="columns is-multiline is-mobile is-variable is-2-tablet">
+            <!-- <div class="columns is-multiline is-mobile is-variable is-2-tablet">
                 <div class="column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in query" :key="s._id">
                     <nuxt-link :to="`/${slug(city)}/${slug(s.name)}-in-${slug(city)}`" class="grid-item box">
                         <img src="https://www.svgrepo.com/show/501814/microphone1-broadcasting.svg"
@@ -86,12 +86,22 @@ useHead({
                         <p><b>{{ s.name }}</b></p>
                     </nuxt-link>
                 </div>
+            </div> -->
+
+
+            <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
+                <div class=" column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in query" :key="s._id">
+                    <nuxt-link :to="`/${slug(city)}/${slug(s.name)}-in-${slug(city)}`" class="grid-item box">
+                        <p><b>{{ s.name }}</b></p>
+                    </nuxt-link>
+                </div>
+
             </div>
         </template>
 
         <template v-else-if="bflag && data.includes('-in-') && !id">
 
-            <div class="blog-section">
+            <div class="blog-section mt-6 mb-6">
 
                 <div class="blog-content">
                     <nuxt-link class="media" v-for="b in query" :to="`/${slug(city)}/${slug(b.name)}`">
@@ -117,9 +127,9 @@ useHead({
             </div>
         </template>
         <template v-if="dflag">
-            {{ query }}
 
-            <div class="columns">
+
+            <div class="columns mt-4">
                 <div class="column">
                     <div class="image-section">
                         <img src="https://lh5.googleusercontent.com/p/AF1QipOCtHjM9wTkQlFpC9_RudZm00a4PWGNmCNY8UrM=w548-h318-n-k-no"
@@ -199,7 +209,7 @@ useHead({
             </div>
             <br>
             <br>
-            <div class="inner">
+            <div class="inner mt-4 mb-6">
                 <h4 class="title"> FAQs</h4>
                 <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
                     leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying

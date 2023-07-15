@@ -95,3 +95,41 @@ const id = router.currentRoute.value.params.id
         for one and all in the B2B market space.</p>
     <br>
 </template>
+<style scoped>
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fdfdfd;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.grid-item:hover {
+    background-color: #e0e0e0;
+}
+
+.footer {
+    background-color: #fafafa;
+    padding: 3rem 1.5rem 6rem;
+}
+
+.navbar.is-primary {
+    background-color: #ffffff;
+}
+
+body {
+    margin: 0;
+}
+
+.container-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.grid-item p {
+    font-weight: bold;
+}
+</style>

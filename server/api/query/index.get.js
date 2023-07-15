@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
         return SubcategoryModel.find({ "category": title(params.query1) }, {})
     } else if (params.query2 && params.query3) {
         return BusinessModel.find({
-            "sub_category": title(params.query2), "city": title(params.query3)
+            "category": title(params.query2), "city": title(params.query3)
         }, {})
     } else {
         return BusinessModel.find({ "title_slug": params.query1 }, {})

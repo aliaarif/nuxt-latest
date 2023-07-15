@@ -9,7 +9,7 @@ module.exports = {
     deploy: {
         // "production" is the environment name
         production: {
-            user: 'web',
+            user: 'root',
             host: ['172.105.61.7'],
             ref: 'origin/main',
             repo: 'git@github.com:aliaarif/nuxt-latest.git',

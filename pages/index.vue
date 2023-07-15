@@ -50,7 +50,7 @@ const { data: categories } = await useAsyncData('categories',
         <p class="description">Thoroughly tested and evaluated by our expert editors to help you make a more informed
             buying decision.</p>
         <br>
-        <div class="columns is-multiline is-mobile is-variable is-2-tablet">
+        <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
             <div class="column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="category in categories"
                 :key="category._id">
                 <nuxt-link :to="`/${slug(city)}/${slug(category.name)}`" class="grid-item box">
