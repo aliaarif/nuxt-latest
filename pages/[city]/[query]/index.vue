@@ -1,235 +1,290 @@
 <script setup>
-const { city, slug, title, setCity } = useCommon()
+const { title, slug, pageTitle, pageType } = useCommon()
 const router = useRouter()
+const city = router.currentRoute.value.params.city
 const data = router.currentRoute.value.params.query
-const id = router.currentRoute.value.params.id
-// const data2 = data.includes('-in-') ? data.split('-in-') : data
-const bflag = ref(false)
-const dflag = ref(false)
+definePageMeta({
+    middleware: "query"
+})
 
-const pageTitle = ref('')
+
+const loading = ref(false)
+
+const page = ref(1)
+
+const contents = ref('')
+
 const metaContent = ref('')
 
+// const initMap = () => {
+//     var c = [{ "status": true, "data": { "pid": 5, "bussinessName": "Xavier Tailoring shop", "services": "All kind of stitching works", "inventory": [], "workHr": "Monday :9:00AM to 20:0PM,Thuesday :9:00AM to 20:0PM,Wednesday :9:00AM to 20:0PM,Tuesday : 9:00AM to 20:0PM,Friday :9:00AM to 20:0PM,Saturday :9:00AM to 20:0PM,Sunday :9:00AM to 20:0PM", "description": "All kind of stitching works", "category": 11, "sub_category": ["Veg Hotel"], "lat": 9.52436859, "lon": 76.82810117, "contactName": "xavier", "contactEmail": "harisxavier@gmail.com", "contactOfficeAddress": "koovapally perubara road", "contactNumber": "8592808201", "contactOfficeNumber": "8592808201", "state": "Kerala", "city": "Koovappally", "place": "Kanjirapally - Erumely Road", "pincode": 686518, "referer": 24, "link": 31, "views": 0, "package": 1, "listing_pic": "default", "website": "example.com" } }];
+//     var myLatLng = { lat: c[0].data.lat, lng: c[0].data.lon };
 
-if (!bflag && !dflag) {
-    pageTitle.value = 'Obelcon  | Subcategories'
-    metaContent.value = 'Obelcon Subcategories Page'
-} else {
-    pageTitle.value = 'Obelcon  | Subcategories'
-    metaContent.value = 'Obelcon Subcategories Page'
+//     var map = new google.maps.Map(document.getElementById('mapName'), {
+//         zoom: 4,
+//         center: myLatLng
+//     });
+
+//     var marker = new google.maps.Marker({
+//         position: myLatLng,
+//         map: map,
+//         title: 'Hello World!'
+//     });
+// }
+
+if (pageType.value == 'Subcategories') {
+    const { data: res } = await useAsyncData('res',
+        () => {
+            return $fetch(`/api/query?category=${title(data)}`, {
+                method: 'get'
+            })
+        },
+    )
+    contents.value = res.value
+    pageTitle.value = title(data)
+    metaContent.value = title(data)
+} else if (pageType.value == 'Businesses') {
+    const { data: res, refresh } = await useAsyncData('res',
+        () => {
+            return $fetch(`/api/query?city=${title(city)}&subcategory=${title(data.split('-in-')[0])}`, {
+                method: 'get'
+            })
+        },
+    )
+    contents.value = res.value
+    pageTitle.value = title(data)
+    metaContent.value = title(data)
+
+
+
+    // const loadMoreItems = () => {
+    //     if (!loading.value) {
+    //         loading.value = true;
+    //         page.value++
+    //         refresh()
+    //     }
+    // }
+
+    if (process.client) {
+        // document.querySelector(".footer").style.position = "sticky";
+        window.addEventListener("scroll", ((event) => {
+            console.log(event)
+            if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+                fetchNew()
+                window.scrollTo(0, 100);
+            }
+        }));
+    }
+
+    // if (true) {
+    //     pageTitle.value = title(data.split('-in-')[0]) == 'Car On Rent1' ? 'Custom Title' : title(data)
+    // }
+} else if (pageType.value == 'Business Details') {
+    const { data: res } = await useAsyncData('res',
+        () => {
+            return $fetch(`/api/query?title_slug=${data.split('-biz-')[0]}`, {
+                method: 'get'
+            })
+        },
+    )
+    contents.value = res.value
+    pageTitle.value = title(data)
+    metaContent.value = title(data)
+    // console.log(res)
 }
 
-const { data: query } = await useAsyncData('query',
-    () => {
-        return $fetch(`/api/query?query1=${title(data)}`, {
-            method: 'get'
-        })
-    },
+const images = ref(
+    ['https://fastly.picsum.photos/id/631/200/300.jpg?hmac=fgDzRjKee8EpUbckbz7kp1S1ssIqedrw2oOk5mBYQvk', 'https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI', 'https://fastly.picsum.photos/id/91/200/300.jpg?grayscale&hmac=4p0cGVnAgh9bW5M-gQ-prW_TkBJsF3Y0dP-ptgFKY_M']
 )
+const sliderCurrentIndex = ref(0)
 
-if (data.includes('-in-') && !id) {
-    pageTitle.value = 'Obelcon  | Businesses List'
-    metaContent.value = 'Obelcon Businesses List Page'
+const reduceImageIndex = (index) => {
 
-    const query2 = data.split('-in-')[0]
-    const query3 = data.split('-in-')[1]
-    bflag.value = true
-    const { data: query } = await useAsyncData('query',
-        () => {
-            return $fetch(`/api/query?query2=${title(query2)}&query3=${title(query3)}`, {
-                method: 'get'
-            })
-        },
-    )
+    if (index > 0) {
+        sliderCurrentIndex.value = index - 1
+    }
+
 }
 
+const increaseImageIndex = (index) => {
+    if (index < images.value.length - 1) {
+        sliderCurrentIndex.value = index + 1
+    }
 
-
-if (query.value.length == 0) {
-    console.log(data);
-    dflag.value = true
-
-    const { data: query } = await useAsyncData('query',
-        () => {
-            return $fetch(`/api/query?query4=${data}`, {
-                method: 'get'
-            })
-        },
-    )
-
-
-    pageTitle.value = 'Obelcon  | Business Detail'
-    metaContent.value = 'Obelcon Business Detail Page'
 }
-
-
 useHead({
-    title: pageTitle,
+    title: `Obelcon | ${pageTitle.value}`,
     meta: [
-        { name: 'description', content: metaContent }
+        { name: 'description', content: 'Obelcon Home Page' }
     ]
 })
+
 </script>
 
 <template>
-    <section>
-        <h3 class="title"> {{ title(data) }}</h3>
+    <template v-if="pageType == 'Subcategories'">
+        <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
+            <div class=" column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in contents" :key="s._id">
+                <a :href="`/${slug(city)}/${slug(s?.name)}-in-${slug(city)}`" class="grid-item box">
+                    <p><b>{{ s.name }}</b></p>
+                </a>
+            </div>
+        </div>
+    </template>
 
+    <template v-else-if="pageType == 'Businesses'">
+        <span class="is-left">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><nuxt-link to="/">Home</nuxt-link></li>
+                    <li><a to="javascript:;">{{ title(city) }}</a></li>
+                    <li><a href="javascript:;">{{ title(data.includes('-biz-') ? data.split('-biz-')[0] : data) }} </a></li>
+                    <li class="is-active"><a href="javascript:;" aria-current="page">{{ contents.length }}</a></li>
+                </ul>
+            </nav>
 
+            <h1 class="title is-1">{{ title(data) }}</h1>
+        </span>
 
-        <template v-if="!bflag">
-            <!-- <div class="columns is-multiline is-mobile is-variable is-2-tablet">
-                <div class="column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in query" :key="s._id">
-                    <nuxt-link :to="`/${slug(city)}/${slug(s.name)}-in-${slug(city)}`" class="grid-item box">
-                        <img src="https://www.svgrepo.com/show/501814/microphone1-broadcasting.svg"
-                            style="width: 100px; height: 100px;" alt="Your Image">
-                        <p><b>{{ s.name }}</b></p>
-                    </nuxt-link>
-                </div>
+        <div class="blog-section mt-6 mb-6">
+            <div class="blog-content">
+                <nuxt-link class="media" v-for="b in contents" :key="b._id"
+                    :to="`/${slug(city)}/${b.title_slug}-biz-${b._id.substr(16)}`">
+                    <div class="media-left">
+                        <figure class="image custom-image">
+                            <img src="https://demo.themesberg.com/spaces/assets/img/meeting-office.jpg" alt="Blog Image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <h1 class="title is-4">{{ b.name }}</h1>
+                        <p>{{ b.address.substr(9) }}</p>
+                        <p>{{ b.phone }}</p>
+                        <p>{{ b.rating }}</p>
+                    </div>
+                </nuxt-link>
+            </div>
+            <!-- Scrollable container -->
+            <!-- <div v-infinite-scroll="loadMoreItems" infinite-scroll-disabled="loading" infinite-scroll-distance="200">
+                <div v-if="loading">Loading...</div>
             </div> -->
+            <aside class="sidebar">
+                <h2 class="title is-5">Sidebar</h2>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+            </aside>
+        </div>
+    </template>
+
+    <template v-else>
+        <div class="columns mt-4">
+            <div class="column">
+                <div class="image-section" style="border: 1px solid black;">
+                    <img :src="images[sliderCurrentIndex ?? 0]" alt="Image" />
+
+                    <span class="icon" style="position: absolute; top:215px">
+                        <a class="has-text-white" @click="reduceImageIndex(sliderCurrentIndex)" href="javascript:;">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </span>
+
+                    <span class="icon" style="position: absolute; top:215px; left:370px">
 
 
-            <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
-                <div class=" column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in query" :key="s._id">
-                    <nuxt-link :to="`/${slug(city)}/${slug(s.name)}-in-${slug(city)}`" class="grid-item box">
-                        <p><b>{{ s.name }}</b></p>
-                    </nuxt-link>
+                        <a class="has-text-white" @click="increaseImageIndex(sliderCurrentIndex)" href="javascript:;">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </span>
+
                 </div>
-
             </div>
-        </template>
+            <div class="column">
+                <div class="content-section">
+                    <!-- <div id="mapName" style="width:267px; height: 270px" /> -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.5911061173924!2d77.04983299999999!3d28.46174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI3JzQyLjMiTiA3N8KwMDInNTkuNCJF!5e0!3m2!1sen!2sin!4v1689698992701!5m2!1sen!2sin"
+                        width="500" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <template v-else-if="bflag && data.includes('-in-') && !id">
 
-            <div class="blog-section mt-6 mb-6">
-
-                <div class="blog-content">
-                    <nuxt-link class="media" v-for="b in query" :to="`/${slug(city)}/${slug(b.name)}`">
-                        <div class="media-left">
-                            <figure class="image custom-image">
-                                <img src="https://demo.themesberg.com/spaces/assets/img/meeting-office.jpg"
-                                    alt="Blog Image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <h1 class="title is-4">{{ b.name }}</h1>
-                            <p>.</p>
-                        </div>
-                    </nuxt-link>
                 </div>
-
-                <aside class="sidebar">
-                    <h2 class="title is-5">Sidebar</h2>
-                    <p>.</p>
-                    <p>.</p>
-                    <p>.</p>
-                </aside>
             </div>
-        </template>
-        <template v-if="dflag">
+            <div class="column">
+                <div class="content-section">
+                    <p>Content 3</p>
+                    <p>Content 4</p>
+                </div>
+            </div>
+        </div>
 
 
-            <div class="columns mt-4">
+        <div class="container inner">
+            <div class="columns three-layout">
                 <div class="column">
-                    <div class="image-section">
-                        <img src="https://lh5.googleusercontent.com/p/AF1QipOCtHjM9wTkQlFpC9_RudZm00a4PWGNmCNY8UrM=w548-h318-n-k-no"
-                            alt="Image">
+                    <div class="custom-container">
+
+                        <p>Name</p>
+                        <p>{{ contents?.name }}</p>
+                    </div>
+                    <div class="custom-container">
+                        <p>Address</p>
+                        <p>{{ contents?.address }}</p>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="content-section">
-                        <p>Content 1</p>
-                        <p>Content 2</p>
+                    <div class="custom-container">
+                        <p>City</p>
+                        <p>{{ contents?.city }}, {{ contents?.state }}</p>
+                    </div>
+                    <div class="custom-container">
+                        <p>Category</p>
+                        <p>---</p>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="content-section">
-                        <p>Content 3</p>
-                        <p>Content 4</p>
+                    <div class="custom-container">
+                        <p>Contact</p>
+                        <p>{{ contents?.phone }}</p>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="inner">
+            <h4 class="title"> About</h4>
+            <p>{{ contents?.description }}</p>
+            <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
+                promoting and selling B2B products and services and thereby reaching larger audiences. Among the
+                most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
+                does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
+                convenient and beneficial for one and all in the B2B market space.</p>
             <br>
+            <h4 class="title">Test</h4>
+            <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
+                leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
+                the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
+                unparalleled platform to showcase their products and services.</p>
+            <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
+                promoting and selling B2B products and services and thereby reaching larger audiences. Among the
+                most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
+                does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
+                convenient and beneficial for one and all in the B2B market space.</p>
+        </div>
+
+        <div class="inner mt-4 mb-6">
+            <h4 class="title"> FAQs</h4>
+            <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
+                leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
+                the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
+                unparalleled platform to showcase their products and services.</p>
+            <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
+                promoting and selling B2B products and services and thereby reaching larger audiences. Among the
+                most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
+                does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
+                convenient and beneficial for one and all in the B2B market space.</p>
             <br>
-            <div class="container inner">
-                <div class="columns three-layout">
-                    <div class="column">
-                        <div class="custom-container">
-                            <p>Name</p>
-                            <p>Hello</p>
-                        </div>
-                        <div class="custom-container">
-                            <p>Address</p>
-                            <p>Plot</p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="custom-container">
-                            <p>City</p>
-                            <p>Google</p>
-                        </div>
-                        <div class="custom-container">
-                            <p>Category</p>
-                            <p>Hotel</p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="custom-container">
-                            <p>Contact</p>
-                            <p>8000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="inner">
-                <h4 class="title"> About</h4>
-                <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
-                    leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
-                    the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
-                    unparalleled platform to showcase their products and services.</p>
-                <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
-                    promoting and selling B2B products and services and thereby reaching larger audiences. Among the
-                    most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
-                    does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
-                    convenient and beneficial for one and all in the B2B market space.</p>
-                <br>
-                <h4 class="title">Test</h4>
-                <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
-                    leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
-                    the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
-                    unparalleled platform to showcase their products and services.</p>
-                <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
-                    promoting and selling B2B products and services and thereby reaching larger audiences. Among the
-                    most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
-                    does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
-                    convenient and beneficial for one and all in the B2B market space.</p>
-            </div>
-            <br>
-            <br>
-            <div class="inner mt-4 mb-6">
-                <h4 class="title"> FAQs</h4>
-                <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
-                    leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
-                    the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
-                    unparalleled platform to showcase their products and services.</p>
-                <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
-                    promoting and selling B2B products and services and thereby reaching larger audiences. Among the
-                    most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
-                    does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
-                    convenient and beneficial for one and all in the B2B market space.</p>
-                <br>
-            </div>
+        </div>
 
-        </template>
-
-
-
-
-
-
-
-    </section>
+    </template>
 </template>
+    

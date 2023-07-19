@@ -19,14 +19,20 @@ export default defineEventHandler(async (event) => {
 
     const params = getQuery(event)
 
-    if (params.query1) {
-        return SubcategoryModel.find({ "category": title(params.query1) }, {})
-    } else if (params.query2 && params.query3) {
-        return BusinessModel.find({
-            "category": title(params.query2), "city": title(params.query3)
-        }, {})
-    } else {
-        return BusinessModel.find({ "title_slug": params.query1 }, {})
+
+    if (params.category) {
+        return SubcategoryModel.find({ "category": params.category }, {})
+    }
+
+
+    if (params.subcategory && params.city) {
+        const perPage = 10 //10docs in single page
+        // const page = params.page ?? 1 //1st page
+        return BusinessModel.find({ "category": params.subcategory, "city": params.city }, {})
+    }
+
+    if (params.title_slug) {
+        return BusinessModel.findOne({ "title_slug": params.title_slug }, {})
     }
 
 })

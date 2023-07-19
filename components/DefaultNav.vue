@@ -1,6 +1,6 @@
 
 <script setup>
-
+const { city, setCity } = useCommon()
 const { data: cities } = await useAsyncData('cities',
     () => {
         return $fetch(`/api/cities`, {
@@ -12,7 +12,7 @@ const { data: cities } = await useAsyncData('cities',
 
 const router = useRouter()
 
-const city = ref('')
+// const city = ref('')
 const category = ref('')
 const cityDropBox = ref(false)
 const filteredCities = ref([])
@@ -58,6 +58,7 @@ const filterCities2 = (item) => {
 const setcity = (newCity) => {
     category.value = ref(category);
     cityDropBox.value = false;
+    setCity(newCity)
     city.value = newCity;
     if (typeof window !== 'undefined') {
         city.value = newCity

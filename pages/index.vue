@@ -1,5 +1,7 @@
 <script setup>
-const { city, slug, title, setCity } = useCommon()
+const { city, slug, title } = useCommon()
+
+
 useHead({
     title: 'Obelcon | Categories',
     meta: [
@@ -10,16 +12,14 @@ useHead({
 onMounted(() => {
     if (window !== 'undefined') {
         category.value = !localStorage.category ? localStorage.setItem('category', 'hire-on') : slug(localStorage.category)
-        city.value = !localStorage.city ? localStorage.setItem('city', 'new-delhi') : title(localStorage.city)
+        city.value = !localStorage.city ? localStorage.setItem('city', 'gurugram') : title(localStorage.city)
     }
 })
 
-const subcategories = ref([]);
-
-const category = ref('')
 
 
-const subcategoryBox = ref(false)
+const category = ref('hire-on')
+
 const { data: categories } = await useAsyncData('categories',
     () => {
         return $fetch(`/api/categories`, {
@@ -27,20 +27,6 @@ const { data: categories } = await useAsyncData('categories',
         })
     },
 )
-
-// const loadCates = async (val) => {
-//     subcategoryBox.value = true
-//     localStorage.category = slug(val)
-//     const { data: subcategoriesRes } = await useAsyncData('subcategories',
-//         () => {
-//             return $fetch(`/api/subcategories?category=${val}`, {
-//                 method: 'get'
-//             })
-//         }
-//     )
-//     subcategories.value = subcategoriesRes.value
-//     console.log(subcategories.value)
-// }
 
 </script>
 <template>

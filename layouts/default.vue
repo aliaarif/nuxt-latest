@@ -6,7 +6,7 @@
             <slot />
 
         </div>
-        <Footer />
+        <!-- <Footer /> -->
     </section>
 </template>
 <style scoped>
