@@ -1,5 +1,5 @@
 <script setup>
-const { title, slug, pageTitle, pageType } = useCommon()
+const { title, slug, pageTitle, pageType, meta } = useCommon()
 const router = useRouter()
 const city = router.currentRoute.value.params.city
 const data = router.currentRoute.value.params.query
@@ -41,8 +41,8 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-    pageTitle.value = title(data)
-    metaContent.value = title(data)
+    pageTitle.value = `${meta.value.page_title}`
+    metaContent.value = `${meta.value.page_content}`
 } else if (pageType.value == 'Businesses') {
     const { data: res, refresh } = await useAsyncData('res',
         () => {
@@ -52,33 +52,16 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-    pageTitle.value = title(data)
-    metaContent.value = title(data)
-
-
-
-    // const loadMoreItems = () => {
-    //     if (!loading.value) {
-    //         loading.value = true;
-    //         page.value++
-    //         refresh()
-    //     }
-    // }
-
+    pageTitle.value = `${meta.value.page_title}`
+    metaContent.value = `${meta.value.page_content}`
     if (process.client) {
-        // document.querySelector(".footer").style.position = "sticky";
         window.addEventListener("scroll", ((event) => {
-            console.log(event)
             if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
                 fetchNew()
                 window.scrollTo(0, 100);
             }
         }));
     }
-
-    // if (true) {
-    //     pageTitle.value = title(data.split('-in-')[0]) == 'Car On Rent1' ? 'Custom Title' : title(data)
-    // }
 } else if (pageType.value == 'Business Details') {
     const { data: res } = await useAsyncData('res',
         () => {
@@ -88,6 +71,8 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
+    // pageTitle.value = `${meta.value.page_title}`
+    // metaContent.value = `${meta.value.page_content}`
     pageTitle.value = title(data)
     metaContent.value = title(data)
     // console.log(res)
@@ -113,16 +98,38 @@ const increaseImageIndex = (index) => {
 
 }
 useHead({
-    title: `Obelcon | ${pageTitle.value}`,
+    title: `${pageTitle.value}`,
     meta: [
-        { name: 'description', content: 'Obelcon Home Page' }
+        { name: 'description', content: metaContent.value }
     ]
 })
+
+
 
 </script>
 
 <template>
-    <template v-if="pageType == 'Subcategories'">
+    <template v-if="city == 'mobile'">
+        <aside class="menu">
+            <ul class="menu-list">
+                <li>
+                    <ul v-if="data == 'menu'">
+                        <li><nuxt-link to="/">Home</nuxt-link></li>
+                        <li><nuxt-link to="/about">About</nuxt-link></li>
+                        <li><nuxt-link to="/contact">Contact</nuxt-link></li>
+                        <li><nuxt-link to="/login">Login</nuxt-link></li>
+                        <li><nuxt-link to="/register">Register</nuxt-link></li>
+                    </ul>
+
+                    <search v-else />
+                </li>
+            </ul>
+        </aside>
+    </template>
+
+
+    <template v-else-if="pageType == 'Subcategories'">
+        <h1 class="title is-1">{{ meta.page_title }}</h1>
         <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
             <div class=" column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in contents" :key="s._id">
                 <a :href="`/${slug(city)}/${slug(s?.name)}-in-${slug(city)}`" class="grid-item box">
@@ -138,28 +145,28 @@ useHead({
                 <ul>
                     <li><nuxt-link to="/">Home</nuxt-link></li>
                     <li><a to="javascript:;">{{ title(city) }}</a></li>
-                    <li><a href="javascript:;">{{ title(data.includes('-biz-') ? data.split('-biz-')[0] : data) }} </a></li>
+                    <li><a href="javascript:;">{{ meta.page_title }} </a>
+                    </li>
                     <li class="is-active"><a href="javascript:;" aria-current="page">{{ contents.length }}</a></li>
                 </ul>
             </nav>
 
-            <h1 class="title is-1">{{ title(data) }}</h1>
+            <h1 class="title is-1">{{ meta.page_title }}</h1>
         </span>
 
         <div class="blog-section mt-6 mb-6">
             <div class="blog-content">
                 <nuxt-link class="media" v-for="b in contents" :key="b._id"
-                    :to="`/${slug(city)}/${b.title_slug}-biz-${b._id.substr(16)}`">
+                    :to="`/${slug(city)}/${b.business_slug}-biz-${b._id.substr(16)}`">
                     <div class="media-left">
                         <figure class="image custom-image">
                             <img src="https://demo.themesberg.com/spaces/assets/img/meeting-office.jpg" alt="Blog Image">
                         </figure>
                     </div>
                     <div class="media-content">
-                        <h1 class="title is-4">{{ b.name }}</h1>
-                        <p>{{ b.address.substr(9) }}</p>
-                        <p>{{ b.phone }}</p>
-                        <p>{{ b.rating }}</p>
+                        <h1 class="title is-4">{{ b.business_name }}</h1>
+                        <p>{{ b.business_address.substr(9) }}</p>
+                        <p>{{ b.business_phone }}</p>
                     </div>
                 </nuxt-link>
             </div>
@@ -177,27 +184,31 @@ useHead({
     </template>
 
     <template v-else>
+        <span class="is-left">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><nuxt-link to="/">Home</nuxt-link></li>
+                    <li><a to="javascript:;">{{ title(city) }}</a></li>
+                    <li><a href="javascript:;">{{ contents?.business_name }} </a></li>
+                </ul>
+            </nav>
+
+            <h1 class="title is-1">{{ contents?.business_name }}</h1>
+        </span>
         <div class="columns mt-4">
             <div class="column">
-                <div class="image-section" style="border: 1px solid black;">
-                    <img :src="images[sliderCurrentIndex ?? 0]" alt="Image" />
-
-                    <span class="icon" style="position: absolute; top:215px">
-                        <a class="has-text-white" @click="reduceImageIndex(sliderCurrentIndex)" href="javascript:;">
-                            <i class="fas fa-angle-double-left"></i>
-                        </a>
-                    </span>
-
-                    <span class="icon" style="position: absolute; top:215px; left:370px">
-
-
-                        <a class="has-text-white" @click="increaseImageIndex(sliderCurrentIndex)" href="javascript:;">
-                            <i class="fas fa-angle-double-right"></i>
-                        </a>
-                    </span>
-
+                <div class="content-section">
+                    <div class="custom-container">
+                        <p>Name</p>
+                        <p>{{ contents?.business_name }}</p>
+                    </div>
+                    <div class="custom-container">
+                        <p>Address</p>
+                        <p>{{ contents?.business_address }}</p>
+                    </div>
                 </div>
             </div>
+
             <div class="column">
                 <div class="content-section">
                     <!-- <div id="mapName" style="width:267px; height: 270px" /> -->
@@ -209,42 +220,55 @@ useHead({
 
                 </div>
             </div>
+
             <div class="column">
-                <div class="content-section">
-                    <p>Content 3</p>
-                    <p>Content 4</p>
+                <div class="image-section" style="border: 1px solid black;">
+                    <img :src="images[sliderCurrentIndex ?? 0]" alt="Image" />
+
+                    <span class="icon" style="position: absolute; top:215px">
+                        <a class="has-text-white" @click="reduceImageIndex(sliderCurrentIndex)" href="javascript:;">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </span>
+
+                    <span class="icon" style="position: relative; top:215px; left:300px">
+
+
+                        <a class="has-text-white" @click="increaseImageIndex(sliderCurrentIndex)" href="javascript:;">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </span>
+
                 </div>
             </div>
+
         </div>
-
-
         <div class="container inner">
             <div class="columns three-layout">
                 <div class="column">
                     <div class="custom-container">
-
                         <p>Name</p>
-                        <p>{{ contents?.name }}</p>
+                        <p>{{ contents?.business_name }}</p>
                     </div>
                     <div class="custom-container">
                         <p>Address</p>
-                        <p>{{ contents?.address }}</p>
+                        <p>{{ contents?.business_address }}</p>
                     </div>
                 </div>
                 <div class="column">
                     <div class="custom-container">
                         <p>City</p>
-                        <p>{{ contents?.city }}, {{ contents?.state }}</p>
+                        <p>{{ contents?.business_city }}, {{ contents?.business_state }}</p>
                     </div>
                     <div class="custom-container">
                         <p>Category</p>
-                        <p>---</p>
+                        <p>{{ contents?.business_category }}</p>
                     </div>
                 </div>
                 <div class="column">
                     <div class="custom-container">
                         <p>Contact</p>
-                        <p>{{ contents?.phone }}</p>
+                        <p>{{ contents?.business_phone }}</p>
                     </div>
                 </div>
             </div>
@@ -252,39 +276,17 @@ useHead({
 
         <div class="inner">
             <h4 class="title"> About</h4>
-            <p>{{ contents?.description }}</p>
-            <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
-                promoting and selling B2B products and services and thereby reaching larger audiences. Among the
-                most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
-                does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
-                convenient and beneficial for one and all in the B2B market space.</p>
-            <br>
-            <h4 class="title">Test</h4>
-            <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
-                leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
-                the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
-                unparalleled platform to showcase their products and services.</p>
-            <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
-                promoting and selling B2B products and services and thereby reaching larger audiences. Among the
-                most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
-                does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
-                convenient and beneficial for one and all in the B2B market space.</p>
+            <p>{{ contents?.business_description }}</p>
+
         </div>
 
         <div class="inner mt-4 mb-6">
             <h4 class="title"> FAQs</h4>
-            <p>Creating an undisputed space for small and medium enterprises (SMEs) online, Justdial is India’s
-                leading online B2B market place, seamlessly connecting buyers to dealers and suppliers. Simplifying
-                the entire process of business, Justdial presents SMEs, large enterprises as well as individuals an
-                unparalleled platform to showcase their products and services.</p>
-            <p>In today’s digital day and age, Justdial enables businesses with B2B marketing, B2B lead generation,
-                promoting and selling B2B products and services and thereby reaching larger audiences. Among the
-                most crucial B2B marketing strategies today is to go digital and that’s exactly what the company
-                does. Be it for manufacturers, dealers, suppliers, vendors, wholesalers, etc. the processes are
-                convenient and beneficial for one and all in the B2B market space.</p>
+            <p>{{ contents?.business_faqs }}</p>
+
+
             <br>
         </div>
 
     </template>
 </template>
-    

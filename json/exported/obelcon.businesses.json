@@ -1,0 +1,33 @@
+[
+    {
+        "_id": {
+            "$oid": "64bb39f6abd02ab602a49259"
+        },
+        "created_by": "Obelcon",
+        "business_name": "Yuvika Tour And Travels",
+        "business_slug": "yuvika-tour-and-travels-near-jmd-garden-sohna-road",
+        "status": "Active",
+        "business_ownership": "Unclaimed",
+        "business_category": "Car Rental Services",
+        "business_services": "N/A",
+        "business_timing": "N/A",
+        "business_city": "Gurugram",
+        "business_state": "Haryana",
+        "business_address": "1st Floor Dada Mangeram Market, Near Indian Oil Petrol Pump, Sohna Road, Gurugram, Haryana 122001",
+        "business_phone": "01244795555",
+        "business_email": "example@gmail.com",
+        "business_website": "N/A",
+        "business_Social": "N/A",
+        "business_latitude": "28.459012",
+        "business_longitude": "77.031737",
+        "business_description": "Yuvika Tour And Travels is car rental agency in Gurgaon, Haryana.",
+        "business_faqs": "Yuvika Tour And Travels is car rental agency in Gurgaon, Haryana.",
+        "business_image": "https://www.ajujapanesehotels.com/english/images/aju-ryokan-02.jpg",
+        "business_images": [
+            "https: //www.ajujapanesehotels.com/english/images/aju-ryokan-02.jpg",
+            "https://c4.wallpaperflare.com/wallpaper/431/451/684/the-most-beautiful-picture-of-nature-wallpaper-preview.jpg",
+            "https://www.ajujapanesehotels.com/english/images/aju-ryokan-02.jpg",
+            "https://c4.wallpaperflare.com/wallpaper/431/451/684/the-most-beautiful-picture-of-nature-wallpaper-preview.jpg"
+        ]
+    }
+]

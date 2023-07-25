@@ -3,7 +3,7 @@ const { city, slug, title } = useCommon()
 
 
 useHead({
-    title: 'Obelcon | Categories',
+    title: 'Obelcon - Write your title here for Home Page',
     meta: [
         { name: 'description', content: 'Obelcon Home Page' }
     ]
@@ -15,8 +15,6 @@ onMounted(() => {
         city.value = !localStorage.city ? localStorage.setItem('city', 'gurugram') : title(localStorage.city)
     }
 })
-
-
 
 const category = ref('hire-on')
 
@@ -49,3 +47,9 @@ const { data: categories } = await useAsyncData('categories',
 
     </section>
 </template>
+
+<style scoped>
+.title {
+    color: red;
+}
+</style>

@@ -1,5 +1,9 @@
 import SubcategoryModel from "~~/server/models/Subcategory";
 import BusinessModel from "~~/server/models/Business";
+import CategoryModel from "~~/server/models/Category";
+import CityModel from "~~/server/models/City";
+import StateModel from "~~/server/models/State";
+import UserModel from "~~/server/models/User";
 
 export default defineEventHandler(async (event) => {
     // const config = useRuntimeConfig()
@@ -20,20 +24,32 @@ export default defineEventHandler(async (event) => {
     const params = getQuery(event)
 
 
-    if (params.category) {
-        return SubcategoryModel.find({ "category": params.category }, {})
+
+    if (params.name == 'categories') {
+        return CategoryModel.find({}, {})
+    }
+
+    if (params.name == 'subcategories') {
+        return SubcategoryModel.find({}, {})
+    }
+
+    if (params.name == 'businesses') {
+        return BusinessModel.find({}, {})
+    }
+
+    if (params.name == 'cities') {
+        return CityModel.find({}, {})
+    }
+
+    if (params.name == 'states') {
+        return StateModel.find({}, {})
+    }
+
+    if (params.name == 'users') {
+        return UserModel.find({}, {})
     }
 
 
-    if (params.subcategory && params.city) {
-        const perPage = 10 //10docs in single page
-        // const page = params.page ?? 1 //1st page
-        return BusinessModel.find({ "business_category": params.subcategory, "business_city": params.city }, {})
-    }
-
-    if (params.title_slug) {
-        return BusinessModel.findOne({ "business_slug": params.title_slug }, {})
-    }
 
 })
 

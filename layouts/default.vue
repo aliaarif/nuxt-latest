@@ -6,13 +6,13 @@
             <slot />
 
         </div>
-        <!-- <Footer /> -->
+        <Footer />
     </section>
 </template>
-<style scoped>
+<style>
 .page-entter-active,
 .page-leave-active {
-    transform: all 0.4s;
+    transition: all 0.4s;
 }
 
 .page-entter-from,

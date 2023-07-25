@@ -1,35 +1,62 @@
 [
     {
-        "name": "Hire On"
+        "name": "Hire On",
+        "page_title": "Hire On Services In (City) 1",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 1"
     },
     {
-        "name": "Daily Needs"
+        "name": "Daily Needs",
+        "page_title": "Hire On Services In (City) 2",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 2"
     },
     {
-        "name": "Personal Care"
+        "name": "Personal Care",
+        "page_title": "Hire On Services In (City) 3",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 3"
     },
     {
-        "name": "Medical"
+        "name": "Medical",
+        "page_title": "Hire On Services In (City) 4",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 4"
     },
     {
-        "name": "Education"
+        "name": "Education",
+        "page_title": "Hire On Services In (City) 5",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 5"
     },
     {
-        "name": "House Holds"
+        "name": "House Holds",
+        "page_title": "Hire On Services In (City) 6",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 6"
     },
     {
-        "name": "Public Services"
+        "name": "Public Services",
+        "page_title": "Hire On Services In (City) 7",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 7"
     },
     {
-        "name": "Marriage"
+        "name": "Marriage",
+        "page_title": "Hire On Services In (City) 8",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 8"
     },
     {
-        "name": "Hobbies"
+        "name": "Hobbies",
+        "page_title": "Hire On Services In (City) 9",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 9"
     },
     {
-        "name": "Internet"
+        "name": "Internet",
+        "page_title": "Hire On Services In (City) 10",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 10"
     },
     {
-        "name": "Restaurants"
+        "name": "Restaurants",
+        "page_title": "Hire On Services In (City) 11",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 11"
+    },
+    {
+        "name": "Electronics Store",
+        "page_title": "Hire On Services In (City) 12",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 12"
     }
 ]
