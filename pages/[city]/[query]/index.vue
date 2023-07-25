@@ -71,11 +71,11 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-    // pageTitle.value = `${meta.value.page_title}`
-    // metaContent.value = `${meta.value.page_content}`
-    pageTitle.value = title(data)
-    metaContent.value = title(data)
-    // console.log(res)
+    pageTitle.value = `${meta.value.page_title}`
+    metaContent.value = `${meta.value.page_content}`
+    // pageTitle.value = title(data)
+    // metaContent.value = title(data)
+    console.log(pageTitle.value)
 }
 
 const images = ref(
@@ -189,6 +189,8 @@ useHead({
                 <ul>
                     <li><nuxt-link to="/">Home</nuxt-link></li>
                     <li><a to="javascript:;">{{ title(city) }}</a></li>
+                    <li><nuxt-link @click="$router.go(-1)" to="javascript:;">{{
+                        meta.page_title }} </nuxt-link></li>
                     <li><a href="javascript:;">{{ contents?.business_name }} </a></li>
                 </ul>
             </nav>

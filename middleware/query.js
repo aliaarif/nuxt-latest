@@ -30,11 +30,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
             method: 'get'
         }).then(metaResults => setMeta(metaResults))
     } else if (!query.includes('-in-') && query.includes('-biz-')) {
+        const data = query.split('-biz-')[0]
         pageTitle.value = 'Business Details'
         metaContent.value = 'Business Details Meta Contents'
         setPageTitle('Business Details')
         setPageType('Business Details')
-        // $fetch(`/api/getMetaContents?name=${title(query)}`, {
+        // $fetch(`/api/getSubcategoriesMeta?name=${title(data)}`, {
         //     method: 'get'
         // }).then(metaResults => setMeta(metaResults))
     }
