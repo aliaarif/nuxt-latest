@@ -2,7 +2,7 @@
 
 export default defineNuxtRouteMiddleware((to, from) => {
 
-    const { slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, pageType, setPageType } = useCommon()
+    const { title, pageTitle, setPageTitle, metaContent, setMeta, customMeta, setCustomMeta, setPageType } = useCommon()
 
 
     const city = to.params.city
@@ -28,14 +28,19 @@ export default defineNuxtRouteMiddleware((to, from) => {
         const data = query.split('-in-')[0]
         $fetch(`/api/getSubcategoriesMeta?name=${title(data)}`, {
             method: 'get'
-        }).then(metaResults => setMeta(metaResults))
+        }).then((metaResults) => {
+            setMeta(metaResults)
+            setCustomMeta(metaResults)
+        }
+        )
     } else if (!query.includes('-in-') && query.includes('-biz-')) {
-        const data = query.split('-biz-')[0]
+        // const data = query.split('-biz-')[0]
         pageTitle.value = 'Business Details'
         metaContent.value = 'Business Details Meta Contents'
         setPageTitle('Business Details')
         setPageType('Business Details')
-        // $fetch(`/api/getSubcategoriesMeta?name=${title(data)}`, {
+
+        // $fetch(`/api/getBusinessesMeta?slug=${data}`, {
         //     method: 'get'
         // }).then(metaResults => setMeta(metaResults))
     }

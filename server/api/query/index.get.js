@@ -31,8 +31,8 @@ export default defineEventHandler(async (event) => {
         return BusinessModel.find({ "business_category": params.subcategory, "business_city": params.city }, {})
     }
 
-    if (params.title_slug) {
-        return BusinessModel.findOne({ "business_slug": params.title_slug }, {})
+    if (params.business_slug) {
+        return BusinessModel.findOne({ "business_slug": params.business_slug }, {})
     }
 
 })

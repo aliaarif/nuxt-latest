@@ -44,7 +44,7 @@ if (pageType.value == 'Subcategories') {
     pageTitle.value = `${meta.value.page_title}`
     metaContent.value = `${meta.value.page_content}`
 } else if (pageType.value == 'Businesses') {
-    const { data: res, refresh } = await useAsyncData('res',
+    const { data: res } = await useAsyncData('res',
         () => {
             return $fetch(`/api/query?city=${title(city)}&subcategory=${title(data.split('-in-')[0])}`, {
                 method: 'get'
@@ -65,16 +65,16 @@ if (pageType.value == 'Subcategories') {
 } else if (pageType.value == 'Business Details') {
     const { data: res } = await useAsyncData('res',
         () => {
-            return $fetch(`/api/query?title_slug=${data.split('-biz-')[0]}`, {
+            return $fetch(`/api/query?business_slug=${data.split('-biz-')[0]}`, {
                 method: 'get'
             })
         },
     )
     contents.value = res.value
-    pageTitle.value = `${meta.value.page_title}`
-    metaContent.value = `${meta.value.page_content}`
-    // pageTitle.value = title(data)
-    // metaContent.value = title(data)
+    // pageTitle.value = `${meta.value.page_title}`
+    // metaContent.value = `${meta.value.page_content}`
+    pageTitle.value = title(data)
+    metaContent.value = title(data)
     console.log(pageTitle.value)
 }
 
@@ -189,8 +189,8 @@ useHead({
                 <ul>
                     <li><nuxt-link to="/">Home</nuxt-link></li>
                     <li><a to="javascript:;">{{ title(city) }}</a></li>
-                    <li><nuxt-link @click="$router.go(-1)" to="javascript:;">{{
-                        meta.page_title }} </nuxt-link></li>
+                    <!-- <li><nuxt-link @click="$router.go(-1)" to="javascript:;">{{
+                        meta.page_title }} </nuxt-link></li> -->
                     <li><a href="javascript:;">{{ contents?.business_name }} </a></li>
                 </ul>
             </nav>
@@ -223,7 +223,7 @@ useHead({
                 </div>
             </div>
 
-            <div class="column">
+            <div class="column" if="contents?.images ">
                 <div class="image-section" style="border: 1px solid black;">
                     <img :src="images[sliderCurrentIndex ?? 0]" alt="Image" />
 
@@ -285,8 +285,6 @@ useHead({
         <div class="inner mt-4 mb-6">
             <h4 class="title"> FAQs</h4>
             <p>{{ contents?.business_faqs }}</p>
-
-
             <br>
         </div>
 

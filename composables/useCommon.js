@@ -12,6 +12,9 @@ export default function useCommon() {
 
     const meta = useState('meta', () => { })
 
+
+    const customMeta = useState('customMeta', () => { })
+
     const pageType = useState('pageType', () => '')
 
     const dynamicTitle = useState('dynamicTitle', () => 'Dashboard')
@@ -85,6 +88,12 @@ export default function useCommon() {
         meta.value = val
         return;
     }
+
+    const setCustomMeta = (val) => {
+        customMeta.value = val
+        return;
+    }
+
 
     const setModule = (val) => {
         module.value = val
@@ -197,6 +206,6 @@ export default function useCommon() {
 
 
     return {
-        city, setCity, slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, search, setSearch, dynamicTitle, setDynamicTitle, fields, item, setItem
+        city, setCity, slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, search, setSearch, dynamicTitle, setDynamicTitle, fields, item, setItem
     }
 }
