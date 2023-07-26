@@ -41,7 +41,7 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-    pageTitle.value = `${meta.value.page_title}`
+    pageTitle.value = `${meta.value.page_title} in ${title(city)}`
     metaContent.value = `${meta.value.page_content}`
 } else if (pageType.value == 'Businesses') {
     const { data: res } = await useAsyncData('res',
@@ -52,7 +52,7 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-    pageTitle.value = `${meta.value.page_title}`
+    pageTitle.value = `${meta.value.page_title} in ${title(city)}`
     metaContent.value = `${meta.value.page_content}`
     if (process.client) {
         window.addEventListener("scroll", ((event) => {
@@ -129,7 +129,7 @@ useHead({
 
 
     <template v-else-if="pageType == 'Subcategories'">
-        <h1 class="title is-1">{{ meta.page_title }}</h1>
+        <h1 class="title is-1">{{ meta.page_title }} in {{ title(city) }}</h1>
         <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
             <div class=" column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in contents" :key="s._id">
                 <a :href="`/${slug(city)}/${slug(s?.name)}-in-${slug(city)}`" class="grid-item box">
@@ -151,7 +151,7 @@ useHead({
                 </ul>
             </nav>
 
-            <h1 class="title is-1">{{ meta.page_title }}</h1>
+            <h1 class="title is-1">{{ meta.page_title }} in {{ title(city) }}</h1>
         </span>
 
         <div class="blog-section mt-6 mb-6">
