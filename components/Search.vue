@@ -48,6 +48,7 @@ const filterCities = () => {
         cityDropBox.value = true;
         filteredCities.value = cities.value.filter(filterCities2)
     }
+
 }
 
 const filterCities2 = (item) => {
@@ -55,7 +56,7 @@ const filterCities2 = (item) => {
 }
 
 
-const setcity = (newCity) => {
+const selectCity = (newCity) => {
     category.value = ref(category);
     cityDropBox.value = false;
     setCity(newCity)
@@ -92,7 +93,7 @@ const setcity = (newCity) => {
         </p>
         <div v-if="filteredCities && cityDropBox" class="navbar-dropdown">
 
-            <a v-for="item in filteredCities" :key="item._id" class="navbar-item mr-2" @click="setcity(item.name)">
+            <a v-for="item in filteredCities" :key="item._id" class="navbar-item mr-2" @click="selectCity(item.name)">
                 {{ item.name }}
             </a>
         </div>

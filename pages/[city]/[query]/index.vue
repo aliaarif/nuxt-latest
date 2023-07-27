@@ -71,11 +71,9 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-    // pageTitle.value = `${meta.value.page_title}`
-    // metaContent.value = `${meta.value.page_content}`
-    pageTitle.value = title(data)
-    metaContent.value = title(data)
-    console.log(pageTitle.value)
+    metaContent.value = `${meta.value.page_content}`
+    pageTitle.value = pageTitle.value.business_name
+
 }
 
 const images = ref(
@@ -144,8 +142,8 @@ useHead({
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><nuxt-link to="/">Home</nuxt-link></li>
-                    <li><a to="javascript:;">{{ title(city) }}</a></li>
-                    <li><a href="javascript:;">{{ meta.page_title }} </a>
+                    <li><nuxt-link to="/">{{ title(city) }} </nuxt-link></li>
+                    <li><nuxt-link :to="data">{{ meta.page_title }} in {{ title(city) }} </nuxt-link>
                     </li>
                     <li class="is-active"><a href="javascript:;" aria-current="page">{{ contents.length }}</a></li>
                 </ul>
@@ -188,13 +186,12 @@ useHead({
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><nuxt-link to="/">Home</nuxt-link></li>
-                    <li><a to="javascript:;">{{ title(city) }}</a></li>
-                    <!-- <li><nuxt-link @click="$router.go(-1)" to="javascript:;">{{
-                        meta.page_title }} </nuxt-link></li> -->
-                    <li><a href="javascript:;">{{ contents?.business_name }} </a></li>
+                    <li><nuxt-link to="/">{{ title(city) }}</nuxt-link></li>
+                    <li><nuxt-link @click="$router.go(-1)" :to="data">{{
+                        meta.page_title }} in {{ title(city) }} </nuxt-link></li>
+                    <li><nuxt-link :to="data">{{ contents?.business_name }} </nuxt-link></li>
                 </ul>
             </nav>
-
             <h1 class="title is-1">{{ contents?.business_name }}</h1>
         </span>
         <div class="columns mt-4">

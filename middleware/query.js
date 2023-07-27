@@ -13,17 +13,17 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
 
     if (!query.includes('-in-') && !query.includes('-biz-')) {
-        pageTitle.value = 'Subcategories'
-        metaContent.value = 'Subcategories Meta Contents'
-        setPageTitle('Subcategories')
+        // pageTitle.value = 'Subcategories'
+        // metaContent.value = 'Subcategories Meta Contents'
+        // setPageTitle('Subcategories')
         setPageType('Subcategories')
         $fetch(`/api/getCategoriesMeta?name=${title(query)}`, {
             method: 'get'
         }).then(metaResults => setMeta(metaResults))
     } else if (query.includes('-in-') && !query.includes('-biz-')) {
-        pageTitle.value = 'Businesses'
-        metaContent.value = 'Businesses Meta Contents'
-        setPageTitle('Businesses')
+        // pageTitle.value = 'Businesses'
+        // metaContent.value = 'Businesses Meta Contents'
+        // setPageTitle('Businesses')
         setPageType('Businesses')
         const data = query.split('-in-')[0]
         $fetch(`/api/getSubcategoriesMeta?name=${title(data)}`, {
@@ -34,21 +34,15 @@ export default defineNuxtRouteMiddleware((to, from) => {
         }
         )
     } else if (!query.includes('-in-') && query.includes('-biz-')) {
-        // const data = query.split('-biz-')[0]
-        pageTitle.value = 'Business Details'
-        metaContent.value = 'Business Details Meta Contents'
-        setPageTitle('Business Details')
+        const data = query.split('-biz-')[0]
         setPageType('Business Details')
-
-        // $fetch(`/api/getBusinessesMeta?slug=${data}`, {
-        //     method: 'get'
-        // }).then(metaResults => setMeta(metaResults))
+        $fetch(`/api/getBusinessesMeta?slug=${data}`, {
+            method: 'get'
+        }).then((metaResults) => {
+            setMeta(metaResults)
+            setPageTitle(metaResults)
+        })
     }
-
-
-
-
-
 
 
 })
