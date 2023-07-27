@@ -5,6 +5,7 @@ const props = defineProps({
 })
 
 
+const selected = ref('---Select---')
 
 const modules = ref(['businesses', 'categories', 'subcategories', 'cities', 'states', 'users'])
 
@@ -84,25 +85,23 @@ const save = () => {
                     <section v-if="module == 'states'">{{ item }}</section>
                     <section v-if="module == 'users'">{{ item }}</section>
 
-                    <div class="field" v-for="field in  fields " v-if="!item">
+                    <div class="field" v-for="field in  fields " v-if="!item && module == 'subcategories'">
                         <label class="label">{{ field.label }}</label>
                         <div class="control">
-                            <input v-if="field.type == 'text'" class="input" type="text" :value="item.business_name"
+                            <input v-if="field.type == 'text'" class="input" type="text"
                                 :placeholder="`Enter ${field.label}`">
                             <textarea v-else-if="field.type == 'textarea'" class=" textarea" v-model="field.name"
                                 :placeholder="`Enter  ${field.label}`"></textarea>
 
-                            <div class="select is-primary"
-                                v-else-if="field.type == 'dropdown' && typeof (field.value) == 'object'">
+                            <div class="select is-primary" v-else-if="field.type == 'dropdown'">
                                 <select v-model="field.name">
-                                    <label class="label">{{ field.label }}</label>
-                                    <option value="" selected>---Select---</option>
-                                    <option v-for="opt in field.value" :value="opt.name">{{ opt.name }}</option>
+                                    <option v-if="field.name == 'category'">{{ field.default }}</option>
+                                    <option v-for="opt in field.value" :value="opt.name">{{
+                                        opt.name }}</option>
                                 </select>
                             </div>
 
-                            <div class="select is-primary"
-                                v-else-if="field.type == 'dropdown' && field.name == 'business_ownership'">
+                            <!-- <div class="select is-primary" v-else-if="field.type == 'dropdown'">
                                 <select v-model="field.name">
                                     <label class="label">{{ field.label }}</label>
                                     <option value="Unclaimed" v-if="field.default == 'Unclaimed'" selected>Unclaimed
@@ -112,76 +111,14 @@ const save = () => {
                                     <option value="Claimed" v-if="field.default == 'Claimed'" selected>Claimed</option>
                                     <option value="Claimed" v-else>Claimed</option>
                                 </select>
-                            </div>
+                            </div> -->
 
 
                         </div>
                     </div>
-                    <!-- <div class="field">
-                        <label class="label">Slug</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter slug">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Business Name</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter business name">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">City</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter city">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Address</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter address">
-                        </div>
-                    </div> -->
+
                     <button type="button" @click="save" class="button is-primary">Save</button>
                 </form>
-            </div>
-            <div class="column is-half">
-                <!-- <form>
-                    <div class="field">
-                        <label class="label">Category</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter category">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Phone</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter phone number">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Map</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Enter map URL or coordinates">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Description</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="Enter description"></textarea>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">FAQs</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="Enter FAQs"></textarea>
-                        </div>
-                    </div>
-
-
-                    <button class="button is-primary">Primary</button>
-                </form> -->
-
-
             </div>
         </div>
 

@@ -53,13 +53,13 @@ const setModuleAndAction = (mod, act, edit) => {
                     <ul class="menu-list">
                         <li><a v-on:click="setModuleAndAction('dashboard', 'grid', false)" class="is-active">Dashboard</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a v-on:click="setModuleAndAction('categories', 'list', false)">Categories</a>
                             <ul>
                                 <li><a v-on:click="setModuleAndAction('categories', 'list', false)">List</a></li>
                                 <li><a v-on:click="setModuleAndAction('categories', 'add-edit', true)">Add</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a v-on:click="setModuleAndAction('subcategories', 'list', false)">Subcategories</a>
                             <ul>

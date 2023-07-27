@@ -1,332 +1,332 @@
 [
     {
-        "name": "Car Rental Services",
+        "name": "Car Rental",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 1.",
+        "page_title": "Top Car Rental Services",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
-        "name": "Bike Rental Services",
+        "name": "Bike Rental",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 2.",
+        "page_title": "Top Bike Rental Services",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "AC On Rent",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 3.",
+        "page_title": "Air Conditioner On Rent",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Furniture On Rent",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 4.",
+        "page_title": "Furniture On Rent",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Refrigerator On Rent",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 5.",
+        "page_title": "Refrigerator On Rent",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "LED TV On Rent",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 6.",
+        "page_title": "LED TV On Rent",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Room On Rent",
         "category": "Hire On",
-        "page_title": "Top Car Rental Services in City 7.",
+        "page_title": "Room On Rent",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Plumber",
-        "category": "Daily Needs",
-        "page_title": "Top Car Rental Services in City 8.",
+        "category": "Daily Need",
+        "page_title": "Plumber",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Electricians",
-        "category": "Daily Needs",
-        "page_title": "Top Car Rental Services in City 9.",
+        "category": "Daily Need",
+        "page_title": "Electricians",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Carpenters",
-        "category": "Daily Needs",
-        "page_title": "Top Car Rental Services in City 10.",
+        "category": "Daily Need",
+        "page_title": "Carpenters",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Accountant",
-        "category": "Daily Needs",
-        "page_title": "Top Car Rental Services in City 11.",
+        "category": "Daily Need",
+        "page_title": "Accountant.",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
-        "name": "Beauty Parlours",
+        "name": "Beauty Parlour",
         "category": "Personal Care",
-        "page_title": "Top Car Rental Services in City 12.",
+        "page_title": "Beauty Parlour",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Salons",
         "category": "Personal Care",
-        "page_title": "Top Car Rental Services in City 13.",
+        "page_title": "Salons",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Beauty Spas",
         "category": "Personal Care",
-        "page_title": "Top Car Rental Services in City 14.",
+        "page_title": "Beauty Spas",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Doctors",
         "category": "Medical",
-        "page_title": "Top Car Rental Services in City 15.",
+        "page_title": "Doctors",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Hospitals",
         "category": "Medical",
-        "page_title": "Top Car Rental Services in City 16.",
+        "page_title": "Hospitals",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Chemists",
         "category": "Medical",
-        "page_title": "Top Car Rental Services in City 17.",
+        "page_title": "Chemists",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Schools",
         "category": "Education",
-        "page_title": "Top Car Rental Services in City 18.",
+        "page_title": "Schools",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Colleges",
         "category": "Education",
-        "page_title": "Top Car Rental Services in City 19.",
+        "page_title": "Colleges",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Universities",
         "category": "Education",
-        "page_title": "Top Car Rental Services in City 20.",
+        "page_title": "Universities",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Cooks",
-        "category": "House Holds",
-        "page_title": "Top Car Rental Services in City 21.",
+        "category": "House Hold",
+        "page_title": "Cooks",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Maids",
-        "category": "House Holds",
-        "page_title": "Top Car Rental Services in City 22.",
+        "category": "House Hold",
+        "page_title": "Maids",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Banks",
         "category": "Public Services",
-        "page_title": "Top Car Rental Services in City 23.",
+        "page_title": "Banks",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Police Stations",
         "category": "Public Services",
-        "page_title": "Top Car Rental Services in City 24.",
+        "page_title": "Police Stations",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Railway Station",
         "category": "Public Services",
-        "page_title": "Top Car Rental Services in City 25.",
+        "page_title": "Railway Station",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Bus Stop",
         "category": "Public Services",
-        "page_title": "Top Car Rental Services in City 26.",
+        "page_title": "Bus Stop",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Post Office",
         "category": "Public Services",
-        "page_title": "Top Car Rental Services in City 27.",
+        "page_title": "Post Office",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Jail",
         "category": "Public Services",
-        "page_title": "Top Car Rental Services in City 28.",
+        "page_title": "Jail",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Banquet Halls",
         "category": "Marriage",
-        "page_title": "Top Car Rental Services in City 29.",
+        "page_title": "Banquet Halls",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Photographers",
         "category": "Marriage",
-        "page_title": "Top Car Rental Services in City 30.",
+        "page_title": "Banquet Halls",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "DJ Sound",
         "category": "Marriage",
-        "page_title": "Top Car Rental Services in City 31.",
+        "page_title": "DJ Sound",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Dance Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 32.",
+        "category": "Sports Hobbies",
+        "page_title": "Dance Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Music Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 33.",
+        "category": "Sports Hobbies",
+        "page_title": "Music Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Yoga Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 34.",
+        "category": "Sports Hobbies",
+        "page_title": "Yoga Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Tennis Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 35.",
+        "category": "Sports Hobbies",
+        "page_title": "Tennis Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Cricket Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 36.",
+        "category": "Sports Hobbies",
+        "page_title": "Cricket Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Swimming Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 37.",
+        "category": "Sports Hobbies",
+        "page_title": "Swimming Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Badminton Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 38.",
+        "category": "Sports Hobbies",
+        "page_title": "Badminton Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Football Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 39.",
+        "category": "Sports Hobbies",
+        "page_title": "Football Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Shooting Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 40.",
+        "category": "Sports Hobbies",
+        "page_title": "Shooting Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Archery Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 41.",
+        "category": "Sports Hobbies",
+        "page_title": "Archery Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Skating Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 42.",
+        "category": "Sports Hobbies",
+        "page_title": "Skating Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Snooker Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 43.",
+        "category": "Sports Hobbies",
+        "page_title": "Snooker Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Hockey Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 44.",
+        "category": "Sports Hobbies",
+        "page_title": "Hockey Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Baseball Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 45.",
+        "category": "Sports Hobbies",
+        "page_title": "Baseball Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Golf Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 46.",
+        "category": "Sports Hobbies",
+        "page_title": "Golf Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Basket Ball Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 47.",
+        "category": "Sports Hobbies",
+        "page_title": "Basket Ball Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Volley Ball Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 48.",
+        "category": "Sports Hobbies",
+        "page_title": "Volley Ball Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Table Tennis Coaching Classes",
-        "category": "Hobbies",
-        "page_title": "Top Car Rental Services in City 49.",
+        "category": "Sports Hobbies",
+        "page_title": "Table Tennis Coaching Classes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Internet Service Provider",
         "category": "Internet",
-        "page_title": "Top Car Rental Services in City 50.",
+        "page_title": "Internet Service Provider",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Cyber Cafes",
         "category": "Internet",
-        "page_title": "Top Car Rental Services in City 51.",
+        "page_title": "Cyber Cafes",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Afghani Restaurants",
-        "category": "Restaurants",
-        "page_title": "Top Car Rental Services in City 52.",
+        "category": "Restaurant",
+        "page_title": "Afghani Restaurants",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "Chinese Restaurants",
-        "category": "Restaurants",
-        "page_title": "Top Car Rental Services in City 53.",
+        "category": "Restaurant",
+        "page_title": "Chinese Restaurants",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "South Indian Restaurants",
-        "category": "Restaurants",
-        "page_title": "Top Car Rental Services in City 54.",
+        "category": "Restaurant",
+        "page_title": "South Indian Restaurants",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     },
     {
         "name": "North Indian Restaurants",
         "category": "Restaurants",
-        "page_title": "Top Car Rental Services in City 55.",
+        "page_title": "North Indian Restaurant",
         "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
     }
 ]

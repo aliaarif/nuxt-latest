@@ -3,7 +3,7 @@ import CategoryModel from "~~/server/models/Category";
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
     const params = getQuery(event)
-    const body = await useBody(event)
+    const body = await getBody(event)
 
     try {
         // const categories = CategoryModel.find({}, {})

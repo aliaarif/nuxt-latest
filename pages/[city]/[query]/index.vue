@@ -182,6 +182,7 @@ useHead({
     </template>
 
     <template v-else>
+
         <span class="is-left">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
@@ -220,7 +221,8 @@ useHead({
                 </div>
             </div>
 
-            <div class="column" if="contents?.images ">
+
+            <div class="column" v-if="contents.business_images.length > 0">
                 <div class="image-section" style="border: 1px solid black;">
                     <img :src="images[sliderCurrentIndex ?? 0]" alt="Image" />
 

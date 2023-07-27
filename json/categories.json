@@ -1,62 +1,74 @@
 [
     {
         "name": "Hire On",
-        "page_title": "Hire On Services In (City) 1",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 1"
+        "page_title": "Hire On Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 1",
+        "img": "https://www.svgrepo.com/show/223886/human-resources-hiring.svg"
     },
     {
-        "name": "Daily Needs",
-        "page_title": "Hire On Services In (City) 2",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 2"
+        "name": "Daily Need",
+        "page_title": "Daily Needs Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 2",
+        "img": "https://www.svgrepo.com/show/302615/calendar.svg"
     },
     {
         "name": "Personal Care",
-        "page_title": "Hire On Services In (City) 3",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 3"
+        "page_title": "Personal Care Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 3",
+        "img": "https://www.svgrepo.com/show/530387/personal-account-account.svg"
     },
     {
         "name": "Medical",
-        "page_title": "Hire On Services In (City) 4",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 4"
+        "page_title": "Medical & Healthcare Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 4",
+        "img": "https://www.svgrepo.com/show/284234/medical-history-doctor.svg"
     },
     {
         "name": "Education",
-        "page_title": "Hire On Services In (City) 5",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 5"
+        "page_title": "Education Institutions",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 5",
+        "img": "https://www.svgrepo.com/show/331258/education.svg"
     },
     {
-        "name": "House Holds",
-        "page_title": "Hire On Services In (City) 6",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 6"
+        "name": "House Hold",
+        "page_title": "House Holds Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 6",
+        "img": "https://www.svgrepo.com/show/492812/moving-house-male.svg"
     },
     {
         "name": "Public Services",
-        "page_title": "Hire On Services In (City) 7",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 7"
+        "page_title": "Public Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 7",
+        "img": "https://www.svgrepo.com/show/505187/public-security-bureau.svg"
     },
     {
         "name": "Marriage",
-        "page_title": "Hire On Services In (City) 8",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 8"
+        "page_title": "Marriage Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 8",
+        "img": "https://www.svgrepo.com/show/419210/heart-love-marriage-7.svg"
     },
     {
-        "name": "Hobbies",
+        "name": "Sports Hobbies",
         "page_title": "Hire On Services In (City) 9",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 9"
+        "page_content": "We've sevral day to day hiring services to serve your needs. 9",
+        "img": "https://www.svgrepo.com/show/474995/sports-mode.svg"
     },
     {
         "name": "Internet",
-        "page_title": "Hire On Services In (City) 10",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 10"
+        "page_title": "Internet Services",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 10",
+        "img": "https://www.svgrepo.com/show/475516/internet-cafe.svg"
     },
     {
-        "name": "Restaurants",
-        "page_title": "Hire On Services In (City) 11",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 11"
+        "name": "Restaurant",
+        "page_title": "Restaurants",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 11",
+        "img": "https://www.svgrepo.com/show/265700/restaurant-food-and-restaurant.svg"
     },
     {
-        "name": "Electronics Store",
-        "page_title": "Hire On Services In (City) 12",
-        "page_content": "We've sevral day to day hiring services to serve your needs. 12"
+        "name": "Electronic Store",
+        "page_title": "Electronic Appliances Store",
+        "page_content": "We've sevral day to day hiring services to serve your needs. 12",
+        "img": "https://www.svgrepo.com/show/526872/cart-large.svg"
     }
 ]

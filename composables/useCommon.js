@@ -54,6 +54,14 @@ export default function useCommon() {
         },
     )
 
+    const { data: categories } = useAsyncData('categories',
+        () => {
+            return $fetch(`/api/categories`, {
+                method: 'get'
+            })
+        },
+    )
+
     const setItem = (val) => {
         item.value = val
         return;
@@ -133,21 +141,38 @@ export default function useCommon() {
             ]
         }
 
-        if (val == 'categories') {
-            td.value = ['name', 'status', 'action']
+        if (val == 'subcategories') {
+            td.value = ['name', 'category', 'page_title', 'page_content', 'status', 'action']
             fields.value = [
                 {
+                    label: 'Sub Category Name',
+                    type: 'text',
+                    name: '',
+                    value: '',
+                    default: ''
+                },
+                {
                     label: 'Category Name',
+                    type: 'dropdown',
+                    name: 'category',
+                    value: categories,
+                    default: '---Select---'
+                },
+                {
+                    label: 'Page Title',
+                    type: 'text',
+                    value: '',
+                    default: ''
+                },
+                {
+                    label: 'Page Content',
                     type: 'text',
                     value: '',
                     default: ''
                 }
 
-            ]
-        }
 
-        if (val == 'subcategories') {
-            td.value = ['name', 'category', 'status', 'action']
+            ]
         }
 
         if (val == 'users') {

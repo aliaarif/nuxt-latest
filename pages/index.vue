@@ -38,8 +38,7 @@ const { data: categories } = await useAsyncData('categories',
             <div class="column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="category in categories"
                 :key="category._id">
                 <nuxt-link :to="`/${slug(city)}/${slug(category.name)}`" class="grid-item box">
-                    <img src="https://www.svgrepo.com/show/501814/microphone1-broadcasting.svg"
-                        style="width: 100px; height: 100px;" alt="Your Image">
+                    <img :src="category.img" style="width: 100px; height: 100px;" alt="Your Image">
                     <p><b>{{ category.name }}</b></p>
                 </nuxt-link>
             </div>
