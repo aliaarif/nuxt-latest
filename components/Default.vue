@@ -1,50 +1,79 @@
 <script setup>
 const { city, slug, title, action, module, setAction, setEdit, td, edit, fields, item } = useCommon()
-const props = defineProps({
-    // rows: Object,
+const modules = ref(['businesses', 'categories', 'subcategories', 'cities', 'states', 'users'])
+const message = ref('')
+
+
+
+
+const subCategoryFormData = ref({
+    module: module,
+    name: '',
+    category: '',
+    page_title: '',
+    page_content: ''
 })
 
-
-const selected = ref('---Select---')
-
-const modules = ref(['businesses', 'categories', 'subcategories', 'cities', 'states', 'users'])
-
-const save = () => {
-
-    // const { data: response } = useFetch('/api/save', {
-    //     method: 'post',
-    //     body: {
-    //         data: {
-    //             module: module.value,
-    //             fData: item
-    //         }
-    //     }
-    // })
-
-    // if (response) {
-    //     console.log(response.value);
-    // }
-
-
-    const { data: res } = useAsyncData('res',
-        () => {
-            return $fetch(`/api/save`, {
-                method: 'post',
-                body: {
-                    data: {
-                        module: module.value,
-                        fData: item
-                    }
-                }
-            })
-        },
-    )
-
-
-    console.log(res.value);
-
+const addSubCategory = async () => {
+    useFetch("/api/save/subcategory", {
+        method: 'post',
+        body: subCategoryFormData
+    }).then((res) => {
+        console.log(res);
+        message.value = res.data.value.message
+    })
 
 }
+
+
+const businessFormData = ref({
+    module: module,
+    created_by: 'Obelcon',
+    business_name: '',
+    business_slug: '',
+    business_ownership: '',
+    business_category: '',
+    business_services: '',
+    business_timing: '',
+    business_city: '',
+    business_state: '',
+    business_address: '',
+    business_phone: '',
+    business_email: '',
+    business_website: '',
+    business_Social: '',
+    business_latitude: '',
+    business_longitude: '',
+    business_description: '',
+    business_faqs: '',
+    business_image: '',
+    business_images: [],
+    page_title: '',
+    page_content: '',
+    status: 'Active'
+})
+
+const addBusiness = async () => {
+    // alert(2)
+    useFetch("/api/save/business", {
+        method: 'post',
+        body: businessFormData
+    }).then((res) => {
+        console.log(res);
+        message.value = res.data.value.message
+    })
+}
+
+
+
+const makeSlug = () => {
+    businessFormData.business_slug = slug(businessFormData.business_slug)
+}
+
+
+
+
+
 
 
 
@@ -74,53 +103,349 @@ const save = () => {
 
     <template v-else>
 
-        <div class="columns">
-            <div class="column is-half">
-                <form @submit.prevent="save()">
 
-                    <section v-if="module == 'businesses'">{{ item }}</section>
-                    <section v-if="module == 'categories'">{{ item }}</section>
-                    <section v-if="module == 'subcategories'">{{ item }}</section>
-                    <section v-if="module == 'cities'">{{ item }}</section>
-                    <section v-if="module == 'states'">{{ item }}</section>
-                    <section v-if="module == 'users'">{{ item }}</section>
 
-                    <div class="field" v-for="field in  fields " v-if="!item && module == 'subcategories'">
-                        <label class="label">{{ field.label }}</label>
+
+        <section v-if="module == 'businesses'">
+            <div class="columns">
+                <div class="column is-half">
+
+                    {{ item }}
+
+                </div>
+            </div>
+        </section>
+
+
+        <section v-if="module == 'categories'">
+            <div class="columns">
+                <div class="column is-half">
+
+                    {{ item }}
+
+                </div>
+            </div>
+        </section>
+
+        <section v-if="module == 'cities'">
+            <div class="columns">
+                <div class="column is-half">
+
+                    {{ item }}
+
+                </div>
+            </div>
+        </section>
+        <section v-if="module == 'states'">
+            <div class="columns">
+                <div class="column is-half">
+
+                    {{ item }}
+
+                </div>
+            </div>
+        </section>
+        <section v-if="module == 'users'">
+            <div class="columns">
+                <div class="column is-half">
+
+                    {{ item }}
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section v-if="module == 'subcategories' && item">
+            <div class="columns">
+                <div class="column is-half">
+                    {{ item }}
+                    <div class="field">
+                        <label class="label">Sub category Name 2</label>
                         <div class="control">
-                            <input v-if="field.type == 'text'" class="input" type="text"
-                                :placeholder="`Enter ${field.label}`">
-                            <textarea v-else-if="field.type == 'textarea'" class=" textarea" v-model="field.name"
-                                :placeholder="`Enter  ${field.label}`"></textarea>
-
-                            <div class="select is-primary" v-else-if="field.type == 'dropdown'">
-                                <select v-model="field.name">
-                                    <option v-if="field.name == 'category'">{{ field.default }}</option>
-                                    <option v-for="opt in field.value" :value="opt.name">{{
-                                        opt.name }}</option>
-                                </select>
-                            </div>
-
-                            <!-- <div class="select is-primary" v-else-if="field.type == 'dropdown'">
-                                <select v-model="field.name">
-                                    <label class="label">{{ field.label }}</label>
-                                    <option value="Unclaimed" v-if="field.default == 'Unclaimed'" selected>Unclaimed
-                                    </option>
-                                    <option value="Unclaimed" v-else>Unclaimed</option>
-
-                                    <option value="Claimed" v-if="field.default == 'Claimed'" selected>Claimed</option>
-                                    <option value="Claimed" v-else>Claimed</option>
-                                </select>
-                            </div> -->
-
-
+                            <input type="text" class="input" v-model="subCategoryFormData.name"
+                                placeholder="Enter A Subcategory Name">
                         </div>
                     </div>
 
-                    <button type="button" @click="save" class="button is-primary">Save</button>
-                </form>
+                    <div class="field">
+                        <label class="label">category Name</label>
+                        <div class="control">
+                            <input type="text" class="input" v-model="subCategoryFormData.category"
+                                placeholder="Select A category">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+        </section>
+
+
+        <section v-if="module == 'subcategories' && !item">
+            <div class="columns">
+                <div class="column is-half">
+                    <form @submit.prevent="addSubCategory()">
+                        <div class="field">
+                            <label class="label">Sub Category Name</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="subCategoryFormData.name"
+                                    placeholder="Enter Subcategory">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Category Name</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="subCategoryFormData.category"
+                                    placeholder="Enter category">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Page Title</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="subCategoryFormData.page_title"
+                                    placeholder="Enter Page Title">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Page Content</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="subCategoryFormData.page_content"
+                                    placeholder="Enter Page Content">
+                            </div>
+                        </div>
+                        <button type="submit" class="button is-primary">Add Subcategory</button> {{
+                            message }}
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section v-if="module == 'businesses' && item">
+            <div class="columns">
+                <div class="column is-half">
+                    <form @submit.prevent="addBusiness()">
+                        <div class="field">
+                            <label class="label">Business Name</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_name"
+                                    placeholder="Enter Business Name">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Business Slug</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_slug"
+                                    placeholder="Enter Business Slug">
+                            </div>
+                        </div>
+
+
+                        <button type="button" @click="addBusiness" class="button is-primary">Add Business</button> {{
+                            message }}
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <section v-if="module == 'businesses' && !item">
+
+            <form @submit.prevent="addBusiness()">
+                <div class="columns">
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">Business Name</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_name" @input="makeSlug"
+                                    placeholder="Enter Business Name">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Business Slug</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_slug"
+                                    placeholder="Enter Business Slug">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">business_ownership</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_ownership"
+                                    placeholder="Enter business_ownership">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">business_category</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_category"
+                                    placeholder="Enter business_category">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">business_services</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_services"
+                                    placeholder="Enter business_services">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">Business timing</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_timing"
+                                    placeholder="Enter business_timing">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">business_city</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_city"
+                                    placeholder="Enter business_city">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">business_address</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_address"
+                                    placeholder="Enter business_address">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">business_phone</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_phone"
+                                    placeholder="Enter business_phone">
+                            </div>
+                        </div>
+
+
+
+                        <div class="field">
+                            <label class="label">business_email</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_email"
+                                    placeholder="Enter business_email">
+                            </div>
+                        </div>
+
+
+
+                        <div class="field">
+                            <label class="label">business_website</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_website"
+                                    placeholder="Enter business_website">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+
+                        <div class="field">
+                            <label class="label">business_Social</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_Social"
+                                    placeholder="Enter business_Social">
+                            </div>
+                        </div>
+
+
+
+                        <div class="field">
+                            <label class="label">business_latitude</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_latitude"
+                                    placeholder="Enter business_latitude">
+                            </div>
+                        </div>
+
+
+
+                        <div class="field">
+                            <label class="label">business_longitude</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_longitude"
+                                    placeholder="Enter business_longitude">
+                            </div>
+                        </div>
+
+
+
+                        <div class="field">
+                            <label class="label">business_description</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_description"
+                                    placeholder="Enter business_description">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">business_faqs</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_faqs"
+                                    placeholder="Enter business_faqs">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">business_image</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_image"
+                                    placeholder="Enter business_image">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">business_images</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.business_images"
+                                    placeholder="Enter business_images">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">page_title</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.page_title"
+                                    placeholder="Enter page_title">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">page_content</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="businessFormData.page_content"
+                                    placeholder="Enter page_content">
+                            </div>
+                        </div>
+
+
+                        <button type="button" @click="addBusiness" class="button is-primary">Add Business</button>
+                        {{ message }}
+                    </div>
+                </div>
+            </form>
+        </section>
 
     </template>
 </template>

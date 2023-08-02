@@ -147,7 +147,7 @@ export default function useCommon() {
                 {
                     label: 'Sub Category Name',
                     type: 'text',
-                    name: '',
+                    name: 'name',
                     value: '',
                     default: ''
                 },
@@ -231,6 +231,6 @@ export default function useCommon() {
 
 
     return {
-        city, setCity, slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, search, setSearch, dynamicTitle, setDynamicTitle, fields, item, setItem
+        city, setCity, slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, search, setSearch, dynamicTitle, setDynamicTitle, fields, item, setItem, categories, subcategories
     }
 }

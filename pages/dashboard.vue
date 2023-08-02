@@ -22,7 +22,7 @@ const setModuleAndAction = (mod, act, edit) => {
     setEdit(edit)
 
     if (act == 'add-edit' && edit) {
-        setDynamicTitle('Add-edit ' + title(mod))
+        setDynamicTitle('Add/Edit ' + title(mod))
     } else {
         setDynamicTitle('All ' + title(mod))
     }

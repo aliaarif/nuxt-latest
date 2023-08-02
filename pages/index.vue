@@ -30,9 +30,7 @@ const { data: categories } = await useAsyncData('categories',
 <template>
     <section>
 
-        <h3 class="title">Search for Business, Places and Services.</h3>
-        <p class="description">Thoroughly tested and evaluated by our expert editors to help you make a more informed
-            buying decision.</p>
+        <h3 class="title">Search for Business, Places and Services.</h3>    
         <br>
         <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
             <div class="column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="category in categories"
@@ -49,6 +47,23 @@ const { data: categories } = await useAsyncData('categories',
 
 <style scoped>
 .title {
-    color: red;
+    color: #363636;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 26px;
+  }
+}
+
+.column.is-6-mobile.is-4-tablet.is-4-desktop.is-3-widescreen {
+  padding: 10px;
+}
+
+.container.mt-2 section {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 </style>

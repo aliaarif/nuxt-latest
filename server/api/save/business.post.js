@@ -10,13 +10,8 @@ export default defineEventHandler(async event => {
 
     try {
 
-        if (body.module == 'subcategories') {
-            let result1 = SubcategoryModel.create(body)
-            res.status = 201
-            res.message = 'Record Added to ' + body.module
-        }
-
         if (body.module == 'businesses') {
+            // alert(11)
             let result2 = BusinessModel.create(body)
             res.status = 201
             res.message = 'Record Added to ' + body.module

@@ -13,7 +13,8 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.16.19",
-    "nuxt": "^3.6.2"
+    "nuxt": "^3.6.2",
+    "nuxt-security": "^0.14.4"
   },
   "dependencies": {
     "bulma": "^0.9.4",

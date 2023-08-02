@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  // modules: ["nuxt-security"],
   css: ["~/assets/css/main.css"],
   runtimeConfig: {
     dburl: process.env.DAATABASE_URL,
@@ -50,4 +51,5 @@ export default defineNuxtConfig({
       ],
     },
   },
+  ssr: true,
 });
