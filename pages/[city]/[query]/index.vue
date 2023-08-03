@@ -197,6 +197,8 @@ useHead({
                             <p>{{ b.business_phone }}</p>
                             <p>{{ b.business_timing }}</p>
 
+
+
                         </div>
                     </nuxt-link>
                 </div>
@@ -261,32 +263,6 @@ useHead({
                 <h1 class="title is-1">{{ contents?.business_name }}</h1>
             </span>
             <div class="columns mt-4">
-                <div class="column">
-                    <div class="content-section">
-                        <div class="custom-container">
-                            <p>Name</p>
-                            <p>{{ contents?.business_name }}</p>
-                        </div>
-                        <div class="custom-container">
-                            <p>Address</p>
-                            <p>{{ contents?.business_address }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="content-section">
-                        <!-- <div id="mapName" style="width:267px; height: 270px" /> -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.5911061173924!2d77.04983299999999!3d28.46174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI3JzQyLjMiTiA3N8KwMDInNTkuNCJF!5e0!3m2!1sen!2sin!4v1689698992701!5m2!1sen!2sin"
-                            width="500" height="230" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-                    </div>
-                </div>
-
-
 
                 <div class="column" v-if="images.length > 0">
                     <div class="image-section" style="border: 1px solid black;">
@@ -298,7 +274,7 @@ useHead({
                             </a>
                         </span>
 
-                        <span class="icon" style="position: relative; top:215px; left:300px">
+                        <span class="icon" style="position: absolute; top:215px; left:300px">
 
 
                             <a class="has-text-white" @click="increaseImageIndex(sliderCurrentIndex)" href="javascript:;">
@@ -308,24 +284,43 @@ useHead({
 
                     </div>
                 </div>
+                <div class="column">
+                    <div class="content-section">
+
+                        <div class="custom-container">
+                            <p>Address</p>
+                            <p>{{ contents?.business_address }}</p>
+                        </div>
+                        <div class="custom-container">
+                            <p>Phone</p>
+                            <p>{{ contents?.business_phone }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content-section">
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.5911061173924!2d77.04983299999999!3d28.46174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI3JzQyLjMiTiA3N8KwMDInNTkuNCJF!5e0!3m2!1sen!2sin!4v1689698992701!5m2!1sen!2sin"
+                            width="500" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                    </div>
+                </div>
+
+
+
+
 
             </div>
             <div class="container inner">
                 <div class="columns three-layout">
                     <div class="column">
                         <div class="custom-container">
-                            <p>Name</p>
-                            <p>{{ contents?.business_name }}</p>
-                        </div>
-                        <div class="custom-container">
-                            <p>Address</p>
-                            <p>{{ contents?.business_address }}</p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="custom-container">
-                            <p>City</p>
-                            <p>{{ contents?.business_city }}, {{ contents?.business_state }}</p>
+                            <p>Business Timing</p>
+                            <p>{{ contents?.business_timing }}</p>
                         </div>
                         <div class="custom-container">
                             <p>Category</p>
@@ -334,8 +329,18 @@ useHead({
                     </div>
                     <div class="column">
                         <div class="custom-container">
-                            <p>Contact</p>
-                            <p>{{ contents?.business_phone }}</p>
+                            <p>Website</p>
+                            <p>{{ contents?.business_website }}</p>
+                        </div>
+                        <div class="custom-container">
+                            <p>Services</p>
+                            <p>{{ contents?.business_services }}</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="custom-container">
+                            <p>City</p>
+                            <p>{{ contents?.business_city }}, {{ contents?.business_state }}</p>
                         </div>
                     </div>
                 </div>

@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 // Define Bussines Schema
 const businessSchema = new mongoose.Schema({
-    name: { type: String, required: true, trim: true },
-    title_slug: { type: String, required: true, trim: true },
-    sub_category: { type: String, required: true, trim: true },
-    city: { type: String, required: true, trim: true }
+    business_name: { type: String, required: true, trim: true },
+    business_slug: { type: String, required: true, trim: true },
+    business_category: { type: String, required: true, trim: true },
+    business_city: { type: String, required: true, trim: true }
 })
 
 // Compilng businessSchema Schema

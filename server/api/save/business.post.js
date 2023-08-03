@@ -9,33 +9,17 @@ export default defineEventHandler(async event => {
     const res = {}
 
     try {
-
-        if (body.module == 'businesses') {
-            // alert(11)
-            let result2 = BusinessModel.create(body)
+        return body
+        if (!body.editFlag) {
+            let result1 = BusinessModel.create(body)
             res.status = 201
             res.message = 'Record Added to ' + body.module
+        } else {
+            let result2 = BusinessModel.update(body)
+            res.status = 200
+            res.message = 'Record updated for ' + body.module
         }
 
-        // if (moduleName == 'businesses') {
-        //     res.status = 200
-        //     res.messege = "Business Added!"
-        // }
-
-        // if (moduleName == 'cities') {
-        //     res.status = 200
-        //     res.messege = "City Added!"
-        // }
-
-        // if (moduleName == 'states') {
-        //     res.status = 200
-        //     res.messege = "State Added!"
-        // }
-
-        // if (moduleName == 'users') {
-        //     res.status = 200
-        //     res.messege = "User Added!"
-        // }
 
         return res
     } catch (error) {

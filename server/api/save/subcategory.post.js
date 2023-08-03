@@ -1,47 +1,13 @@
 import SubcategoryModel from "~~/server/models/Subcategory";
-import BusinessModel from "~~/server/models/Business";
 
 export default defineEventHandler(async event => {
-    // const config = useRuntimeConfig()
-    // const params = getQuery(event)
     const body = await readBody(event)
-
     const res = {}
-
     try {
-
-
-        let result1 = SubcategoryModel.create(body)
+        SubcategoryModel.create(body)
         res.status = 201
         res.message = 'Record Added to ' + body.module
-
-
-        // if (body.module == 'businesses') {
-        //     let result2 = BusinessModel.create(body)
-        //     res.status = 201
-        //     res.message = 'Record Added to ' + body.module
-        // }
-
-        // if (moduleName == 'businesses') {
-        //     res.status = 200
-        //     res.messege = "Business Added!"
-        // }
-
-        // if (moduleName == 'cities') {
-        //     res.status = 200
-        //     res.messege = "City Added!"
-        // }
-
-        // if (moduleName == 'states') {
-        //     res.status = 200
-        //     res.messege = "State Added!"
-        // }
-
-        // if (moduleName == 'users') {
-        //     res.status = 200
-        //     res.messege = "User Added!"
-        // }
-
+        res.payload = body
         return res
     } catch (error) {
         console.log(error)
