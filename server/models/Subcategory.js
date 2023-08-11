@@ -9,8 +9,10 @@ const subCategorySchema = new mongoose.Schema({
     page_content: { type: String, required: true, trim: true }
 })
 
-// Compilng subCategory Schema
+subCategorySchema.set('timestamps', true)
 
+
+// Compilng subCategory Schema
 const SubcategoryModel = mongoose.model('subcategory', subCategorySchema)
 
 export default SubcategoryModel

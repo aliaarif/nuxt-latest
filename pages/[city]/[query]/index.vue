@@ -21,22 +21,6 @@ const metaContent = ref('')
 
 const images = ref([])
 
-// const initMap = () => {
-//     var c = [{ "status": true, "data": { "pid": 5, "bussinessName": "Xavier Tailoring shop", "services": "All kind of stitching works", "inventory": [], "workHr": "Monday :9:00AM to 20:0PM,Thuesday :9:00AM to 20:0PM,Wednesday :9:00AM to 20:0PM,Tuesday : 9:00AM to 20:0PM,Friday :9:00AM to 20:0PM,Saturday :9:00AM to 20:0PM,Sunday :9:00AM to 20:0PM", "description": "All kind of stitching works", "category": 11, "sub_category": ["Veg Hotel"], "lat": 9.52436859, "lon": 76.82810117, "contactName": "xavier", "contactEmail": "harisxavier@gmail.com", "contactOfficeAddress": "koovapally perubara road", "contactNumber": "8592808201", "contactOfficeNumber": "8592808201", "state": "Kerala", "city": "Koovappally", "place": "Kanjirapally - Erumely Road", "pincode": 686518, "referer": 24, "link": 31, "views": 0, "package": 1, "listing_pic": "default", "website": "example.com" } }];
-//     var myLatLng = { lat: c[0].data.lat, lng: c[0].data.lon };
-
-//     var map = new google.maps.Map(document.getElementById('mapName'), {
-//         zoom: 4,
-//         center: myLatLng
-//     });
-
-//     var marker = new google.maps.Marker({
-//         position: myLatLng,
-//         map: map,
-//         title: 'Hello World!'
-//     });
-// }
-
 if (pageType.value == 'Subcategories') {
     const { data: res } = await useAsyncData('res',
         () => {

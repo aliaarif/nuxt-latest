@@ -2,9 +2,7 @@
     <section class="mx-1">
         <DefaultNav />
         <div class="container mt-2">
-
             <slot />
-
         </div>
         <Footer />
     </section>

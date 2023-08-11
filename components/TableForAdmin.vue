@@ -1,5 +1,5 @@
 <script setup>
-const { title, module, td, edit, setTd, rows, search, setSearch, setAction, setEdit, setItem } = useCommon()
+const { title, slug, module, td, auth, edit, setTd, rows, search, setSearch, setAction, setEdit, setItem } = useCommon()
 const props = defineProps({
     // module: String,
     // td: Array
@@ -41,6 +41,34 @@ const changeFormValues = (item) => {
     setEdit(true)
 }
 
+const loadCount = (mod, countTerm) => {
+    return 0
+
+    useFetch('/api/count', {
+        method: 'post',
+        body: {
+            mod: mod,
+            countTerm: countTerm
+        }
+    }).then(res => res)
+
+
+
+    // const { data: loadCount } = await useAsyncData('loadCount',
+    //     (mod, countTerm) => {
+    //         return $fetch(`/api/count`, {
+    //             method: 'post',
+    //             body: {
+    //                 mod: mod,
+    //                 countTerm: countTerm
+    //             }
+    //         })
+    //     }
+
+    // )
+
+}
+
 </script>
 
 <template>
@@ -80,6 +108,7 @@ const changeFormValues = (item) => {
                         </div>
 
 
+
                         <div v-if="module == 'users'">
                             {{ item2 == 'role' ? item1.role : '' }}
                             {{ item2 == 'name' ? item1.name : '' }}
@@ -93,8 +122,10 @@ const changeFormValues = (item) => {
                         </div>
 
                         <div v-if="module == 'subcategories'">
-                            {{ item2 == 'name' ? item1.name : '' }}
+
                             {{ item2 == 'category' ? item1.category : '' }}
+                            {{ item2 == 'subcategory' ? item1.name : '' }}
+                            {{ item2 == 'total_business' ? loadCount('BusinessModel', item1.name) : '' }}
                         </div>
 
                         <div v-if="module == 'cities'">
@@ -104,6 +135,7 @@ const changeFormValues = (item) => {
 
                         <div v-if="module == 'states'">
                             {{ item2 == 'name' ? item1.name : '' }}
+                            {{ item2 == 'total_cities' ? loadCount('CityModel', item1.name) : '' }}
                         </div>
 
 

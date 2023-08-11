@@ -1,5 +1,6 @@
 import SubcategoryModel from "~~/server/models/Subcategory";
 import BusinessModel from "~~/server/models/Business";
+import UserModel from "~~/server/models/User";
 
 export default defineEventHandler(async (event) => {
     // const config = useRuntimeConfig()
@@ -20,6 +21,7 @@ export default defineEventHandler(async (event) => {
     const params = getQuery(event)
 
 
+
     if (params.category) {
         return SubcategoryModel.find({ "category": params.category }, {})
     }
@@ -34,6 +36,12 @@ export default defineEventHandler(async (event) => {
     if (params.business_slug) {
         return BusinessModel.findOne({ "business_slug": params.business_slug }, {})
     }
+
+
+
+
+
+
 
 })
 

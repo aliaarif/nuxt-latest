@@ -33,6 +33,10 @@ export default function useCommon() {
 
     const edit = useState('edit', () => false)
 
+    const auth = useState('auth', () => { })
+
+
+
     const slug = (str) => {
         return str ? str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '') : '';
     }
@@ -61,6 +65,11 @@ export default function useCommon() {
             })
         },
     )
+
+    const setAuth = (val) => {
+        auth.value = val
+        return;
+    }
 
     const setItem = (val) => {
         item.value = val
@@ -107,7 +116,16 @@ export default function useCommon() {
         module.value = val
 
         if (val == 'businesses') {
-            td.value = ['id', 'business_name', 'business_category', 'business_city', 'created_by', 'status', 'action']
+            if (auth.value.role === 'Admin') {
+                td.value = ['id', 'business_name', 'business_category', 'business_city', 'created_by', 'content_by', 'approved_by', 'status', 'created_at', 'action']
+            }
+            if (auth.value.role === 'QC') {
+                td.value = ['id', 'business_name', 'business_category', 'business_city', 'created_by', 'content_by', 'status', 'created_at', 'action']
+            }
+            if (auth.value.role === 'Staff') {
+                td.value = ['id', 'business_name', 'business_category', 'business_city', 'created_by', 'status', 'created_at', 'action']
+            }
+
             fields.value = [
                 {
                     label: 'Business Name',
@@ -142,15 +160,8 @@ export default function useCommon() {
         }
 
         if (val == 'subcategories') {
-            td.value = ['name', 'category', 'page_title', 'page_content', 'status', 'action']
+            td.value = ['category', 'subcategory', 'total_business', 'status', 'action']
             fields.value = [
-                {
-                    label: 'Sub Category Name',
-                    type: 'text',
-                    name: 'name',
-                    value: '',
-                    default: ''
-                },
                 {
                     label: 'Category Name',
                     type: 'dropdown',
@@ -158,6 +169,24 @@ export default function useCommon() {
                     value: categories,
                     default: '---Select---'
                 },
+
+                {
+                    label: 'Sub Category Name',
+                    type: 'text',
+                    name: 'subcategory',
+                    value: '',
+                    default: ''
+                },
+
+                {
+                    label: 'Sub Category 111 ',
+                    type: 'text',
+                    name: 'subcategory',
+                    value: '',
+                    default: ''
+                },
+
+
                 {
                     label: 'Page Title',
                     type: 'text',
@@ -176,7 +205,11 @@ export default function useCommon() {
         }
 
         if (val == 'users') {
-            td.value = ['name', 'email', 'role', 'city', 'status', 'action']
+            td.value = ['name', 'email', 'role', 'assigned_city', 'posted', 'approved', 'rejected', 'status', 'action']
+        }
+
+        if (val == 'leads') {
+            td.value = ['category', 'city', 'page', 'name', 'email', 'phone', 'date']
         }
 
         if (val == 'cities') {
@@ -184,7 +217,7 @@ export default function useCommon() {
         }
 
         if (val == 'states') {
-            td.value = ['name', 'status', 'action']
+            td.value = ['name', 'total_cities', 'status', 'action']
         }
 
 
@@ -231,6 +264,6 @@ export default function useCommon() {
 
 
     return {
-        city, setCity, slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, search, setSearch, dynamicTitle, setDynamicTitle, fields, item, setItem, categories, subcategories
+        auth, setAuth, city, setCity, slug, title, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, search, setSearch, dynamicTitle, setDynamicTitle, fields, item, setItem, categories, subcategories
     }
 }

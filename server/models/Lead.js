@@ -11,8 +11,9 @@ const leadSchema = new mongoose.Schema({
     full_path: { type: String, required: true, trim: true }
 })
 
-// Compilng subCategory Schema
+leadSchema.set('timestamps', true)
 
+// Compilng subCategory Schema
 const LeadModel = mongoose.model('lead', leadSchema)
 
 export default LeadModel

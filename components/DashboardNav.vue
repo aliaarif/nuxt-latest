@@ -1,3 +1,12 @@
+<script setup>
+const { setAuth } = useCommon()
+const logout = async () => {
+    setAuth('{}')
+    localStorage.removeItem('auth')
+    window.location.href = '/login'
+}
+</script>
+
 <template>
     <section>
         <nav class="navbar">
@@ -15,11 +24,17 @@
             </div>
             <div class="navbar-menu" id="navbarMenu">
                 <div class="navbar-end">
-                    <a href="/" class="navbar-item">Home</a>
+                    <!-- <a href="/" class="navbar-item">Home</a> -->
                     <nuxt-link to="/dashboard" class="navbar-item">Dashboard</nuxt-link>
                     <div class="navbar-item">
                         <div class="buttons">
                             <nuxt-link to="dashboard/profile" class="button is-light">Profile</nuxt-link>
+                        </div>
+                    </div>
+
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="javascript:;" @click="logout" class="button is-light">Logout</a>
                         </div>
                     </div>
                 </div>

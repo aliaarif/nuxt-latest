@@ -1,6 +1,8 @@
 <script setup>
-const { city, slug, title, action, module, setAction, setEdit, td, edit, fields, item } = useCommon()
-const modules = ref(['businesses', 'categories', 'subcategories', 'cities', 'states', 'users'])
+const { city, slug, title, auth, action, module, setAction, setEdit, td, edit, fields, item } = useCommon()
+const adminModules = ref(['businesses', 'categories', 'subcategories', 'cities', 'states', 'users'])
+const qcModules = ref(['QC Done', 'Approoved', 'Pending', 'Rejected'])
+const staffModules = ref(['Total Posted', 'Approoved', 'Pending', 'Rejected'])
 const message = ref('')
 
 const submit = ref(false)
@@ -32,14 +34,52 @@ const addSubCategory = async () => {
 
 const businessFormData = ref({
     // module: module,
-    editFlag: false,
+    // editFlag: false,
     created_by: 'Obelcon',
     business_name: '',
     business_slug: '',
     business_ownership: '',
     business_category: '',
     business_services: '',
-    business_timing: '',
+    business_timing:
+    {
+        monday: {
+            start: "09:00 ",
+            end: "17:00 "
+        },
+
+        tuesday: {
+            start: "09:00 ",
+            end: "17:00 "
+        },
+
+        wednesday: {
+            start: "09:00 ",
+            end: "17:00 "
+        },
+
+        thrusday: {
+            start: "09:00 ",
+            end: "17:00 "
+        },
+
+        friday: {
+            start: "09:00 ",
+            end: "17:00 "
+        },
+
+        saturday: {
+            start: "NA",
+            end: "NA"
+        },
+
+        sunday: {
+            start: "NA",
+            end: "NA"
+        }
+    },
+
+
     business_city: '',
     business_state: '',
     business_address: '',
@@ -59,26 +99,53 @@ const businessFormData = ref({
 })
 
 const addBusiness = async () => {
-    // message.value = ''
-    useFetch("/api/save/business", {
-        method: 'post',
-        body: businessFormData
-    }).then((res) => {
-        console.log(res);
+    // businessFormData.value.business_images = selectedFiles.value
+    try {
+        const res = await useFetch('/api/save/business', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            body: businessFormData
+        });
+        console.log(res.data.value)
         message.value = res.data.value.message
-    })
+    } catch (error) {
+        console.error('File upload failed:', error)
+    }
+    selectedFiles.value = []
 }
 
+
 const editBusiness = async () => {
-    // message.value = ''
-    useFetch("/api/save/business", {
-        method: 'post',
-        body: item
-    }).then((res) => {
-        console.log(res);
-        message.value = res.data.value.message
-    })
+    // console.log(selectedFiles)
+    // item.value.business_images.push(...selectedFiles.value)
+    try {
+        const res = await useFetch('/api/save/business', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            body: item
+        });
+        console.log(res)
+        // message.value = res.data.value.message
+    } catch (error) {
+        console.error('File upload failed:', error)
+    }
 }
+
+
+// const editBusiness = async () => {
+//     // message.value = ''
+//     useFetch("/api/save/business", {
+//         method: 'post',
+//         body: item
+//     }).then((res) => {
+//         onsole.log(res.data.value)
+//         message.value = res.data.value.message
+//     })
+// }
 
 
 
@@ -91,7 +158,31 @@ const returnVoid = () => {
     return;
 }
 
+const selectedFiles = ref([])
 
+
+const onFileChange = (event) => {
+    const formData = new FormData();
+    // selectedFiles.value = Object.values(event.target.files)
+    // selectedFiles.value.foreach((img) => {
+    //     aaaa.value.push(img.name)
+    // })
+    for (let i = 0; i < event.target.files.length; i++) {
+        console.log(event.target.files[i])
+        selectedFiles.value.push(event.target.files[i])
+        formData.append('images[]', event.target.files[i]);
+
+    }
+    businessFormData.value.business_images = formData
+
+    // if (eflg === true) {
+    //     item.value.business_images.push(...selectedFiles.value)
+    // } else {
+    //     businessFormData.value.business_images.push(...selectedFiles.value)
+    // }
+
+    // console.log(selectedFiles.value)
+}
 
 
 
@@ -103,9 +194,37 @@ const returnVoid = () => {
 </script>
 
 <template>
-    <template v-if="module == 'dashboard'">
+    <template v-if="module == 'dashboard' && auth?.role === 'Admin'">
         <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-3-widescreen" v-for="module in modules"
+            <div class="column is-6-mobile is-4-tablet is-3-desktop is-3-widescreen" v-for="module in adminModules"
+                :key="module">
+                <a @click="" href="javascript:;" class="grid-item box">
+                    <img src="https://www.svgrepo.com/show/501814/microphone1-broadcasting.svg"
+                        style="width: 100px; height: 100px;" alt="Your Image">
+                    <p><b>{{ title(module) }}</b></p>
+                    <p><b>300+ </b></p>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <template v-if="module == 'dashboard' && auth?.role === 'QC'">
+        <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
+            <div class="column is-6-mobile is-4-tablet is-3-desktop is-3-widescreen" v-for="module in qcModules"
+                :key="module">
+                <a @click="" href="javascript:;" class="grid-item box">
+                    <img src="https://www.svgrepo.com/show/501814/microphone1-broadcasting.svg"
+                        style="width: 100px; height: 100px;" alt="Your Image">
+                    <p><b>{{ title(module) }}</b></p>
+                    <p><b>300+ </b></p>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <template v-if="module == 'dashboard' && auth?.role === 'Staff'">
+        <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
+            <div class="column is-6-mobile is-4-tablet is-3-desktop is-3-widescreen" v-for="module in staffModules"
                 :key="module">
                 <a @click="" href="javascript:;" class="grid-item box">
                     <img src="https://www.svgrepo.com/show/501814/microphone1-broadcasting.svg"
@@ -119,13 +238,15 @@ const returnVoid = () => {
 
     <template v-else-if="module != 'dashboard' && edit == false">
         <div class="table-container">
-            <Table />
+            <TableForAdmin v-if="auth.role === 'Admin'" />
+            <TableForStaffAndQC v-if="auth.role === 'Staff' || auth.role === 'QC'" />
+
         </div>
     </template>
 
     <template v-else>
 
-        <section v-if="module == 'businesses'">
+        <section v-if="module == ' businesses'">
             <div class="columns">
                 <div class="column is-half">
 
@@ -179,18 +300,20 @@ const returnVoid = () => {
             <div class="columns">
                 <div class="column is-half">
                     <form>
-                        <div class="field">
-                            <label class="label">Sub Category Name</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.name" placeholder="Enter Subcategory">
-                                {{ item }}
-                            </div>
-                        </div>
+
 
                         <div class="field">
                             <label class="label">Category Name</label>
                             <div class="control">
                                 <input class="input" type="text" v-model="item.category" placeholder="Enter category">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Sub Category Name</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="item.name" placeholder="Enter Subcategory">
+                                {{ item }}
                             </div>
                         </div>
 
@@ -208,7 +331,8 @@ const returnVoid = () => {
                                     placeholder="Enter Page Content">
                             </div>
                         </div>
-                        <button type="button" @click="editSubCategory" class="button is-primary">Add</button> {{ message }}
+                        <button type="button" @click="editSubCategory" class="button is-primary">Add</button> {{
+                            message }}
                     </form>
                 </div>
             </div>
@@ -219,14 +343,7 @@ const returnVoid = () => {
             <div class="columns">
                 <div class="column is-half">
                     <form>
-                        <div class="field">
-                            <label class="label">Sub Category Name</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="subCategoryFormData.name" @input="returnVoid"
-                                    placeholder="Enter Subcategory">
-                                {{ subCategoryFormData }}
-                            </div>
-                        </div>
+
 
                         <div class="field">
                             <label class="label">Category Name</label>
@@ -236,6 +353,14 @@ const returnVoid = () => {
                             </div>
                         </div>
 
+                        <div class="field">
+                            <label class="label">Sub Category Name</label>
+                            <div class="control">
+                                <input class="input" type="text" v-model="subCategoryFormData.name" @input="returnVoid"
+                                    placeholder="Enter Subcategory">
+                                {{ subCategoryFormData }}
+                            </div>
+                        </div>
                         <div class="field">
                             <label class="label">Page Title</label>
                             <div class="control">
@@ -251,7 +376,8 @@ const returnVoid = () => {
                                     placeholder="Enter Page Content">
                             </div>
                         </div>
-                        <button type="button" @click="addSubCategory" class="button is-primary">Add</button> {{ message }}
+                        <button type="button" @click="addSubCategory" class="button is-primary">Add</button>
+                        {{ message }}
                     </form>
                 </div>
             </div>
@@ -261,11 +387,13 @@ const returnVoid = () => {
 
             <form @submit.prevent="editBusiness()">
                 <div class="columns">
-                    <div class="column is-half">
+                    <div class="column">
+
+
                         <div class="field">
                             <label class="label">Business Name</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_name"
+                                <input class="input" type="text" v-model="businessFormData.business_name" @input="makeSlug"
                                     placeholder="Enter Business Name">
                             </div>
                         </div>
@@ -273,7 +401,7 @@ const returnVoid = () => {
                         <div class="field">
                             <label class="label">Business Slug</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_slug"
+                                <input class="input" type="text" v-model="businessFormData.business_slug"
                                     placeholder="Enter Business Slug">
                             </div>
                         </div>
@@ -281,7 +409,7 @@ const returnVoid = () => {
                         <div class="field">
                             <label class="label">business_ownership</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_ownership"
+                                <input class="input" type="text" v-model="businessFormData.business_ownership"
                                     placeholder="Enter business_ownership">
                             </div>
                         </div>
@@ -289,48 +417,188 @@ const returnVoid = () => {
                         <div class="field">
                             <label class="label">business_category</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_category"
+                                <input class="input" type="text" v-model="businessFormData.business_category"
                                     placeholder="Enter business_category">
                             </div>
                         </div>
+
+                        <!-- <div class="select">
+
+                            <select v-model="businessFormData.business_category">
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                            </select>
+                        </div> -->
+
 
 
                         <div class="field">
                             <label class="label">business_services</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_services"
+                                <input class="input" type="text" v-model="businessFormData.business_services"
                                     placeholder="Enter business_services">
                             </div>
                         </div>
 
 
                         <div class="field">
+                            {{ item.business_timing }}
                             <label class="label">Business timing</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.business_timing"
-                                    placeholder="Enter business_timing">
+                            <div class="columns">
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label"> Monday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.monday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.monday.end"
+                                            placeholder="Start time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label"> Tuesday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.tuesday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.tuesday.end"
+                                            placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Wednesday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.wednesday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.wednesday.end"
+                                            placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Thrusday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.thrusday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.thrusday.end"
+                                            placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Friday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.friday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.friday.end"
+                                            placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Saturday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.saturday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.saturday.end"
+                                            placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Sunday</label>
+                                        Start
+                                        <input class="input" type="time" v-model="item.business_timing.sunday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time" v-model="item.business_timing.sunday.end"
+                                            placeholder="End time">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
+
+
+
 
 
                         <div class="field">
-                            <label class="label">business_city</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.business_city"
-                                    placeholder="Enter business_city">
+                            <label class="label">Address</label>
+
+
+                            <div class="columns">
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_address</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="item.business_address"
+                                                placeholder="Enter business_address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_locality</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="item.business_locality"
+                                                placeholder="Enter business_locality">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_city</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="item.business_city"
+                                                placeholder="Enter business_city">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_state</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="item.business_state"
+                                                placeholder="Enter business_state">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_pin</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="item.business_pin"
+                                                placeholder="Enter business_pin">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="field">
-                            <label class="label">business_address</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.business_address"
-                                    placeholder="Enter business_address">
-                            </div>
-                        </div>
-
-
                         <div class="field">
                             <label class="label">business_phone</label>
                             <div class="control">
@@ -358,8 +626,7 @@ const returnVoid = () => {
                                     placeholder="Enter business_website">
                             </div>
                         </div>
-                    </div>
-                    <div class="column is-half">
+
 
                         <div class="field">
                             <label class="label">business_Social</label>
@@ -441,6 +708,30 @@ const returnVoid = () => {
                         </div>
 
 
+
+
+
+                        <div class="file has-name is-fullwidth">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="b_img" @change="onFileChange" multiple>
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Choose a file…
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                </span>
+                            </label>
+                        </div>
+
+
+
+
+
                         <button type="button" @click="editBusiness" class="button is-primary">Save</button>
                         {{ message }}
                     </div>
@@ -452,7 +743,7 @@ const returnVoid = () => {
 
             <form @submit.prevent="addBusiness()">
                 <div class="columns">
-                    <div class="column is-half">
+                    <div class="column ">
                         <div class="field">
                             <label class="label">Business Name</label>
                             <div class="control">
@@ -477,21 +768,21 @@ const returnVoid = () => {
                             </div>
                         </div>
 
-                        <!-- <div class="field">
+                        <div class="field">
                             <label class="label">business_category</label>
                             <div class="control">
                                 <input class="input" type="text" v-model="businessFormData.business_category"
                                     placeholder="Enter business_category">
                             </div>
-                        </div> -->
+                        </div>
 
-                        <div class="select">
+                        <!-- <div class="select">
 
                             <select v-model="businessFormData.business_category">
                                 <option>Select dropdown</option>
                                 <option>With options</option>
                             </select>
-                        </div>
+                        </div> -->
 
 
 
@@ -501,36 +792,183 @@ const returnVoid = () => {
                                 <input class="input" type="text" v-model="businessFormData.business_services"
                                     placeholder="Enter business_services">
                             </div>
+
+                            <div class="block">
+                                <span class="tag is-primary is-medium">
+                                    Hello World
+                                    <button class="delete is-medium"></button>
+                                </span>
+                            </div>
                         </div>
 
 
+
+
                         <div class="field">
+                            {{ businessFormData.business_timing }}
                             <label class="label">Business timing</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_timing"
-                                    placeholder="Enter business_timing">
+                            <div class="columns">
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label"> Monday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.monday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.monday.end" placeholder="Start time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label"> Tuesday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.tuesday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.tuesday.end" placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Wednesday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.wednesday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.wednesday.end" placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Thrusday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.thrusday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.thrusday.end" placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Friday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.friday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.friday.end" placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Saturday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.saturday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.saturday.end" placeholder="End time">
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+
+                                        <label class="label"> Sunday</label>
+                                        Start
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.sunday.start"
+                                            placeholder="Start time">
+                                        <br />
+                                        End
+                                        <input class="input" type="time"
+                                            v-model="businessFormData.business_timing.sunday.end" placeholder="End time">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
+
+
+
 
 
                         <div class="field">
-                            <label class="label">business_city</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_city"
-                                    placeholder="Enter business_city">
+                            <label class="label">Address</label>
+
+
+                            <div class="columns">
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_address</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="businessFormData.business_address"
+                                                placeholder="Enter business_address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_locality</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="businessFormData.business_locality"
+                                                placeholder="Enter business_locality">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_city</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="businessFormData.business_city"
+                                                placeholder="Enter business_city">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_state</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="businessFormData.business_state"
+                                                placeholder="Enter business_state">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">business_pin</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="businessFormData.business_pin"
+                                                placeholder="Enter business_pin">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="field">
-                            <label class="label">business_address</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_address"
-                                    placeholder="Enter business_address">
-                            </div>
-                        </div>
-
-
                         <div class="field">
                             <label class="label">business_phone</label>
                             <div class="control">
@@ -558,8 +996,7 @@ const returnVoid = () => {
                                     placeholder="Enter business_website">
                             </div>
                         </div>
-                    </div>
-                    <div class="column is-half">
+
 
                         <div class="field">
                             <label class="label">business_Social</label>
@@ -640,6 +1077,29 @@ const returnVoid = () => {
                                     placeholder="Enter page_content">
                             </div>
                         </div>
+
+
+
+
+
+                        <div class="file has-name is-fullwidth">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="b_img" @change="onFileChange" multiple>
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Choose a file…
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                </span>
+                            </label>
+                        </div>
+
+
 
                         <button type="button" @click="addBusiness" class="button is-primary">Add</button>
                         {{ message }}

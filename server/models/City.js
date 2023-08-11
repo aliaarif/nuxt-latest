@@ -6,8 +6,9 @@ const citySchema = new mongoose.Schema({
     state: { type: String, required: true, trim: true }
 })
 
-// Compilng City Schema
+citySchema.set('timestamps', true)
 
+// Compilng City Schema
 const CityModel = mongoose.model('city', citySchema)
 
 export default CityModel

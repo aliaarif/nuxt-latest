@@ -1,17 +1,17 @@
 [
   {
-    "name": "Super Admin",
-    "email": "sadmin@example.com",
-    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
-    "status": 1,
-    "role": "Super Admin"
-  },
-  {
     "name": "Admin",
     "email": "admin@example.com",
     "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
     "status": 1,
     "role": "Admin"
+  },
+  {
+    "name": "Quality Checker",
+    "email": "qc@example.com",
+    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
+    "status": 1,
+    "role": "QC"
   },
   {
     "name": "Staff",
@@ -27,5 +27,4 @@
     "status": 1,
     "role": "User"
   }
-  
 ]
