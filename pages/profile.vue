@@ -9,7 +9,6 @@ useHead({
         { name: 'description', content: 'Obelcon Profile Page' }
     ]
 })
-
 </script>
 <template>
     <section>

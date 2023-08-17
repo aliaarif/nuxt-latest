@@ -1,51 +1,51 @@
 <script setup>
-import { GoogleSignInButton, CredencialResponse } from "nuxt-vue3-google-signin";
+// import { GoogleSignInButton, CredencialResponse } from "nuxt-vue3-google-signin";
 const { title, module, auth, setAuth, setModule, setAction, setEdit, dynamicTitle, setDynamicTitle, setItem } = useCommon()
 definePageMeta({
     // layout: 'auth',
     // pageTransition: {
-        //     name: "rotate",
-        // },
-    })
-    useHead({
-        title: `Obelcon | Login Panel`,
-        meta: [
+    //     name: "rotate",
+    // },
+})
+useHead({
+    title: `Obelcon | Login Panel`,
+    meta: [
         { name: 'description', content: 'Obelcon Login Page' }
-        ]
-    })
-    
-    onMounted(() => {
-        if (localStorage.auth) {
-            navigateTo('/dashboard')
-        }
-    })
-    
-    const loginFormData = ref({
-        username: '',
-        password: ''
-    })
-    
-    const message = ref('')
-    
-    const login = async () => {
-        
-        useFetch('/api/login', {
-            method: 'post',
-            body: loginFormData
-        }).then((res) => {
-            
-            if (res.data.value !== '') {
-                setAuth(res.data.value)
-                console.log(res.data.value)
-                localStorage.auth = JSON.stringify(auth.value)
-                navigateTo('/dashboard')
-            } else {
-                message.value = 'Invalid Login Credentials'
-            }
-            
-            
-        })
+    ]
+})
+
+onMounted(() => {
+    if (localStorage.auth) {
+        navigateTo('/dashboard')
     }
+})
+
+const loginFormData = ref({
+    username: '',
+    password: ''
+})
+
+const message = ref('')
+
+const login = async () => {
+
+    useFetch('/api/login', {
+        method: 'post',
+        body: loginFormData
+    }).then((res) => {
+
+        if (res.data.value !== '') {
+            setAuth(res.data.value)
+            console.log(res.data.value)
+            localStorage.auth = JSON.stringify(auth.value)
+            navigateTo('/dashboard')
+        } else {
+            message.value = 'Invalid Login Credentials'
+        }
+
+
+    })
+}
 </script>
 
 <template>
@@ -60,7 +60,7 @@ definePageMeta({
                                 <label for="" class="label">Username</label>
                                 <div class="control has-icons-left">
                                     <input type="text" placeholder="e.g. bobsmith@gmail.com" class="input"
-                                    v-model="loginFormData.username" required>
+                                        v-model="loginFormData.username" required>
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-envelope"></i>
                                     </span>
@@ -70,7 +70,7 @@ definePageMeta({
                                 <label for="" class="label">Password</label>
                                 <div class="control has-icons-left">
                                     <input type="password" placeholder="*******" class="input"
-                                    v-model="loginFormData.password" required>
+                                        v-model="loginFormData.password" required>
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-lock"></i>
                                     </span>
@@ -87,15 +87,14 @@ definePageMeta({
                                     Login
                                 </button>
                                 {{ message }}
-                                
-                                <g-auth-button @click="login" :disabled="disabled" :is-loading="isLoading">Login with
-                                    Google</g-auth-button>
-                                </div>
-                            </form>
-                        </div>
+
+
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-    </template>
+        </div>
+    </section>
+</template>
     

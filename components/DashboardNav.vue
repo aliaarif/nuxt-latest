@@ -5,6 +5,12 @@ const logout = async () => {
     localStorage.removeItem('auth')
     window.location.href = '/login'
 }
+
+const menuToggle = () => {
+    // Get the element by its ID
+    const leftAside = document.getElementById("111");
+    leftAside.hide()
+}
 </script>
 
 <template>
@@ -21,7 +27,20 @@ const logout = async () => {
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
+
+
             </div>
+
+            <div class="navbar-item" @click="menuToggle">
+                <div class="buttons">
+                    <a href="javascript:;" class="button is-light">
+                        <i class="fa-solid fa-bars fa-fade"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
             <div class="navbar-menu" id="navbarMenu">
                 <div class="navbar-end">
                     <!-- <a href="/" class="navbar-item">Home</a> -->

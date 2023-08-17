@@ -1,5 +1,5 @@
 <script setup>
-const { title, setModule, setAction, setEdit, setDynamicTitle, setItem } = useCommon()
+const { title, setModule, setAction, setEdit, setDynamicTitle, setItem, module, edit } = useCommon()
 const setModuleAndAction = (mod, act, edit) => {
     setModule(mod)
     setAction(act)
@@ -15,67 +15,81 @@ const setModuleAndAction = (mod, act, edit) => {
         setItem('')
     }
 }
+
 </script>
 <template>
-    <aside class="menu">
+    <aside class="menu" id="menu">
         <ul class="menu-list">
-            <li><a v-on:click="setModuleAndAction('dashboard', 'grid', false)" class="is-active">Dashboard</a>
+            <li>
+                <a @click="setModuleAndAction('dashboard', 'grid', false)"
+                    :class="module == 'dashboard' && !edit ? 'is-active' : ''"><i class="fa fa-home" aria-hidden="true"></i>
+                    Dashboard</a>
             </li>
             <li>
-                <a v-on:click="setModuleAndAction('states', 'list', false)">States</a>
+                <a @click="setModuleAndAction('states', 'list', false)"><i class="fa-solid fa-city"></i>
+                    States</a>
                 <ul>
-                    <li><a v-on:click="setModuleAndAction('states', 'list', false)">List</a></li>
-                    <li><a v-on:click="setModuleAndAction('states', 'add-edit', true)">Add</a></li>
+                    <li><a @click="setModuleAndAction('states', 'list', false)"
+                            :class="module == 'states' && !edit ? 'is-active' : ''">List</a></li>
+                    <li><a @click="setModuleAndAction('states', 'add-edit', true)"
+                            :class="module == 'states' && edit ? 'is-active' : ''">Add</a></li>
                 </ul>
             </li>
             <li>
-                <a v-on:click="setModuleAndAction('subcategories', 'list', false)">Subcategories</a>
+                <a @click="setModuleAndAction('subcategories', 'list', false)"><i class="fa fa-list-alt"
+                        aria-hidden="true"></i> Subcategories</a>
                 <ul>
-                    <li><a v-on:click="setModuleAndAction('subcategories', 'list', false)">List</a></li>
-                    <li><a v-on:click="setModuleAndAction('subcategories', 'add-edit', true)">Add</a></li>
+                    <li><a @click="setModuleAndAction('subcategories', 'list', false)"
+                            :class="module == 'subcategories' && !edit ? 'is-active' : ''">List</a></li>
+                    <li><a @click="setModuleAndAction('subcategories', 'add-edit', true)"
+                            :class="module == 'subcategories' && edit ? 'is-active' : ''">Add</a></li>
                 </ul>
             </li>
             <li>
-                <a v-on:click="setModuleAndAction('businesses', 'list', false)">Businesses</a>
+                <a @click="setModuleAndAction('businesses', 'list', false)">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Businesses</a>
                 <ul>
-                    <li><a v-on:click="setModuleAndAction('businesses', 'list', false)">List</a></li>
-                    <li><a v-on:click="setModuleAndAction('businesses', 'add-edit', true)">Add</a></li>
+                    <li><a @click="setModuleAndAction('businesses', 'list', false)"
+                            :class="module == 'businesses' && !edit ? 'is-active' : ''">List</a></li>
+                    <li><a @click="setModuleAndAction('businesses', 'add-edit', true)"
+                            :class="module == 'businesses' && edit ? 'is-active' : ''">Add</a></li>
                 </ul>
             </li>
 
             <li>
-                <a v-on:click="setModuleAndAction('users', 'list', false)">Users</a>
+                <a @click="setModuleAndAction('users', 'list', false)">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Users</a>
                 <ul>
-                    <li><a v-on:click="setModuleAndAction('users', 'list', false)">List</a></li>
-                    <li><a v-on:click="setModuleAndAction('users', 'add-edit', true)">Add</a></li>
+                    <li><a @click="setModuleAndAction('users', 'list', false)"
+                            :class="module == 'users' && !edit ? 'is-active' : ''">List</a></li>
+                    <li><a @click="setModuleAndAction('users', 'add-edit', true)"
+                            :class="module == 'users' && edit ? 'is-active' : ''">Add</a></li>
                 </ul>
             </li>
             <li>
-                <a v-on:click="setModuleAndAction('leads', 'list', false)">Leads</a>
+                <a @click="setModuleAndAction('leads', 'list', false)">
+                    <i class="fa-solid fa-comments-dollar"></i> Leads</a>
                 <ul>
-                    <li><a v-on:click="setModuleAndAction('leads', 'list', false)">All</a></li>
+                    <li><a @click="setModuleAndAction('leads', 'list', false)"
+                            :class="module == 'leads' && !edit ? 'is-active' : ''">All</a></li>
 
                 </ul>
             </li>
             <li>
-                <a v-on:click="setModuleAndAction('pages', 'list', false)">Pages</a>
-                <ul>
-                    <li><a v-on:click="setModuleAndAction('pages', 'list', false)">All</a></li>
-
-                </ul>
-                <!-- <ul>
-                                <li><a v-on:click="setModuleAndAction('users', 'list', false)">Home</a></li>
-                                <li><a v-on:click="setModuleAndAction('users', 'add-edit', true)">About</a></li>
-                                <li><a v-on:click="setModuleAndAction('users', 'add-edit', true)">Contact</a></li>
-                                <li><a v-on:click="setModuleAndAction('users', 'add-edit', true)">Terms</a></li>
-                                <li><a v-on:click="setModuleAndAction('users', 'add-edit', true)">Privacy</a></li>
-                            </ul> -->
+                <a @click="setModuleAndAction('contacts', 'list', false)"
+                    :class="module == 'contacts' && !edit ? 'is-active' : ''">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Contacts</a>
             </li>
             <li>
-                <a v-on:click="setModuleAndAction('script', 'list', false)">Script</a>
+                <a @click="setModuleAndAction('script', 'list', false)">
+                    <i class="fa fa-code" aria-hidden="true"></i> Script</a>
                 <ul>
-                    <li><a v-on:click="setModuleAndAction('script', 'add-edit', false)">Header</a></li>
-                    <li><a v-on:click="setModuleAndAction('script', 'add-edit', true)">Advert</a></li>
+                    <li><a @click="setModuleAndAction('script', 'add-edit', false)"
+                            :class="module == 'script' && !edit ? 'is-active' : ''">List</a></li>
+                    <li><a @click="setModuleAndAction('script', 'add-edit', true)"
+                            :class="module == 'script' && edit ? 'is-active' : ''">Add</a></li>
                 </ul>
             </li>
         </ul>

@@ -1,9 +1,42 @@
 [
     {
-        "title": "Dummy",
-        "content": "Dummy",
-        "page_title": "Dummy",
-        "pege_content": "Dummy",
-        "status": "Dummy"
+        "title": "About",
+        "slug": "about",
+        "content": "Dummy Content for About Page",
+        "page_title": "Obelcon | About",
+        "pege_content": "Dummy Meta Content for About Page",
+        "status": "Active"
+    },
+    {
+        "title": "Contact",
+        "slug": "contact",
+        "content": "Dummy Content for Contact Page",
+        "page_title": "Obelcon | Contact",
+        "pege_content": "Dummy Meta Content for Contact Page",
+        "status": "Active"
+    },
+    {
+        "title": "Terms",
+        "slug": "terms",
+        "content": "Dummy Content for Terms Page",
+        "page_title": "Obelcon | Terms",
+        "pege_content": "Dummy Meta Content for Terms Page",
+        "status": "Active"
+    },
+    {
+        "title": "Privacy",
+        "slug": "privacy",
+        "content": "Dummy Content for Privacy Page",
+        "page_title": "Obelcon | Privacy",
+        "pege_content": "Dummy Meta Content for Privacy Page",
+        "status": "Active"
+    },
+    {
+        "title": "Carrier",
+        "slug": "carrier",
+        "content": "Dummy Content for Carrier Page",
+        "page_title": "Obelcon | Carrier",
+        "pege_content": "Dummy Meta Content for Carrier Page",
+        "status": "Active"
     }
-]   
+]

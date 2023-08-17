@@ -1,5 +1,5 @@
 <script setup>
-const { title, slug, pageTitle, pageType, meta } = useCommon()
+const { page, title, slug, pageTitle, pageType, meta, day } = useCommon()
 const router = useRouter()
 const city = router.currentRoute.value.params.city
 const data = router.currentRoute.value.params.query
@@ -13,7 +13,7 @@ const message = ref('')
 
 const loading = ref(false)
 
-const page = ref(1)
+const pageNo = ref(1)
 
 const contents = ref('')
 
@@ -60,17 +60,15 @@ if (pageType.value == 'Subcategories') {
         },
     )
     contents.value = res.value
-
     images.value = contents.value.business_images
-
     metaContent.value = `${meta.value.page_content}`
-    pageTitle.value = pageTitle.value.business_name
-
+    pageTitle.value = `${contents.value.business_name}`
+} else if (pageType.value == 'CMS') {
+    metaContent.value = `dsdds`
+    pageTitle.value = `ggg`
 }
 
-
 const sliderCurrentIndex = ref(0)
-
 const reduceImageIndex = (index) => {
     if (index > 0) {
         sliderCurrentIndex.value = index - 1
@@ -82,19 +80,17 @@ const increaseImageIndex = (index) => {
     }
 }
 
-
-
 const leadsFormData = ref({
     "subcategory": data.split('-in-')[0],
     "city": city,
     "name": "",
-    "mobile": "",
+    "phone": "",
     "email": "",
-    "full_path": router.currentRoute.fullPath
+    "query": data
 })
 
 const gernerateLead = async () => {
-    useFetch("/api/save/lead", {
+    useFetch("/api/save/leads", {
         method: 'post',
         body: leadsFormData
     }).then((res) => {
@@ -103,16 +99,12 @@ const gernerateLead = async () => {
     })
 }
 
-
 useHead({
     title: `${pageTitle.value}`,
     meta: [
         { name: 'description', content: metaContent.value }
     ]
 })
-
-
-
 </script>
 
 <template>
@@ -136,6 +128,7 @@ useHead({
 
 
     <template v-else-if="pageType == 'Subcategories'">
+
         <section>
             <h1 class="title is-1">{{ meta.page_title }} in {{ title(city) }}</h1>
             <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
@@ -163,26 +156,34 @@ useHead({
                 </nav>
 
                 <h1 class="title is-1">{{ meta.page_title }} in {{ title(city) }}</h1>
-                {{ meta.page_content }}
+
+                <p class="mt-4">{{ meta.page_content.replace(new RegExp('cityName', 'g'), title(city)) }}</p>
             </span>
 
             <div class="blog-section mt-6 mb-6">
                 <div class="blog-content">
-                    <nuxt-link class="media" v-for="b in    contents   " :key="b._id"
+                    <nuxt-link class="media" v-for="b in contents" :key="b._id"
                         :to="`/${slug(city)}/${b.business_slug}-biz-${b._id.substr(16)}`">
                         <div class="media-left">
                             <figure class="image custom-image">
-                                <img :src="`${b.business_image}`" alt=" Blog Image">
+                                <img :src="`${b.business_images[0] ?? '../Image_not_available.png'}`" alt=" Blog Image">
                             </figure>
                         </div>
                         <div class="media-content">
                             <h1 class="title is-4">{{ b.business_name }}</h1>
-                            <p>{{ b.business_address.substr(9) }}</p>
-                            <p>{{ b.business_phone }}</p>
-                            <p>{{ b.business_timing }}</p>
-
-
-
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                {{ b?.business_address }}, {{
+                                    b?.business_locality }}, {{ b?.business_city }},
+                                {{ b?.business_state }}, {{ b?.business_pin }}
+                            </p>
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> {{ b.business_phone }}</p>
+                            <!-- <p>{{ b.business_timing }}</p> -->
+                            <p v-if="b.business_services.length > 0">
+                            <div class="buttons">
+                                <button class="button is-primary is-ligh is-small" v-for="service in b.business_services"
+                                    :key="service">{{ service }}</button>
+                            </div>
+                            </p>
                         </div>
                     </nuxt-link>
                 </div>
@@ -193,33 +194,25 @@ useHead({
 
                 <aside class="sidebar">
                     <div class="form-box">
-                        <form>
-
+                        {{ message }}
+                        <form @submit.prevent="gernerateLead">
+                            <h1 class="title is-3 is-size-5">Query Form</h1>
                             <input type="text" class="form-field" placeholder="Name" v-model="leadsFormData.name" required>
-                            <input type="text" class="form-field" placeholder="Mobile Number" v-model="leadsFormData.mobile"
+                            <input type="text" class="form-field" placeholder="Phone Number" v-model="leadsFormData.phone"
                                 required>
                             <input type="text" class="form-field" placeholder="Email ID (optional)"
                                 v-model="leadsFormData.email">
-                            <button type="button" @click="gernerateLead" class="form-button">Get Best Deal
-                            </button> {{
-                                message }}
+                            <button type="submit" class="form-button">Get Best Deal</button>
                         </form>
                     </div>
-
-
-
-
-                    <h2 class="title is-5">Recent Post</h2>
-
+                    <!-- <h2 class="title is-5">Recent Post</h2>
                     <div class="recent-post">
                         <ul>
                             <li>Coffee</li>
                             <li>Tea</li>
                             <li>Milk</li>
                         </ul>
-                    </div>
-
-
+                    </div> -->
                 </aside>
 
 
@@ -229,7 +222,7 @@ useHead({
 
 
 
-    <template v-else>
+    <template v-else-if="pageType == 'Business Details'">
 
 
         <section>
@@ -239,63 +232,85 @@ useHead({
                     <ul>
                         <li><nuxt-link to="/">Home</nuxt-link></li>
                         <li><nuxt-link to="/">{{ title(city) }}</nuxt-link></li>
-                        <li><nuxt-link @click="$router.go(-1)" :to="data">{{
-                            meta.page_title }} in {{ title(city) }} </nuxt-link></li>
+                        <li><nuxt-link @click="$router.go(-1)"
+                                :to="`${slug(contents?.business_category)}-in-${slug(city)}`">{{
+                                    meta.page_title }} in {{ title(city) }} </nuxt-link></li>
                         <li><nuxt-link :to="data">{{ contents?.business_name }} </nuxt-link></li>
                     </ul>
                 </nav>
                 <h1 class="title is-1">{{ contents?.business_name }}</h1>
             </span>
-            <div class="columns mt-4">
 
-                <div class="column" v-if="images.length > 0">
-                    <div class="image-section" style="border: 1px solid black;">
-                        <img :src="images[sliderCurrentIndex ?? 0]" alt="Image" />
-
-                        <span class="icon" style="position: absolute; top:215px">
+            <div class="columns mt-4" v-if="images.length > 0">
+                <div class="column is-two-fifths" v-if="images.length > 0">
+                    <div class="image-section" style="border: 1px solid black; max-height: 350px; max-width: 90%;">
+                        <img :src="images[sliderCurrentIndex ?? 0]" style="max-height: 300px; min-width: 100%;"
+                            alt="Image" />
+                        <span class="icon" style="position: absolute; top:260px">
                             <a class="has-text-white" @click="reduceImageIndex(sliderCurrentIndex)" href="javascript:;">
                                 <i class="fas fa-angle-double-left"></i>
                             </a>
                         </span>
-
-                        <span class="icon" style="position: absolute; top:215px; left:300px">
-
-
+                        <span class="icon" style="position: absolute; top:260px; left:455px">
                             <a class="has-text-white" @click="increaseImageIndex(sliderCurrentIndex)" href="javascript:;">
                                 <i class="fas fa-angle-double-right"></i>
                             </a>
                         </span>
-
                     </div>
                 </div>
-                <div class="column">
+                <div class="column ">
                     <div class="content-section">
 
                         <div class="custom-container">
-                            <p>Address</p>
-                            <p>{{ contents?.business_address }}</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Address</p>
+                            <p>{{ contents?.business_address }}, {{ contents?.business_locality }}, {{
+                                contents?.business_city }},{{ contents?.business_state }},{{ contents?.business_pin }}</p>
                         </div>
                         <div class="custom-container">
-                            <p>Phone</p>
-                            <p>{{ contents?.business_phone }}</p>
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> Phone</p>
+                            <a :href="'tel: ' + contents?.business_phone" target="_blank" rel="noopener">
+                                {{ contents?.business_phone }}</a>
+                        </div>
+                        <div class="custom-container">
+                            <p><i class="fa fa-list-alt" aria-hidden="true"></i> Category</p>
+                            <p>{{ contents?.business_category }}</p>
+                        </div>
+                    </div>
+                </div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.5911061173924!2d77.04983299999999!3d28.46174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI3JzQyLjMiTiA3N8KwMDInNTkuNCJF!5e0!3m2!1sen!2sin!4v1689698992701!5m2!1sen!2sin"
+                    class="column is-one-quarter" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="columns mt-4" v-else>
+                <div class="column is-half">
+                    <div class="content-section">
+
+                        <div class="custom-container">
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Address</p>
+                            <p>{{ contents?.business_address }}, {{ contents?.business_locality }}, {{
+                                contents?.business_city }},{{ contents?.business_state }},{{ contents?.business_pin }}</p>
+                        </div>
+                        <div class="custom-container">
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> Phone</p>
+                            <p>
+                                <a :href="'tel: ' + contents?.business_phone" target="_blank" rel="noopener">
+                                    {{ contents?.business_phone }}</a>
+                            </p>
+                        </div>
+                        <div class="custom-container">
+                            <p><i class="fa fa-list-alt" aria-hidden="true"></i> Category</p>
+                            <p>{{ contents?.business_category }}</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="content-section">
 
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.5911061173924!2d77.04983299999999!3d28.46174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI3JzQyLjMiTiA3N8KwMDInNTkuNCJF!5e0!3m2!1sen!2sin!4v1689698992701!5m2!1sen!2sin"
-                            width="500" height="230" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-                    </div>
-                </div>
-
-
-
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.5911061173924!2d77.04983299999999!3d28.46174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI3JzQyLjMiTiA3N8KwMDInNTkuNCJF!5e0!3m2!1sen!2sin!4v1689698992701!5m2!1sen!2sin"
+                    class="column is-half" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
             </div>
@@ -303,47 +318,131 @@ useHead({
                 <div class="columns three-layout">
                     <div class="column">
                         <div class="custom-container">
-                            <p>Business Timing</p>
-                            <p>{{ contents?.business_timing }}</p>
+                            <p><i class="fa fa-envelope" aria-hidden="true"></i> Email</p>
+                            <a :href="'mailto: ' + contents?.business_email" target="_blank" rel="noopener">
+                                {{ contents?.business_email }}</a>
                         </div>
                         <div class="custom-container">
-                            <p>Category</p>
-                            <p>{{ contents?.business_category }}</p>
+                            <p><i class="fa fa-globe" aria-hidden="true"></i> Website</p>
+                            <a :href="contents?.business_website" target="_blank" rel="noopener">
+                                Visit Website</a>
                         </div>
+
+                        <div class="custom-container">
+                            <p><i class="fa fa-share-alt" aria-hidden="true"></i> Social</p>
+                            <p>
+
+                                <a :href="contents?.business_social.facebook" target="_blank" rel="noopener"> Facebook <i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                            </p>
+                            <p>
+
+                                <a :href="contents?.business_social.instagram" target="_blank" rel="noopener"> Instagram <i
+                                        class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                            </p>
+                            <p>
+
+                                <a :href="contents?.business_social.youtube" target="_blank" rel="noopener"> Youtube <i
+                                        class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                            </p>
+                        </div>
+
+
+
                     </div>
                     <div class="column">
                         <div class="custom-container">
-                            <p>Website</p>
-                            <p>{{ contents?.business_website }}</p>
+
+                            <p><i class="fa fa-clock" aria-hidden="true"></i> Business Timing</p>
+                            <p>
+                                Monday:
+                                {{ contents?.business_timing.monday.start }}
+                                -
+                                {{ contents?.business_timing.monday.end }}
+                                <span class="icon" v-if="day == 'Monday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+                            <p>
+                                Tuesday:
+                                {{ contents?.business_timing.tuesday.start }}
+                                -
+                                {{ contents?.business_timing.tuesday.end }}
+                                <span class="icon" v-if="day == 'Tuesday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+                            <p>
+                                Wednesday:
+                                {{ contents?.business_timing.wednesday.start }}
+                                -
+                                {{ contents?.business_timing.wednesday.end }}
+                                <span class="icon" v-if="day == 'Wednesday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+                            <p>
+                                Thrusday:
+                                {{ contents?.business_timing.thrusday.start }}
+                                -
+                                {{ contents?.business_timing.thrusday.end }}
+                                <span class="icon" v-if="day == 'Thrusday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+                            <p>
+                                Friday:
+                                {{ contents?.business_timing.friday.start }}
+                                -
+                                {{ contents?.business_timing.friday.end }}
+                                <span class="icon" v-if="day == 'Friday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+                            <p>
+                                Saturday:
+                                {{ contents?.business_timing.saturday.start }}
+                                -
+                                {{ contents?.business_timing.saturday.end }}
+                                <span class="icon" v-if="day == 'Saturday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+                            <p>
+                                Sunday: {{ contents?.business_timing.sunday.start == '' ? 'Closed' :
+                                    '-' + contents?.business_timing.sunday.start }}
+                                {{ contents?.business_timing.sunday.end }}
+
+                                <span class="icon" v-if="day == 'Sunday'"><i class="fas fa-dot-circle"></i></span>
+                            </p>
+
                         </div>
-                        <div class="custom-container">
-                            <p>Services</p>
-                            <p>{{ contents?.business_services }}</p>
-                        </div>
+
                     </div>
                     <div class="column">
                         <div class="custom-container">
-                            <p>City</p>
-                            <p>{{ contents?.business_city }}, {{ contents?.business_state }}</p>
+                            <p><i class="fa fa-wrench" aria-hidden="true"></i> Services</p>
+
+
+                            <div class="block">
+                                <span class="tag is-primary is-medium ml-1 is-size-7"
+                                    v-for="service in contents?.business_services">
+                                    {{ service }}
+
+                                </span>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
-            <div class="inner">
-                <h4 class="title"> About</h4>
+            <div class="inner" v-if="contents.business_description != ''">
+                <h4 class="title"><i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                    About</h4>
                 <p>{{ contents?.business_description }}</p>
 
             </div>
 
-            <div class="inner mt-4 mb-6">
-                <h4 class="title"> FAQs</h4>
-                <p>{{ contents?.business_faqs }}</p>
+            <div class="inner mt-4 mb-6" v-if="contents?.business_faq">
+                <h4 class="title"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQs</h4>
+                <p>{{ contents?.business_faq }}</p>
                 <br>
             </div>
         </section>
     </template>
 </template>
+
+
 
 
 
@@ -451,5 +550,11 @@ nav.breadcrumb {
     .recent-post ul {
         width: 100%;
     }
+}
+
+aside {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
 }
 </style>

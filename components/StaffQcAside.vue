@@ -1,5 +1,5 @@
 <script setup>
-const { title, setModule, setAction, setEdit, setDynamicTitle, setItem } = useCommon()
+const { title, setModule, setAction, setEdit, setDynamicTitle, setItem, auth } = useCommon()
 const setModuleAndAction = (mod, act, edit) => {
     setModule(mod)
     setAction(act)
@@ -26,7 +26,8 @@ const setModuleAndAction = (mod, act, edit) => {
                 <a v-on:click="setModuleAndAction('businesses', 'list', false)">Businesses</a>
                 <ul>
                     <li><a v-on:click="setModuleAndAction('businesses', 'list', false)">List</a></li>
-                    <li><a v-on:click="setModuleAndAction('businesses', 'add-edit', true)">Add</a></li>
+                    <li v-if="auth.role != 'QC'"><a v-on:click="setModuleAndAction('businesses', 'add-edit', true)">Add</a>
+                    </li>
                 </ul>
             </li>
 

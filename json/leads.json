@@ -1,10 +1,10 @@
 [
     {
+        "name": "Dummy",
+        "email": "Dummy",
+        "phone": "Dummy",
         "subcategory": "Dummy",
         "city": "Dummy",
-        "name": "Dummy",
-        "mobile": "Dummy",
-        "email": "Dummy",
-        "full_path": "Dummy"
+        "query": "Dummy"
     }
 ]

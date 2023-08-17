@@ -1,22 +1,38 @@
+<script setup>
+const { pages, setPage, page } = useCommon()
+
+const changePage = (pageSlug) => {
+    setPage(pageSlug)
+
+    localStorage.page = JSON.stringify(page.value)
+}
+
+</script>
 <template>
     <footer class="footer">
         <div class="container">
+
             <div class="row margin-header-footer" data-nosnippet="">
                 <div class="col-xs-12">
 
-                    <div> HIGH RISK WARNING: Foreign exchange trading carries a high level of risk that may not be
-                        suitable for all investors. Leverage creates additional risk and loss exposure. Before you
-                        decide to trade foreign exchange, carefully consider your investment objectives, experience
-                        level, and risk tolerance. You could lose some or all of your initial investment. Do not invest
-                        money that you cannot afford to lose. Educate yourself on the risks associated with foreign
-                        exchange trading, and seek advice from an independent financial or tax advisor if you have any
-                        questions. Any data and information is provided 'as is' solely for informational purposes, and
-                        is not intended for trading purposes or advice. Past performance is not indicative of future
-                        results. </div>
+                    <div> About US: Welcome to Easetrail, your go-to destination for all your daily needs! Whether you're
+                        searching for the daily need services, we've got you covered with a vast array of services from
+                        beauty and wellness to home repairs, travel & accommodations, educational institutions, and beyond,
+                        you'll find a wide range of services to cater to your specific requirements. Each service category
+                        comes with detailed listings, providing you with all the essential information you need. Discover
+                        contact details, operating hours, service descriptions, customer reviews, and more, all at your
+                        fingertips. </div>
                     <br>
 
-                    <div>Terms & Condiitions &nbsp; | &nbsp; &nbsp; Privacy Policy &nbsp; &nbsp; | &nbsp; &nbsp; Contact
-                        &nbsp; &nbsp; | &nbsp; &nbsp; Carrier &nbsp; &nbsp; | &nbsp; &nbsp; Feedback &nbsp; &nbsp;</div>
+                    <div>
+                        <nav class="breadcrumb has-dot-separator" aria-label="breadcrumbs">
+                            <ul>
+                                <li v-for="ttt in pages" :key="ttt.slug"><nuxt-link :to="ttt.slug"
+                                        @click="changePage(ttt.slug)">{{
+                                            ttt.title }}</nuxt-link></li>
+                            </ul>
+                        </nav>
+                    </div>
 
                     <br>
                     <div>

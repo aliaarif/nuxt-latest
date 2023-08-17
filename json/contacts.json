@@ -1,10 +1,9 @@
 [
     {
         "name": "Dummy",
-        "email": "Dummy",
         "phone": "Dummy",
-        "city": "Dummy",
+        "email": "Dummy",
         "subject": "Dummy",
-        "description": "Dummy"
+        "message": "Dummy"
     }
 ]

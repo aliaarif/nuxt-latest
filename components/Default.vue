@@ -1,14 +1,88 @@
 <script setup>
-const { city, slug, title, auth, action, module, setAction, setEdit, td, edit, fields, item } = useCommon()
+const { slug, title, auth, module, edit, fields, item, subcategories, setSCat } = useCommon()
 const adminModules = ref(['businesses', 'categories', 'subcategories', 'cities', 'states', 'users'])
 const qcModules = ref(['QC Done', 'Approoved', 'Pending', 'Rejected'])
 const staffModules = ref(['Total Posted', 'Approoved', 'Pending', 'Rejected'])
 const message = ref('')
+const services = ref('')
+const scats = subcategories.value.map(item => item.name);
 
-const submit = ref(false)
+const changeServicesAdd = (event) => {
+    businessFormData.value.business_services = []
+    $fetch(`/api/services?name=${event.target.value}`, {
+        method: 'get'
+    }).then((res) => {
+        services.value = res
+    })
+}
+
+const changeServicesSave = (event) => {
+    item.value.business_services = []
+    $fetch(`/api/services?name=${event.target.value}`, {
+        method: 'get'
+    }).then((res) => {
+        services.value = res
+    })
+}
+
+const changeOwnershipAdd = (event) => {
+    businessFormData.value.business_ownership = event.target.value
+}
+
+const changeOwnershipSave = (event) => {
+    item.value.business_ownership = event.target.value
+}
+
+const addBusinessServices1 = (service) => {
+    if (!businessFormData.value.business_services.includes(service)) {
+        businessFormData.value.business_services.push(service)
+    }
+}
+
+const addBusinessServices2 = (service) => {
+    if (!item.value.business_services.includes(service)) {
+        item.value.business_services.push(service)
+    }
+}
+
+const removeBusinessServices1 = (service) => {
+    businessFormData.value.business_services.pop(service)
+}
+
+const removeBusinessServices2 = (service) => {
+    item.value.business_services.pop(service)
+}
+
+const removeImageFromBusinessAdd = (image) => {
+    businessFormData.value.business_images.pop(image)
+    if (businessFormData.value.business_images.length > 0) {
+        showFilesNo.value = businessFormData.value.business_images.length + ' Files Selected'
+    } else {
+        showFilesNo.value = ''
+    }
+}
+
+const removeImageFromBusinessSave = (image) => {
+    item.value.business_images.pop(image)
+    if (item.value.business_images.length > 0) {
+        showFilesNo.value = businessFormData.value.business_images.length + ' Files Selected'
+    } else {
+        showFilesNo.value = ''
+    }
+}
+
+const makeSlugForSlugOnlyAdd = (event) => {
+    businessFormData.value.business_slug = event.target.value.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').trim()
+}
+
+
+const makeSlugForSlugOnlySave = (event) => {
+    item.value.business_slug = event.target.value.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').trim()
+}
 
 
 
+// console.log(filteredPeople);
 
 const subCategoryFormData = ref({
     // module: module,
@@ -19,87 +93,93 @@ const subCategoryFormData = ref({
 })
 
 const addSubCategory = async () => {
-    submit.value = true
-    // message.value = ''
     useFetch("/api/save/subcategory", {
         method: 'post',
         body: subCategoryFormData
     }).then((res) => {
-        console.log(res);
+        console.log(res.data.value)
         message.value = res.data.value.payload
-        submit.value = false
+    })
+}
+
+const editSubCategory = async () => {
+    useFetch("/api/save/subcategory", {
+        method: 'post',
+        body: item
+    }).then((res) => {
+        console.log(res.data.value)
+        message.value = res.data.value.payload
     })
 }
 
 
 const businessFormData = ref({
-    // module: module,
-    // editFlag: false,
-    created_by: 'Obelcon',
-    business_name: '',
-    business_slug: '',
-    business_ownership: '',
+    business_name: '111',
+    business_slug: '111',
+    business_ownership: 'Unverified',
     business_category: '',
-    business_services: '',
+    business_services: [],
     business_timing:
     {
         monday: {
-            start: "09:00 ",
-            end: "17:00 "
+            start: "09:00",
+            end: "17:00"
         },
 
         tuesday: {
-            start: "09:00 ",
-            end: "17:00 "
+            start: "09:00",
+            end: "17:00"
         },
 
         wednesday: {
-            start: "09:00 ",
-            end: "17:00 "
+            start: "09:00",
+            end: "17:00"
         },
 
         thrusday: {
-            start: "09:00 ",
-            end: "17:00 "
+            start: "09:00",
+            end: "17:00"
         },
 
         friday: {
-            start: "09:00 ",
-            end: "17:00 "
+            start: "09:00",
+            end: "17:00"
         },
 
         saturday: {
-            start: "NA",
-            end: "NA"
+            start: "",
+            end: ""
         },
 
         sunday: {
-            start: "NA",
-            end: "NA"
+            start: "",
+            end: ""
         }
     },
-
-
+    business_address: 'Shree Ram PG',
+    business_locality: 'Sector 15',
     business_city: '',
-    business_state: '',
-    business_address: '',
-    business_phone: '',
-    business_email: '',
-    business_website: '',
-    business_Social: '',
-    business_latitude: '',
-    business_longitude: '',
-    business_description: '',
-    business_faqs: '',
-    business_image: '',
+    business_state: 'Haryana',
+    business_pin: '122001',
+    business_phone: '8005794205',
+    business_email: 'test@example.com',
+    business_website: 'https://easetrail.com/',
+    business_social: {
+        facebook: 'https://easetrail.com/',
+        instagram: 'https://easetrail.com/',
+        youtube: 'https://easetrail.com/'
+    },
+    business_latitude: '37.385687356',
+    business_longitude: '71.385687356',
+    business_description: 'Dummy Description',
+    business_faqs: [],
     business_images: [],
-    page_title: '',
-    page_content: '',
-    status: 'Active'
+    status: 'Active',
+    created_by: auth.value?.email,
+    updated_by: auth.value?.email
 })
 
 const addBusiness = async () => {
-    // businessFormData.value.business_images = selectedFiles.value
     try {
         const res = await useFetch('/api/save/business', {
             method: 'post',
@@ -111,15 +191,13 @@ const addBusiness = async () => {
         console.log(res.data.value)
         message.value = res.data.value.message
     } catch (error) {
-        console.error('File upload failed:', error)
+        console.error('Business add failed:', error)
     }
     selectedFiles.value = []
 }
 
 
 const editBusiness = async () => {
-    // console.log(selectedFiles)
-    // item.value.business_images.push(...selectedFiles.value)
     try {
         const res = await useFetch('/api/save/business', {
             method: 'post',
@@ -128,31 +206,21 @@ const editBusiness = async () => {
             },
             body: item
         });
-        console.log(res)
-        // message.value = res.data.value.message
+        console.log(res.data.value)
     } catch (error) {
-        console.error('File upload failed:', error)
+        console.error('Business save failed:', error)
     }
 }
 
-
-// const editBusiness = async () => {
-//     // message.value = ''
-//     useFetch("/api/save/business", {
-//         method: 'post',
-//         body: item
-//     }).then((res) => {
-//         onsole.log(res.data.value)
-//         message.value = res.data.value.message
-//     })
-// }
-
-
-
-const makeSlug = () => {
-    businessFormData.value.business_slug = slug(businessFormData.value.business_name)
+function makeSlugAdd() {
+    businessFormData.value.business_slug = slug(businessFormData.value.business_name);
 }
 
+function makeSlugSave() {
+    item.value.business_slug = slug(item.value.business_name);
+}
+
+const showFilesNo = ref('')
 
 const returnVoid = () => {
     return;
@@ -160,36 +228,21 @@ const returnVoid = () => {
 
 const selectedFiles = ref([])
 
-
-const onFileChange = (event) => {
-    const formData = new FormData();
-    // selectedFiles.value = Object.values(event.target.files)
-    // selectedFiles.value.foreach((img) => {
-    //     aaaa.value.push(img.name)
-    // })
-    for (let i = 0; i < event.target.files.length; i++) {
-        console.log(event.target.files[i])
-        selectedFiles.value.push(event.target.files[i])
-        formData.append('images[]', event.target.files[i]);
-
-    }
-    businessFormData.value.business_images = formData
-
-    // if (eflg === true) {
-    //     item.value.business_images.push(...selectedFiles.value)
-    // } else {
-    //     businessFormData.value.business_images.push(...selectedFiles.value)
-    // }
-
-    // console.log(selectedFiles.value)
+const onFileChangeAdd = (event) => {
+    selectedFiles.value.business_images = Array.from(event.target.files)
+    showFilesNo.value = selectedFiles.value.business_images.length + ' Files Selected'
+    selectedFiles.value.business_images.forEach(file => {
+        businessFormData.value.business_images.push(URL.createObjectURL(file))
+    });
 }
 
-
-
-
-
-
-
+const onFileChangeSave = (event) => {
+    selectedFiles.value.business_images = Array.from(event.target.files)
+    showFilesNo.value = selectedFiles.value.business_images.length + ' Files Selected'
+    selectedFiles.value.business_images.forEach(file => {
+        item.value.business_images.push(URL.createObjectURL(file))
+    });
+}
 
 </script>
 
@@ -269,9 +322,7 @@ const onFileChange = (event) => {
         <section v-if="module == 'cities'">
             <div class="columns">
                 <div class="column is-half">
-
                     {{ item }}
-
                 </div>
             </div>
         </section>
@@ -279,9 +330,7 @@ const onFileChange = (event) => {
         <section v-if="module == 'states'">
             <div class="columns">
                 <div class="column is-half">
-
                     {{ item }}
-
                 </div>
             </div>
         </section>
@@ -289,9 +338,7 @@ const onFileChange = (event) => {
         <section v-if="module == 'users'">
             <div class="columns">
                 <div class="column is-half">
-
                     {{ item }}
-
                 </div>
             </div>
         </section>
@@ -299,8 +346,7 @@ const onFileChange = (event) => {
         <section v-if="module == 'subcategories' && item">
             <div class="columns">
                 <div class="column is-half">
-                    <form>
-
+                    <form @submit.prevent="editSubCategory">
 
                         <div class="field">
                             <label class="label">Category Name</label>
@@ -331,7 +377,7 @@ const onFileChange = (event) => {
                                     placeholder="Enter Page Content">
                             </div>
                         </div>
-                        <button type="button" @click="editSubCategory" class="button is-primary">Add</button> {{
+                        <button type="submit" class="button is-primary">Save</button> {{
                             message }}
                     </form>
                 </div>
@@ -342,7 +388,7 @@ const onFileChange = (event) => {
         <section v-if="module == 'subcategories' && !item">
             <div class="columns">
                 <div class="column is-half">
-                    <form>
+                    <form @submit.prevent="addSubCategory">
 
 
                         <div class="field">
@@ -376,7 +422,7 @@ const onFileChange = (event) => {
                                     placeholder="Enter Page Content">
                             </div>
                         </div>
-                        <button type="button" @click="addSubCategory" class="button is-primary">Add</button>
+                        <button type="submit" class="button is-primary">Add</button>
                         {{ message }}
                     </form>
                 </div>
@@ -387,13 +433,12 @@ const onFileChange = (event) => {
 
             <form @submit.prevent="editBusiness()">
                 <div class="columns">
-                    <div class="column">
-
+                    <div class="column ">
 
                         <div class="field">
                             <label class="label">Business Name</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_name" @input="makeSlug"
+                                <input class="input" type="text" v-model="item.business_name" @input="makeSlugSave"
                                     placeholder="Enter Business Name">
                             </div>
                         </div>
@@ -401,48 +446,38 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">Business Slug</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_slug"
-                                    placeholder="Enter Business Slug">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">business_ownership</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_ownership"
-                                    placeholder="Enter business_ownership">
+                                <input class="input" type="text" v-model="item.business_slug"
+                                    @input="makeSlugForSlugOnlySave" placeholder="Enter Business Slug">
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="label">business_category</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_category"
-                                    placeholder="Enter business_category">
+                                <select id="scat" v-model="item.business_category" @change="changeServicesSave">
+                                    <option selected value="">Select a Category</option>
+                                    <option v-for="scat in scats" :key="scat">{{ scat }}</option>
+                                </select>
                             </div>
                         </div>
 
-                        <!-- <div class="select">
-
-                            <select v-model="businessFormData.business_category">
-                                <option>Select dropdown</option>
-                                <option>With options</option>
-                            </select>
-                        </div> -->
-
-
-
-                        <div class="field">
+                        <div class="field" v-if="services">
                             <label class="label">business_services</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_services"
-                                    placeholder="Enter business_services">
+                            <div class="block">
+                                <span class="tag is-secondary is-medium ml-1" v-for="service in services.services"
+                                    :key="service" @click="addBusinessServices2(service)">
+                                    {{ service }}
+                                </span>
+                            </div>
+                            <div class="block">
+                                <span class="tag is-primary is-medium ml-1" v-for="service in item.business_services">
+                                    {{ service }}
+                                    <button class="delete is-medium" @click="removeBusinessServices2(service)"></button>
+                                </span>
                             </div>
                         </div>
 
-
                         <div class="field">
-                            {{ item.business_timing }}
                             <label class="label">Business timing</label>
                             <div class="columns">
                                 <div class="column ">
@@ -538,15 +573,8 @@ const onFileChange = (event) => {
                             </div>
                         </div>
 
-
-
-
-
-
                         <div class="field">
                             <label class="label">Address</label>
-
-
                             <div class="columns">
                                 <div class="column ">
                                     <div class="control">
@@ -571,7 +599,8 @@ const onFileChange = (event) => {
                                     <div class="control">
                                         <label class="label">business_city</label>
                                         <div class="control">
-                                            <input class="input" type="text" v-model="item.business_city"
+                                            <input class="input" type="text"
+                                                :v-model="item.business_city = auth.assigned_city"
                                                 placeholder="Enter business_city">
                                         </div>
                                     </div>
@@ -602,8 +631,25 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">business_phone</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_phone"
+                                <input class="input" type="text" maxlength="11"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" v-model="item.business_phone"
                                     placeholder="Enter business_phone">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">business_ownership</label>
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" value="Verifiefd" v-model="item.business_ownership"
+                                        @change="changeOwnershipSave">
+                                    Verifiefd
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" value="Unverifiefd" checked v-model="item.business_ownership"
+                                        @change="changeOwnershipSave">
+                                    Unverifiefd
+                                </label>
                             </div>
                         </div>
 
@@ -612,37 +658,60 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">business_email</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_email"
-                                    placeholder="Enter business_email">
+                                <input class="input" type="email"
+                                    oninput="this.value = this.value.replace(/[^0-9a-zA-z.-_@]/g, '');"
+                                    v-model="item.business_email" placeholder="Enter business_email">
                             </div>
                         </div>
-
-
-
                         <div class="field">
                             <label class="label">business_website</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_website"
+                                <input class="input" type="url" v-model="item.business_website"
                                     placeholder="Enter business_website">
                             </div>
                         </div>
-
-
                         <div class="field">
-                            <label class="label">business_Social</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.business_Social"
-                                    placeholder="Enter business_Social">
+                            <label class="label">business_social</label>
+
+
+                            <div class="columns">
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">facebook</label>
+                                        <div class="control">
+                                            <input class="input" type="url" v-model="item.business_social.facebook"
+                                                placeholder="facebook link">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">instagram</label>
+                                        <div class="control">
+                                            <input class="input" type="url" v-model="item.business_social.instagram"
+                                                placeholder="instgram link">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">youtube</label>
+                                        <div class="control">
+                                            <input class="input" type="url" v-model="item.business_social.youtube"
+                                                placeholder="youtube link">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
 
                         <div class="field">
                             <label class="label">business_latitude</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_latitude"
-                                    placeholder="Enter business_latitude">
+                                <input class="input" type="text" maxlength="10"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '');"
+                                    v-model="item.business_latitude" placeholder="Enter business_latitude">
                             </div>
                         </div>
 
@@ -651,8 +720,9 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">business_longitude</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="item.business_longitude"
-                                    placeholder="Enter business_longitude">
+                                <input class="input" type="text" maxlength="10"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '');"
+                                    v-model="item.business_longitude" placeholder="Enter business_longitude">
                             </div>
                         </div>
 
@@ -675,64 +745,34 @@ const onFileChange = (event) => {
                         </div>
 
 
-                        <div class="field">
-                            <label class="label">business_image</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.business_image"
-                                    placeholder="Enter business_image">
-                            </div>
-                        </div>
-
-
-                        <div class="field">
-                            <label class="label">business_images</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.business_images"
-                                    placeholder="Enter business_images">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">page_title</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.page_title" placeholder="Enter page_title">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">page_content</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="item.page_content"
-                                    placeholder="Enter page_content">
-                            </div>
-                        </div>
-
-
-
-
-
                         <div class="file has-name is-fullwidth">
                             <label class="file-label">
-                                <input class="file-input" type="file" name="b_img" @change="onFileChange" multiple>
+                                <input class="file-input" type="file" multiple @change="onFileChangeSave">
                                 <span class="file-cta">
                                     <span class="file-icon">
                                         <i class="fas fa-upload"></i>
                                     </span>
                                     <span class="file-label">
-                                        Choose a file…
+                                        Choose images...
                                     </span>
                                 </span>
                                 <span class="file-name">
-                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                    {{ showFilesNo }}
                                 </span>
                             </label>
                         </div>
-
-
-
-
-
-                        <button type="button" @click="editBusiness" class="button is-primary">Save</button>
+                        <div class="columns">
+                            <div class="column ">
+                                <div class="block mt-6">
+                                    <span class="tag  is-medium ml-6" v-for="image in businessFormData.business_images">
+                                        <img :src="`${image}`" width="100" height="70" />
+                                        <button class="delete is-medium"
+                                            @click="removeImageFromBusinessSave(image)"></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="button is-primary">Save</button>
                         {{ message }}
                     </div>
                 </div>
@@ -740,15 +780,15 @@ const onFileChange = (event) => {
         </section>
 
         <section v-if="module == 'businesses' && !item">
-
             <form @submit.prevent="addBusiness()">
                 <div class="columns">
                     <div class="column ">
+
                         <div class="field">
                             <label class="label">Business Name</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_name" @input="makeSlug"
-                                    placeholder="Enter Business Name">
+                                <input class="input" type="text" v-model="businessFormData.business_name"
+                                    @input="makeSlugAdd" placeholder="Enter Business Name">
                             </div>
                         </div>
 
@@ -756,56 +796,38 @@ const onFileChange = (event) => {
                             <label class="label">Business Slug</label>
                             <div class="control">
                                 <input class="input" type="text" v-model="businessFormData.business_slug"
-                                    placeholder="Enter Business Slug">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">business_ownership</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_ownership"
-                                    placeholder="Enter business_ownership">
+                                    @input="makeSlugForSlugOnlyAdd" placeholder="Enter Business Slug">
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="label">business_category</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_category"
-                                    placeholder="Enter business_category">
+                                <select id="scat" v-model="businessFormData.business_category" @change="changeServicesAdd">
+                                    <option selected value="">Select a Category</option>
+                                    <option v-for="scat in scats" :key="scat">{{ scat }}</option>
+                                </select>
                             </div>
                         </div>
 
-                        <!-- <div class="select">
-
-                            <select v-model="businessFormData.business_category">
-                                <option>Select dropdown</option>
-                                <option>With options</option>
-                            </select>
-                        </div> -->
-
-
-
-                        <div class="field">
+                        <div class="field" v-if="services">
                             <label class="label">business_services</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_services"
-                                    placeholder="Enter business_services">
-                            </div>
-
                             <div class="block">
-                                <span class="tag is-primary is-medium">
-                                    Hello World
-                                    <button class="delete is-medium"></button>
+                                <span class="tag is-secondary is-medium ml-1" v-for="service in services.services"
+                                    :key="service" @click="addBusinessServices1(service)">
+                                    {{ service }}
+                                </span>
+                            </div>
+                            <div class="block">
+                                <span class="tag is-primary is-medium ml-1"
+                                    v-for="service in businessFormData.business_services">
+                                    {{ service }}
+                                    <button class="delete is-medium" @click="removeBusinessServices1(service)"></button>
                                 </span>
                             </div>
                         </div>
 
-
-
-
                         <div class="field">
-                            {{ businessFormData.business_timing }}
                             <label class="label">Business timing</label>
                             <div class="columns">
                                 <div class="column ">
@@ -908,15 +930,8 @@ const onFileChange = (event) => {
                             </div>
                         </div>
 
-
-
-
-
-
                         <div class="field">
                             <label class="label">Address</label>
-
-
                             <div class="columns">
                                 <div class="column ">
                                     <div class="control">
@@ -972,8 +987,25 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">business_phone</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_phone"
-                                    placeholder="Enter business_phone">
+                                <input class="input" type="text" maxlength="11"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                    v-model="businessFormData.business_phone" placeholder="Enter business_phone">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">business_ownership</label>
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" value="Verifiefd" v-model="businessFormData.business_ownership"
+                                        @change="changeOwnershipAdd">
+                                    Verifiefd
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" value="Unverifiefd" checked
+                                        v-model="businessFormData.business_ownership" @change="changeOwnershipAdd">
+                                    Unverifiefd
+                                </label>
                             </div>
                         </div>
 
@@ -982,37 +1014,63 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">business_email</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_email"
-                                    placeholder="Enter business_email">
+                                <input class="input" type="email"
+                                    oninput="this.value = this.value.replace(/[^0-9a-zA-z.-_@]/g, '');"
+                                    v-model="businessFormData.business_email" placeholder="Enter business_email">
                             </div>
                         </div>
-
-
-
                         <div class="field">
                             <label class="label">business_website</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_website"
+                                <input class="input" type="url" v-model="businessFormData.business_website"
                                     placeholder="Enter business_website">
                             </div>
                         </div>
-
-
                         <div class="field">
-                            <label class="label">business_Social</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_Social"
-                                    placeholder="Enter business_Social">
+                            <label class="label">business_social</label>
+
+
+                            <div class="columns">
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">facebook</label>
+                                        <div class="control">
+                                            <input class="input" type="url"
+                                                v-model="businessFormData.business_social.facebook"
+                                                placeholder="facebook link">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">instagram</label>
+                                        <div class="control">
+                                            <input class="input" type="url"
+                                                v-model="businessFormData.business_social.instagram"
+                                                placeholder="instgram link">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column ">
+                                    <div class="control">
+                                        <label class="label">youtube</label>
+                                        <div class="control">
+                                            <input class="input" type="url"
+                                                v-model="businessFormData.business_social.youtube"
+                                                placeholder="youtube link">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
 
                         <div class="field">
                             <label class="label">business_latitude</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_latitude"
-                                    placeholder="Enter business_latitude">
+                                <input class="input" type="text" maxlength="10"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '');"
+                                    v-model="businessFormData.business_latitude" placeholder="Enter business_latitude">
                             </div>
                         </div>
 
@@ -1021,8 +1079,9 @@ const onFileChange = (event) => {
                         <div class="field">
                             <label class="label">business_longitude</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_longitude"
-                                    placeholder="Enter business_longitude">
+                                <input class="input" type="text" maxlength="10"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '');"
+                                    v-model="businessFormData.business_longitude" placeholder="Enter business_longitude">
                             </div>
                         </div>
 
@@ -1045,63 +1104,34 @@ const onFileChange = (event) => {
                         </div>
 
 
-                        <div class="field">
-                            <label class="label">business_image</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_image"
-                                    placeholder="Enter business_image">
-                            </div>
-                        </div>
-
-
-                        <div class="field">
-                            <label class="label">business_images</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.business_images"
-                                    placeholder="Enter business_images">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">page_title</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.page_title"
-                                    placeholder="Enter page_title">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">page_content</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="businessFormData.page_content"
-                                    placeholder="Enter page_content">
-                            </div>
-                        </div>
-
-
-
-
-
                         <div class="file has-name is-fullwidth">
                             <label class="file-label">
-                                <input class="file-input" type="file" name="b_img" @change="onFileChange" multiple>
+                                <input class="file-input" type="file" multiple @change="onFileChangeAdd">
                                 <span class="file-cta">
                                     <span class="file-icon">
                                         <i class="fas fa-upload"></i>
                                     </span>
                                     <span class="file-label">
-                                        Choose a file…
+                                        Choose images...
                                     </span>
                                 </span>
                                 <span class="file-name">
-                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                    {{ showFilesNo }}
                                 </span>
                             </label>
                         </div>
-
-
-
-                        <button type="button" @click="addBusiness" class="button is-primary">Add</button>
+                        <div class="columns">
+                            <div class="column ">
+                                <div class="block mt-6">
+                                    <span class="tag  is-medium ml-6" v-for="image in businessFormData.business_images">
+                                        <img :src="`${image}`" width="100" height="70" />
+                                        <button class="delete is-medium"
+                                            @click="removeImageFromBusinessAdd(image)"></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="button is-primary">Add</button>
                         {{ message }}
                     </div>
                 </div>
@@ -1111,11 +1141,47 @@ const onFileChange = (event) => {
     </template>
 </template>
 
-<style>
+<style scoped>
 .select {
     display: inline-block;
     max-width: 100%;
     position: relative;
     vertical-align: top;
+}
+
+
+/* <select> styles */
+select {
+    /* Reset */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    /* Personalize */
+    width: 20em;
+    height: 3em;
+    padding: 0 4em 0 1em;
+    /* background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) no-repeat right 0.8em center/1.4em, linear-gradient(to left, rgba(255, 255, 255, 0.3) 3em, rgba(255, 255, 255, 0.2) 3em); */
+
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    /* <option> colors */
+    /* Remove focus outline */
+    /* Remove IE arrow */
+}
+
+select option {
+    color: black;
+    background-color: white;
+}
+
+select:focus {
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
 }
 </style>

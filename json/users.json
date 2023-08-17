@@ -3,28 +3,54 @@
     "name": "Admin",
     "email": "admin@example.com",
     "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
-    "status": 1,
-    "role": "Admin"
+    "assigned_city": "Gurugram",
+    "role": "Admin",
+    "posted": 0,
+    "approved": 0,
+    "rejected": 0,
+    "status": "Active"
   },
   {
     "name": "Quality Checker",
     "email": "qc@example.com",
     "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
-    "status": 1,
-    "role": "QC"
+    "assigned_city": "Gurugram",
+    "role": "QC",
+    "posted": 0,
+    "approved": 0,
+    "rejected": 0,
+    "status": "Active"
   },
   {
     "name": "Staff",
     "email": "staff@example.com",
     "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
-    "status": 1,
-    "role": "Staff"
+    "assigned_city": "Gurugram",
+    "role": "Staff",
+    "posted": 0,
+    "approved": 0,
+    "rejected": 0,
+    "status": "Active"
   },
   {
     "name": "User",
     "email": "user@example.com",
     "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
-    "status": 1,
-    "role": "User"
+    "assigned_city": "Gurugram",
+    "role": "User",
+    "posted": 0,
+    "approved": 0,
+    "rejected": 0,
+    "status": "Active"
+  },
+  {
+    "name": "Vendor",
+    "email": "vendor@example.com",
+    "password": "$2a$04$oqAIgqWoZ60ZtpLnJXaLsew5sT4YuMIPf5kqKfUt4Bhh42W9w10Z.",
+    "role": "Vendor",
+    "posted": 0,
+    "approved": 0,
+    "rejected": 0,
+    "status": "Active"
   }
 ]

@@ -3,7 +3,6 @@ import LeadModel from "~~/server/models/Lead";
 
 export default defineEventHandler(async event => {
     const body = await readBody(event)
-
     const res = {}
     try {
         let result1 = LeadModel.create(body)

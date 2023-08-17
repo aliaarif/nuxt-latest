@@ -1,24 +1,16 @@
 <script setup>
 const { title, module, auth, setAuth, setModule, setAction, setEdit, dynamicTitle, setDynamicTitle, setItem } = useCommon()
-definePageMeta({
-    // layout: 'auth',
-    // pageTransition: {
-    //     name: "rotate",
-    // },
-})
 useHead({
     title: `Obelcon | Register Panel`,
     meta: [
         { name: 'description', content: 'Obelcon Login Page' }
     ]
 })
-
 onMounted(() => {
     if (localStorage.auth) {
         navigateTo('/dashboard')
     }
 })
-
 const registerFormData = ref({
     name: '',
     username: '',
@@ -26,14 +18,11 @@ const registerFormData = ref({
 })
 
 const message = ref('')
-
 const register = async () => {
-
     useFetch('/api/register', {
         method: 'post',
         body: registerFormData
     }).then((res) => {
-
         if (res.data.value !== '') {
             setAuth(res.data.value)
             console.log(res.data.value)
@@ -42,8 +31,6 @@ const register = async () => {
         } else {
             message.value = 'Invalid Login Credentials'
         }
-
-
     })
 }
 </script>

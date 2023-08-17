@@ -22,17 +22,16 @@ onMounted(() => {
 <template>
     <section>
         <div class="columns mt-4">
-            <div class="column is-one-fifth">
+            <div class="column is-one-fifth" id="111">
                 <AdminAside v-if="auth?.role === 'Admin'" />
                 <StaffQcAside v-if="auth?.role === 'Staff' || auth?.role === 'QC'" />
             </div>
-            <div class=" column is-four-fifths">
+            <div class=" column is-four-fifths" id="222">
                 <h1>{{ dynamicTitle }}</h1>
                 {{ auth?.role }}
                 <Default />
             </div>
         </div>
-
     </section>
 </template>
 

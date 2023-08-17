@@ -1,98 +1,58 @@
-import BusinessModel from "~~/server/models/Business";
-// import connectToDatabase from "../plugins/db"
-// import multer from 'multer'
-// import path from 'path'
-
-
+import SubcategoryModel from "~~/server/models/Subcategory"
+import BusinessModel from "~~/server/models/Business"
+// import saveAs from 'file-saver'
 
 export default defineEventHandler(async event => {
     const body = await readBody(event)
     const res = {}
 
-
-
     try {
+        // const meta = SubcategoryModel.findOne({ name: body.business_category }, { page_title: 1, page_content: 1, _id: 0 })
+        // body.page_title = meta.page_title
         if (body._id) {
+            // res.imgs = []
+            // body.business_images.forEach(async (blob) => {
+            // const response = await fetch(blob);
+            // const blob = await response.blob();
+            // saveAs(blob, 'image.jpg');
 
-            return body.business_images[0]
-
-            // body.business_images.forEach(function (img, index) {
-            //     console.log(`Img at index ${index}: ${img}`);
-
-            // })
-
-            // const storage = multer.diskStorage({
-            //     destination: (body, file, cb) => {
-            //         cb(null, 'uploads/');
-            //     },
-            //     filename: (body, file, cb) => {
-            //         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-            //         cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-            //     },
+            // Create a link element to trigger download
+            // const imageURL = `./${blob}.jpg`;
+            // let blobURL = URL.createObjectURL(blob);
+            // const link = document.createElement('a');
+            // link.href = blobURL;
+            // link.download = imageURL;
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild(link);
             // });
-            // const upload = multer({ storage });
-
-
-
-            // const files = body.business_images.map((file) => ({
-            //     filename: file.filename,
-            //     path: file.path
-            // }));
-
-
-
-            // body.business_images = []
-
-            // body.business_images = JSON.stringify(files)
-            // let result2 = BusinessModel.updateOne(body)
-            // res.status = 200
-            // res.message = 'Record updated for business'
-
-
+            let result1 = BusinessModel.save(body)
+            res.status = 200
+            // res.meta = body.page_title
+            res.message = 'Business Saved!'
         } else {
-            // return body.business_timing
+            // res.imgs = []
+            // body.business_images.forEach(async (blob) => {
+            // const response = await fetch(blob);
+            // const blob = await response.blob();
+            // saveAs(blob, 'image.jpg');
 
-            // const arr = ref([])
-            // for (let i = 0; i < body.business_images.length; i++) {
-
-            //     console.log(body.business_images[i])
-            //     arr.value.push(body.business_images[i])
-            // }
-            // return arr.value
-
-            // body.business_images.forEach(function (arr, img, index) {
-            //     // console.log(`Img at index ${index}: ${img}`);
-            //     const storage = multer.diskStorage({
-            //         destination: (req, img, cb) => {
-            //             cb(null, 'uploads/');
-            //         },
-            //         filename: (req, img, cb) => {
-            //             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-            //             cb(null, img.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-            //         },
-            //     });
-            //     const upload = multer({ storage });
-            // })
-
-
-
-
-
-            // const files = body.business_images.map((file) => ({
-            //     name: file.name,
-            //     size: file.size
-            // }));
-
-
-
-            // body.business_images = []
-
-            // body.business_images = JSON.stringify(files)
+            // Create a link element to trigger download
+            // const imageURL = `./${blob}.jpg`;
+            // let blobURL = URL.createObjectURL(blob);
+            // const link = document.createElement('a');
+            // link.href = blobURL;
+            // link.download = imageURL;
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild(link);
+            // });
             let result2 = BusinessModel.create(body)
             res.status = 200
-            res.message = 'Record added for business'
+            res.message = 'Business Added!'
         }
         res.body = body
+        // res.meta = body.page_title
         return res
     } catch (error) {
         console.log(error)

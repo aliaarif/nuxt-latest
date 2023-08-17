@@ -66,20 +66,18 @@ const changeFormValues = (item) => {
                 </th>
             </thead>
             <tbody>
-                <tr v-for=" item1 in    rows   " :key="item1._id">
-                    <td v-for="item2 in    td   " :key="item2">
-
-
+                <tr v-for=" item1 in     rows    " :key="item1._id">
+                    <td v-for=" item2  in     td    " :key="item2"
+                        v-if="auth.role == 'Saff' && item1.created_by == auth.email || item1.updated_by == auth.email">
                         <div v-if="module == 'businesses'">
                             <span v-if="item2 == 'id'">{{ item1._id.substr(16) }}</span>
                             {{ item2 == 'business_name' ? item1.business_name : '' }}
                             {{ item2 == 'business_category' ? item1.business_category : '' }}
                             {{ item2 == 'business_city' ? item1.business_city : '' }}
                             {{ item2 == 'created_by' ? item1.created_by : '' }}
-
+                            {{ item2 == 'content_by' ? item1.updated_by : '' }}
+                            <!-- {{ item2 == 'created_at' ? item1.createdAt : '' }} -->
                         </div>
-
-
                         <a :id="item1._id" @click="changeStatus(item1.status)"
                             v-if="item2 == 'status' && item1.status == 'Active'"
                             :class="item1.status == 'Active' ? 'is-success' : 'is-danger'">
@@ -90,8 +88,28 @@ const changeFormValues = (item) => {
                                 <i class="fas fa-edit"></i>
                             </span>
                         </button>
+                    </td>
 
-
+                    <td v-for=" item2  in  td  " :key="item2" v-if="auth.role == 'QC' && item1.updated_by == auth.email">
+                        <div v-if="module == 'businesses'">
+                            <span v-if="item2 == 'id'">{{ item1._id.substr(16) }}</span>
+                            {{ item2 == 'business_name' ? item1.business_name : '' }}
+                            {{ item2 == 'business_category' ? item1.business_category : '' }}
+                            {{ item2 == 'business_city' ? item1.business_city : '' }}
+                            {{ item2 == 'created_by' ? item1.created_by : '' }}
+                            {{ item2 == 'content_by' ? item1.updated_by : '' }}
+                            <!-- {{ item2 == 'created_at' ? item1.createdAt : '' }} -->
+                        </div>
+                        <a :id="item1._id" @click="changeStatus(item1.status)"
+                            v-if="item2 == 'status' && item1.status == 'Active'"
+                            :class="item1.status == 'Active' ? 'is-success' : 'is-danger'">
+                            {{ title(item1.status) }}
+                        </a>
+                        <button class=" button is-small" v-if="item2 == 'action'" @click="changeFormValues(item1)">
+                            <span class=" icon is-small">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                        </button>
                     </td>
                 </tr>
             </tbody>
