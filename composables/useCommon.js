@@ -20,7 +20,7 @@ export default function useCommon() {
     const action = useState('action', () => 'grid')
     const edit = useState('edit', () => false)
     const pageNo = useState('pageNo', () => 1)
-    const pageLimit = useState('pageLimit', () => 5)
+    const pageLimit = useState('pageLimit', () => 50)
 
     const auth = useState('auth', () => { })
 
@@ -258,11 +258,21 @@ export default function useCommon() {
             td.value = ['name', 'total_cities', 'status', 'action']
         }
 
-        $fetch(`/api/modules?name=${module.value}&pageLimit=${pageLimit.value}&searchTerms=${searchTerms.value}`, {
-            method: 'get'
-        }).then((res) => {
-            rows.value = res
-        })
+
+        // if (searchTerms.value) {
+        //     $fetch(`/api/modules?name=${module.value}&pageLimit=${pageLimit.value}&searchTerms=${searchTerms.value}`, {
+        //         method: 'get'
+        //     }).then((res) => {
+        //         rows.value = res
+        //     }) 
+        // } else {
+            $fetch(`/api/modules?name=${module.value}&pageLimit=${pageLimit.value}`, {
+                method: 'get'
+            }).then((res) => {
+                rows.value = res
+            }) 
+        // }
+       
 
         return;
     }

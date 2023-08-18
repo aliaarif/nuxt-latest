@@ -13,7 +13,8 @@ const contactsFormData = ref({
     "phone": "Dummy",
     "email": "Dummy",
     "subject": "Dummy",
-    "message": "Dummy"
+    "message": "Dummy",
+    "status": "Pending"
 })
 
 const sendMessage = async () => {
@@ -77,7 +78,7 @@ const onFileChangeSave = (event) => {
                                 </a>
                             </p>
                             <p class="control is-expanded">
-                                <input class="input" type="tel" placeholder="Your phone number"
+                                <input class="input" type="text" placeholder="Your phone number"
                                     v-model="contactsFormData.phone" required>
                             </p>
                         </div>

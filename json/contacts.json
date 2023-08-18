@@ -4,6 +4,7 @@
         "phone": "Dummy",
         "email": "Dummy",
         "subject": "Dummy",
-        "message": "Dummy"
+        "message": "Dummy",
+        "status": "Pending"
     }
 ]

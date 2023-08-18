@@ -3,19 +3,17 @@
 const { searchTerms, title, module, setModule, td, rows, search, setAction, setEdit, setItem, pageNo, setPageNo, setPageLimit, pageLimit } = useCommon()
 const filterSearch = () => {
 
-    // $fetch(`/api/modules?name=${module.value}&pageLimit=${pageLimit.value}&searchTerms=${searchTerms.value}`, {
-    //     method: 'get'
-    // }).then((res) => {
-    //     rows.value = res
-    // })
+    $fetch(`/api/modules?name=${module.value}&pageLimit=${pageLimit.value}&searchTerms=${searchTerms.value}`, {
+        method: 'get'
+    }).then((res) => {
+        rows.value = res
+    })
 
-    if (searchTerms.value.length > 1) {
-        rows.value = rows.value.filter(searchFunction)
-        setModule(module.value)
-    }
-    else {
-        rows.value = rows.value
-    }
+    // if (searchTerms.value.length > 1) {
+    //     rows.value = rows.value.filter(searchFunction)
+    //     setModule(module.value)
+    // }
+
 }
 const searchFunction = (item) => {
     return item.category.startsWith(searchTerms.value);
@@ -52,15 +50,14 @@ const changePageLimit = (event) => {
 </script>
 
 <template>
-    {{ searchTerms }}
     <div class="field has-addons">
         <p class="control">
             <span class="select">
                 <select @change="changePageLimit">
-                    <option value="5">Show 5 entries</option>
-                    <option value="10">Show 10 entries</option>
-                    <option value="20">Show 20 entries</option>
-                    <option value="50">Show 50 entries</option>
+                    <option value="50">Show 50 </option>
+                    <option value="200">Show 200 </option>
+                    <option value="1000">Show 1000 </option>
+                    <option value="5000">Show 5000 </option>
                 </select>
             </span>
         </p>
@@ -110,6 +107,8 @@ const changePageLimit = (event) => {
                             {{ item2 == 'phone' ? item1.phone : '' }}
                             {{ item2 == 'subject' ? item1.subject : '' }}
                             {{ item2 == 'message' ? item1.message : '' }}
+                            {{ item2 == 'date' ? item1.createdAt : '' }}
+                          
                         </div>
 
                         <div v-if="module == 'categories'">
@@ -133,7 +132,7 @@ const changePageLimit = (event) => {
                         </div>
 
                         <a :id="item1._id" @click="changeStatus(item1.status)"
-                            :class="item1.status == 'Active' ? 'is-success' : 'is-danger'">
+                            :class="item2.status == 'Active' ? 'is-success' : 'is-danger'">
                             {{ title(item1.status) }}
                         </a>
                         <button class=" button is-small" v-if="item2 == 'action'" @click="changeFormValues(item1)">
@@ -146,9 +145,10 @@ const changePageLimit = (event) => {
             </tbody>
         </table>
     </div>
-    <nav class="pagination is-small" role="navigation" aria-label="pagination">
+    <nav class="pagination is-small" role="navigation" aria-label="pagination" v-if="rows.length > 50">
         <a class="pagination-previous" @click="pagePlus">Previous</a>
         <a class="pagination-next" @click="pageMinus">Next page</a>
+
         <ul class="pagination-list">
             <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
             <li><span class="pagination-ellipsis">&hellip;</span></li>

@@ -19,7 +19,13 @@ export default defineEventHandler(async (event) => {
     }
 
     if (params.name == 'subcategories') {
-        return SubcategoryModel.find({ category: /params.searchTerms$/ }, {}).limit(params.pageLimit)
+
+        if (params.searchTerms) {
+            // '/' + params.searchTerms + '^/'
+            return SubcategoryModel.find({ 'category': 'Hire On' }, {}).limit(params.pageLimit)
+        } else if (params.searchTerms == '')  {
+            return SubcategoryModel.find({ }, {}).limit(params.pageLimit)
+        }
     }
 
     if (params.name == 'businesses') {
