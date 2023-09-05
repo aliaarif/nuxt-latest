@@ -1,10 +1,12 @@
 [
     {
-        "name": "Dummy",
-        "phone": "Dummy",
-        "email": "Dummy",
-        "subject": "Dummy",
-        "message": "Dummy",
-        "status": "Pending"
+        "name": "Aarif Ali Chauhan",
+        "phone": "8005794205",
+        "email": "ali.aliaarif@gmail.com",
+        "subject": "Want to become a CTO",
+        "message": "Want to become a CTO and want 25% of the shares",
+        "status": "Pending",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     }
 ]

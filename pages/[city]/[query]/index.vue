@@ -86,7 +86,8 @@ const leadsFormData = ref({
     "name": "",
     "phone": "",
     "email": "",
-    "query": data
+    "query": data,
+    "status": "Pending"
 })
 
 const gernerateLead = async () => {
@@ -126,8 +127,10 @@ useHead({
         </aside>
     </template>
 
+   
 
-    <template v-else-if="pageType == 'Subcategories'">
+
+    <template v-else-if="pageType == 'Subcategories' && data != 'profile'">
 
         <section>
             <h1 class="title is-1">{{ meta.page_title }} in {{ title(city) }}</h1>
@@ -142,7 +145,32 @@ useHead({
         </section>
     </template>
 
-    <template v-else-if="pageType == 'Businesses'">
+
+    <!-- <template v-else-if="pageType == 'Subcategories'">
+        <section>
+            <h1 class="title is-1">{{ meta.page_title }} in {{ title(city) }}</h1>
+            <div class="columns is-multiline is-mobile is-variable is-2-tablet mt-4 mb-6">
+                <div class=" column is-6-mobile is-4-tablet is-4-desktop is-3-widescreen" v-for="s in contents" :key="s._id">
+                    <aside class="menu grid-item box">
+                        <ul class="menu-list">
+                            <li>
+                                <a class="is-active" :href="`/${slug(city)}/${slug(s?.name)}-in-${slug(city)}`">
+                                    <p><b>{{ s.name }}</b></p>
+                                </a>
+                            </li>
+                            <li v-for="s2 in s.specialities" :key="s2"> 
+                                <a :href="`/${slug(city)}/${slug(s2)}-in-${slug(city)}`">
+                                    <p>{{ s2 }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </template> -->
+
+    <template v-else-if="pageType == 'Businesses' && data != 'profile'">
         <section>
             <span class="is-left">
                 <nav class="breadcrumb" aria-label="breadcrumbs">
@@ -201,7 +229,7 @@ useHead({
                             <input type="text" class="form-field" placeholder="Phone Number" v-model="leadsFormData.phone"
                                 required>
                             <input type="text" class="form-field" placeholder="Email ID (optional)"
-                                v-model="leadsFormData.email">
+                                v-model="leadsFormData.email" oninput="this.value = this.value.replace(/[^0-9a-zA-z.-_@]/g, '');">
                             <button type="submit" class="form-button">Get Best Deal</button>
                         </form>
                     </div>
@@ -222,7 +250,7 @@ useHead({
 
 
 
-    <template v-else-if="pageType == 'Business Details'">
+    <template v-else-if="pageType == 'Business Details' && data != 'profile'">
 
 
         <section>

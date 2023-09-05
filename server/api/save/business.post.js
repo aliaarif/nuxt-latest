@@ -1,15 +1,18 @@
-import SubcategoryModel from "~~/server/models/Subcategory"
+// import SubcategoryModel from "~~/server/models/Subcategory"
 import BusinessModel from "~~/server/models/Business"
 // import saveAs from 'file-saver'
-
 export default defineEventHandler(async event => {
     const body = await readBody(event)
     const res = {}
 
+ 
+
     try {
+        
         // const meta = SubcategoryModel.findOne({ name: body.business_category }, { page_title: 1, page_content: 1, _id: 0 })
         // body.page_title = meta.page_title
         if (body._id) {
+            // return body
             // res.imgs = []
             // body.business_images.forEach(async (blob) => {
             // const response = await fetch(blob);
@@ -26,7 +29,7 @@ export default defineEventHandler(async event => {
             // link.click();
             // document.body.removeChild(link);
             // });
-            let result1 = BusinessModel.save(body)
+            let result1 = BusinessModel.updateOne({_id:body._id}, { body })
             res.status = 200
             // res.meta = body.page_title
             res.message = 'Business Saved!'
@@ -52,7 +55,6 @@ export default defineEventHandler(async event => {
             res.message = 'Business Added!'
         }
         res.body = body
-        // res.meta = body.page_title
         return res
     } catch (error) {
         console.log(error)

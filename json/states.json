@@ -1,110 +1,218 @@
 [
   {
-    "name": "Andhra Pradesh"
+    "name": "Andhra Pradesh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Arunachal Pradesh"
+    "name": "Arunachal Pradesh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Assam"
+    "name": "Assam",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Bihar"
+    "name": "Bihar",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Chhattisgarh"
+    "name": "Chhattisgarh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Goa"
+    "name": "Goa",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Gujarat"
+    "name": "Gujarat",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Haryana"
+    "name": "Haryana",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Himachal Pradesh"
+    "name": "Himachal Pradesh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Jharkhand"
+    "name": "Jharkhand",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Kerala"
+    "name": "Kerala",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Madhya Pradesh"
+    "name": "Madhya Pradesh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Maharashtra"
+    "name": "Maharashtra",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Manipur"
+    "name": "Manipur",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Meghalaya"
+    "name": "Meghalaya",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Mizoram"
+    "name": "Mizoram",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Nagaland"
+    "name": "Nagaland",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Odisha"
+    "name": "Odisha",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Punjab"
+    "name": "Punjab",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Rajasthan"
+    "name": "Rajasthan",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Sikkim"
+    "name": "Sikkim",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Tamil Nadu"
+    "name": "Tamil Nadu",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Telangana"
+    "name": "Telangana",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Tripura"
+    "name": "Tripura",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Uttar Pradesh"
+    "name": "Uttar Pradesh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Uttarakhand"
+    "name": "Uttarakhand",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "West Bengal"
+    "name": "West Bengal",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Andaman and Nicobar Islands"
+    "name": "Andaman and Nicobar Islands",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Chandigarh"
+    "name": "Chandigarh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Dadra and Nagar Haveli"
+    "name": "Dadra and Nagar Haveli",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Daman and Diu"
+    "name": "Daman and Diu",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Delhi"
+    "name": "Delhi",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Jammu and Kashmir"
+    "name": "Jammu and Kashmir",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Lakshadweep"
+    "name": "Lakshadweep",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Ladakh"
+    "name": "Ladakh",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   },
   {
-    "name": "Puducherry"
+    "name": "Puducherry",
+    "status": "Active",
+    "createdAt": "2023-08-14T17:54:22.951+00:00",
+    "updatedAt": "2023-08-14T17:54:22.951+00:00"
   }
 ]

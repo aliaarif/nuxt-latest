@@ -1,6 +1,6 @@
 
 <script setup>
-const { auth, city } = useCommon()
+const { auth } = useCommon()
 
 
 const logout = async () => {
@@ -13,7 +13,6 @@ const logout = async () => {
     <section>
         <nav class="navbar">
 
-
             <div class="navbar-brand">
 
                 <nuxt-link to="/mobile/menu" role="button" class="navbar-burger burger" aria-label="menu"
@@ -23,21 +22,13 @@ const logout = async () => {
                     <span aria-hidden="true"></span>
                 </nuxt-link>
 
-
-
                 <nuxt-link to="/" class="navbar-item">
                     <img src="https://www.licious.in/image/rebranding/svg/licious-logo.svg" alt="Logo" width="112"
                         height="28">
                 </nuxt-link>
 
-
-
-
-
                 <nuxt-link to="/mobile/search" aria-label="menu" aria-expanded="false"
                     class="navbar-item is-hidden-desktop is-hidden-tablet">
-
-                    <span>{{ city }}</span>
                     <span class="icon">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                     </span>

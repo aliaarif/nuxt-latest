@@ -5,7 +5,8 @@ const leadSchema = new mongoose.Schema({
     phone: { type: String, required: true, trim: true },
     subcategory: { type: String, required: true, trim: true },
     city: { type: String, required: true, trim: true },
-    query: { type: String, required: true, trim: true }
+    query: { type: String, required: true, trim: true },
+    status: { type: String, required: false, trim: true }
 })
 leadSchema.set('timestamps', true)
 const LeadModel = mongoose.model('lead', leadSchema)

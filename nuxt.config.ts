@@ -3,9 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["~/assets/css/main.css"],
   // modules: ["nuxt-vue3-google-signin"],
-  googleSignIn: {
-    clientId: process.env.GOOGLE_CLIENT_ID,
-  },
+  // googleSignIn: {
+  //   clientId: process.env.GOOGLE_CLIENT_ID,
+  // },
   // build: { transpile: ["@fawmi/vue-google-maps"] },
   runtimeConfig: {
     // public: { GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY },

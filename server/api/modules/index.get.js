@@ -6,26 +6,25 @@ import StateModel from "~~/server/models/State";
 import UserModel from "~~/server/models/User";
 import LeadModel from "~~/server/models/Lead";
 import ContactModel from "~~/server/models/Contact";
-// import useCommon from "~~/composables/useCommon";
+import ScriptModel from "~~/server/models/Script";
+
 
 export default defineEventHandler(async (event) => {
 
     const params = getQuery(event)
-
-    // const { pageLimit } = useCommon()
 
     if (params.name == 'categories') {
         return CategoryModel.find({}, {}).limit(params.pageLimit)
     }
 
     if (params.name == 'subcategories') {
-
-        if (params.searchTerms) {
-            // '/' + params.searchTerms + '^/'
-            return SubcategoryModel.find({ 'category': 'Hire On' }, {}).limit(params.pageLimit)
-        } else if (params.searchTerms == '')  {
-            return SubcategoryModel.find({ }, {}).limit(params.pageLimit)
-        }
+        return SubcategoryModel.find({ }, {}).limit(params.pageLimit)
+        // if (params.searchTerms) {
+        //     // '/' + params.searchTerms + '^/'
+        //     return SubcategoryModel.find({ }, {}).limit(params.pageLimit)
+        // } else if (params.searchTerms == '')  {
+        //     return SubcategoryModel.find({ }, {}).limit(params.pageLimit)
+        // }
     }
 
     if (params.name == 'businesses') {
@@ -50,6 +49,14 @@ export default defineEventHandler(async (event) => {
 
     if (params.name == 'contacts') {
         return ContactModel.find({}, {}).limit(params.pageLimit)
+    }
+
+    if (params.name == 'scripts') {
+        return ScriptModel.find({}, {}).limit(params.pageLimit)
+    }
+
+    if (params.name == 'profile') {
+        return
     }
 })
 

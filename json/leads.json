@@ -1,10 +1,13 @@
 [
     {
-        "name": "Dummy",
-        "email": "Dummy",
-        "phone": "Dummy",
-        "subcategory": "Dummy",
-        "city": "Dummy",
-        "query": "Dummy"
+        "name": "Aarif Ali Chauhan",
+        "phone": "8005794205",
+        "email": "ali.aliaarif@gmail.com",
+        "subcategory": "Car Rental",
+        "city": "Sadulpur",
+        "query": "gurugram/car-rental-in-gurugram",
+        "status": "Pending",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     }
 ]

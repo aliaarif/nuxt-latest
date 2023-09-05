@@ -1,7 +1,7 @@
 [
     {
-        "business_name": "Yuvika Tour And Travels",
-        "business_slug": "yuvika-tour-and-travels-sector-15-gurgaon",
+        "business_name": "Yuvika Tour And Travels 1",
+        "business_slug": "yuvika-tour-and-travels-1-sector-15-gurgaon",
         "business_category": "Car Rental",
         "business_services": [
             "Self Drive Car Rental",
@@ -56,19 +56,30 @@
             "instagram": "https://www.easetrail.com/",
             "youtube": "https://www.easetrail.com/"
         },
-        "business_description": "This is Yuvika Tour & Travel",
-        "business_faq": "dummy data",
+        "business_description": "Yuvika Tour And Travels 1",
+        "business_faq": [
+            {
+                "q": "Question 1",
+                "a": "Answer 1"
+            },
+            {
+                "q": "Question 2",
+                "a": "Answer 2"
+            }
+        ],
         "business_images": [],
         "created_by": "staff@example.com",
         "updated_by": "qc@example.com",
         "approved_by": "addmin@example.com",
         "page_title": "Top Car Rental Services",
         "page_content": "Make a car rental booking in cityName today, with trusted car rental service providers for local and outstations with driver or self drive option at affordable rates, and easy document formalities. Also our vendor caters a wide range of travel-related services including minibus for hire, tempo for hire, taxi services in different segments from economy to luxury cars and more. (Website) connect you with the service provider around you that offer Car Rental services in cityName.",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "business_name": "Yuvika Tour And Travels 2",
-        "business_slug": "yuvika-tour-and-travels-2-sector-16-gurgaon",
+        "business_slug": "yuvika-tour-and-travels-2-sector-15-gurgaon",
         "business_category": "Car Rental",
         "business_services": [
             "Self Drive Car Rental",
@@ -109,6 +120,162 @@
         },
         "business_address": "1st Floor Dada Mangeram Market",
         "business_locality": "Sector 15",
+        "business_city": "Rewari",
+        "business_state": "Haryana",
+        "business_pin": "122001",
+        "business_latitude": "",
+        "business_longitude": "",
+        "business_phone": "+919991210207",
+        "business_ownership": "Unverified",
+        "business_email": "email@easetrail.com",
+        "business_website": "https://www.easetrail.com/",
+        "business_social": {
+            "facebook": "https://www.easetrail.com/",
+            "instagram": "https://www.easetrail.com/",
+            "youtube": "https://www.easetrail.com/"
+        },
+        "business_description": "Yuvika Tour And Travels 2",
+        "business_faq": [
+            {
+                "q": "Question 1",
+                "a": "Answer 1"
+            },
+            {
+                "q": "Question 2",
+                "a": "Answer 2"
+            }
+        ],
+        "business_images": [],
+        "created_by": "staff@example.com",
+        "updated_by": "qc@example.com",
+        "approved_by": "addmin@example.com",
+        "page_title": "Top Car Rental Services",
+        "page_content": "Make a car rental booking in cityName today, with trusted car rental service providers for local and outstations with driver or self drive option at affordable rates, and easy document formalities. Also our vendor caters a wide range of travel-related services including minibus for hire, tempo for hire, taxi services in different segments from economy to luxury cars and more. (Website) connect you with the service provider around you that offer Car Rental services in cityName.",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
+    },
+    {
+        "business_name": "Yuvika Tour And Travels 3",
+        "business_slug": "yuvika-tour-and-travels-3-sector-15-gurgaon",
+        "business_category": "Car Rental",
+        "business_services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
+        "business_timing": {
+            "monday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "tuesday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "wednesday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "thrusday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "friday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "saturday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "sunday": {
+                "start": "",
+                "end": ""
+            }
+        },
+        "business_address": "HN.550 Suncity Township",
+        "business_locality": "Sector 35",
+        "business_city": "Rohtak",
+        "business_state": "Haryana",
+        "business_pin": "124021",
+        "business_latitude": "",
+        "business_longitude": "",
+        "business_phone": "+919991210207",
+        "business_ownership": "Unverified",
+        "business_email": "email@easetrail.com",
+        "business_website": "https://www.easetrail.com/",
+        "business_social": {
+            "facebook": "https://www.easetrail.com/",
+            "instagram": "https://www.easetrail.com/",
+            "youtube": "https://www.easetrail.com/"
+        },
+        "business_description": "Yuvika Tour And Travels 3",
+        "business_faq": [
+            {
+                "q": "Question 1",
+                "a": "Answer 1"
+            },
+            {
+                "q": "Question 2",
+                "a": "Answer 2"
+            }
+        ],
+        "business_images": [],
+        "created_by": "staff@example.com",
+        "updated_by": "qc@example.com",
+        "approved_by": "addmin@example.com",
+        "page_title": "Top Car Rental Services",
+        "page_content": "Make a car rental booking in cityName today, with trusted car rental service providers for local and outstations with driver or self drive option at affordable rates, and easy document formalities. Also our vendor caters a wide range of travel-related services including minibus for hire, tempo for hire, taxi services in different segments from economy to luxury cars and more. (Website) connect you with the service provider around you that offer Car Rental services in cityName.",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
+    },
+    {
+        "business_name": "Yuvika Tour And Travels 4",
+        "business_slug": "yuvika-tour-and-travels-4-sector-15-gurgaon",
+        "business_category": "Car Rental",
+        "business_services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
+        "business_timing": {
+            "monday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "tuesday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "wednesday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "thrusday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "friday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "saturday": {
+                "start": "09:00",
+                "end": "17:00"
+            },
+            "sunday": {
+                "start": "",
+                "end": ""
+            }
+        },
+        "business_address": "1st Floor Main Market",
+        "business_locality": "Sector 14",
         "business_city": "Gurugram",
         "business_state": "Haryana",
         "business_pin": "122001",
@@ -122,14 +289,25 @@
             "instagram": "https://www.easetrail.com/",
             "youtube": "https://www.easetrail.com/"
         },
-        "business_description": "This is Yuvika Tour & Travel 2",
-        "business_faq": "dummy data",
+        "business_description": "Yuvika Tour And Travels 4",
+        "business_faq": [
+            {
+                "q": "Question 1",
+                "a": "Answer 1"
+            },
+            {
+                "q": "Question 2",
+                "a": "Answer 2"
+            }
+        ],
         "business_images": [],
         "created_by": "staff@example.com",
         "updated_by": "qc@example.com",
         "approved_by": "addmin@example.com",
         "page_title": "Top Car Rental Services",
         "page_content": "Make a car rental booking in cityName today, with trusted car rental service providers for local and outstations with driver or self drive option at affordable rates, and easy document formalities. Also our vendor caters a wide range of travel-related services including minibus for hire, tempo for hire, taxi services in different segments from economy to luxury cars and more. (Website) connect you with the service provider around you that offer Car Rental services in cityName.",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     }
 ]

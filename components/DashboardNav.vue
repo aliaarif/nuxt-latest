@@ -1,9 +1,16 @@
 <script setup>
-const { setAuth } = useCommon()
+const { setAuth, auth, module, setModule, setAction, setEdit, setDynamicTitle } = useCommon()
+
 const logout = async () => {
     setAuth('{}')
     localStorage.removeItem('auth')
     window.location.href = '/login'
+}
+
+const setModuleAndAction = (mod, act, edit) => {
+    setModule(mod)
+    setAction(act)
+    setEdit(edit)
 }
 
 const menuToggle = () => {
@@ -27,8 +34,6 @@ const menuToggle = () => {
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
-
-
             </div>
 
             <div class="navbar-item" @click="menuToggle">
@@ -39,15 +44,40 @@ const menuToggle = () => {
                 </div>
             </div>
 
-
+            <!-- <div class="navbar-item">
+                <div class="buttons">
+                    <div class="block">
+                        <span class="tag is-primary is-medium ml-1">
+                            You are logged in as  {{ auth.role }} 
+                        </span>
+                    </div>
+                </div>
+            </div> -->
 
             <div class="navbar-menu" id="navbarMenu">
                 <div class="navbar-end">
-                    <!-- <a href="/" class="navbar-item">Home</a> -->
-                    <nuxt-link to="/dashboard" class="navbar-item">Dashboard</nuxt-link>
+
                     <div class="navbar-item">
                         <div class="buttons">
-                            <nuxt-link to="dashboard/profile" class="button is-light">Profile</nuxt-link>
+                            <div class="block">
+                                <span class="tag is-primary is-medium ml-1">
+                                    Welcome {{ auth?.name }} on Creative Dashboard,   You are logged in as  {{ auth?.role }} 
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <nuxt-link to="javascript:;" class="button is-light" @click="setModuleAndAction('dashboard', 'grid', fase), setDynamicTitle('Dashboard')" :class="module == 'dashboard' && !edit ? 'is-active' : ''">Dashboard</nuxt-link>
+                        </div>
+                    </div>
+
+
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <nuxt-link to="javascript:;" class="button is-light" @click="setModuleAndAction('profile', 'add-edit', true), setDynamicTitle('Profile Page')" :class="module == 'profile' && edit ? 'is-active' : ''">Profile</nuxt-link>
                         </div>
                     </div>
 

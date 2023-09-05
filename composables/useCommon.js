@@ -3,6 +3,8 @@
 
 export default function useCommon() {
 
+
+    
     const city = useState('city', () => 'new-delhi')
     const category = useState('category', () => 'hire-on')
     const pageTitle = useState('pageTitle', () => '')
@@ -27,6 +29,8 @@ export default function useCommon() {
     const pageSlug = useState('pageSlug', () => '')
 
     const searchTerms = useState('searchTerms', () => '')
+
+    const profileTab = useState('profileTab', () => 'profile')
 
 
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -90,6 +94,31 @@ export default function useCommon() {
     )
 
 
+    const showDateTime = (val) => {
+        const timestamp = val; // Your timestamp
+
+        const date = new Date(timestamp);
+        const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        // timeZoneName: 'short'
+        };
+        const formattedDate = date.toLocaleDateString('en-IN', options);
+
+        console.log(formattedDate); // Output: August 13, 2023, 5:54:22 PM GMT
+
+        return formattedDate
+
+    }
+
+    const setProfileTab = (val) => {
+        profileTab.value = val
+        return;
+    }
 
     const setAuth = (val) => {
         auth.value = val
@@ -149,52 +178,21 @@ export default function useCommon() {
     const setModule = (val) => {
         module.value = val
 
-        if (val == 'businesses') {
-            if (auth.value.role === 'Admin') {
-                td.value = ['id', 'business_name', 'business_category', 'business_city', 'content_by', 'approved_by', 'status', 'created_at', 'action']
-            }
-            if (auth.value.role === 'QC') {
-                td.value = ['id', 'business_name', 'business_category', 'business_city', 'created_by', 'content_by', 'status', 'created_at', 'action']
-            }
-            if (auth.value.role === 'Staff') {
-                td.value = ['id', 'business_name', 'business_category', 'business_city', 'created_by', 'status', 'created_at', 'action']
-            }
-
+        if (val == 'states') {
+            td.value = ['Name', 'Cities', 'Status', 'Action']
             fields.value = [
                 {
-                    label: 'Business Name',
+                    label: 'Name',
                     type: 'text',
-                    name: 'business_name',
-                    value: '',
-                    default: item.value
-                },
-                {
-                    label: 'Business Slug',
-                    type: 'text',
-                    name: 'business_name',
+                    name: 'name',
                     value: '',
                     default: ''
-                },
-                {
-                    label: 'Business Ownership',
-                    type: 'dropdown',
-                    name: 'business_ownership',
-                    value: '',
-                    default: 'Unclaimed'
-                },
-                {
-                    label: 'Business Category',
-                    type: 'dropdown',
-                    name: 'business_category',
-                    value: subcategories,
-                    default: ''
-                },
-
+                }
             ]
         }
 
         if (val == 'subcategories') {
-            td.value = ['category', 'subcategory', 'total_business', 'status', 'action']
+            td.value = ['Category', 'Subcategory', 'Businesses', 'Status', 'Action']
             fields.value = [
                 {
                     label: 'Category Name',
@@ -238,25 +236,70 @@ export default function useCommon() {
             ]
         }
 
-        if (val == 'users') {
-            td.value = ['name', 'email', 'role', 'assigned_city', 'posted', 'approved', 'rejected', 'status', 'action']
-        }
+     
 
-        if (val == 'leads') {
-            td.value = ['city', 'category', 'query', 'name', 'email', 'phone', 'date', 'action']
+        if (val == 'scripts') {
+            td.value = ['Name', 'Type', 'Positions', 'Body', 'Status', 'Action']
         }
 
         if (val == 'contacts') {
-            td.value = ['name', 'email', 'phone', 'subject', 'message', 'date', 'status', 'action']
+            td.value = ['Name', 'Email', 'Phone', 'Subject', 'Message', 'Date', 'Status', 'Action']
         }
 
-        if (val == 'cities') {
-            td.value = ['name', 'state', 'status', 'action']
+        if (val == 'leads') {
+            td.value = ['City', 'Category', 'Query', 'Name', 'Email', 'Phone', 'Date', 'Status', 'Action']
         }
 
-        if (val == 'states') {
-            td.value = ['name', 'total_cities', 'status', 'action']
+        if (val == 'users') {
+            td.value = ['Name', 'Email', 'Role', 'City', 'Status', 'Action']
         }
+
+        if (val == 'businesses') {
+            if (auth.value.role === 'Admin') {
+                td.value = ['id', 'Name', 'Category', 'City', 'Content By', 'Approved By', 'Date', 'Status', 'Action']
+            }
+            if (auth.value.role === 'QC') {
+                td.value = ['id', 'Name', 'Category', 'City', 'Content By', 'Approved By', 'Date', 'Status', 'Action']
+            }
+            if (auth.value.role === 'Staff') {
+                td.value = ['id', 'Name', 'Category', 'City', 'Content By', 'Approved By', 'Date', 'Status', 'Action']
+            }
+
+            fields.value = [
+                {
+                    label: 'Business Name',
+                    type: 'text',
+                    name: 'business_name',
+                    value: '',
+                    default: item.value
+                },
+                {
+                    label: 'Business Slug',
+                    type: 'text',
+                    name: 'business_name',
+                    value: '',
+                    default: ''
+                },
+                {
+                    label: 'Business Ownership',
+                    type: 'dropdown',
+                    name: 'business_ownership',
+                    value: '',
+                    default: 'Unclaimed'
+                },
+                {
+                    label: 'Business Category',
+                    type: 'dropdown',
+                    name: 'business_category',
+                    value: subcategories,
+                    default: ''
+                },
+
+            ]
+        }
+
+
+      
 
 
         // if (searchTerms.value) {
@@ -319,6 +362,6 @@ export default function useCommon() {
     }
 
     return {
-        searchTerms, pages, page, setPage, pageNo, setPageNo, pageLimit, setPageLimit, title, auth, setAuth, city, setCity, slug, title, setSCat, day, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, dynamicTitle, setDynamicTitle, fields, item, setItem, categories, subcategories
+        profileTab, setProfileTab, showDateTime, searchTerms, pages, page, setPage, pageNo, setPageNo, pageLimit, setPageLimit, title, auth, setAuth, city, setCity, slug, title, setSCat, day, pageTitle, setPageTitle, metaContent, setMetaContent, meta, setMeta, customMeta, setCustomMeta, pageType, setPageType, module, action, edit, setModule, setAction, setEdit, td, setTd, rows, dynamicTitle, setDynamicTitle, fields, item, setItem, categories, subcategories
     }
 }

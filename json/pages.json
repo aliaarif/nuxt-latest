@@ -5,7 +5,9 @@
         "content": "Dummy Content for About Page",
         "page_title": "Obelcon | About",
         "pege_content": "Dummy Meta Content for About Page",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "title": "Contact",
@@ -13,7 +15,9 @@
         "content": "Dummy Content for Contact Page",
         "page_title": "Obelcon | Contact",
         "pege_content": "Dummy Meta Content for Contact Page",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "title": "Terms",
@@ -21,7 +25,9 @@
         "content": "Dummy Content for Terms Page",
         "page_title": "Obelcon | Terms",
         "pege_content": "Dummy Meta Content for Terms Page",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "title": "Privacy",
@@ -29,7 +35,9 @@
         "content": "Dummy Content for Privacy Page",
         "page_title": "Obelcon | Privacy",
         "pege_content": "Dummy Meta Content for Privacy Page",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "title": "Carrier",
@@ -37,6 +45,8 @@
         "content": "Dummy Content for Carrier Page",
         "page_title": "Obelcon | Carrier",
         "pege_content": "Dummy Meta Content for Carrier Page",
-        "status": "Active"
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     }
 ]

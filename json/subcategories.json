@@ -1,332 +1,931 @@
 [
     {
         "name": "Car Rental",
+        "slug": "car-rental",
         "category": "Hire On",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Top Car Rental Services",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Bike Rental",
+        "slug": "bike-rental",
         "category": "Hire On",
+        "services": [
+            "Self Drive Bike Rental",
+            "Bike Rental For Outstation",
+            "Monthly Bike rental",
+            "Luxury Bike Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Top Bike Rental Services",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Bike Rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "AC On Rent",
+        "slug": "ac-on-rent",
         "category": "Hire On",
+        "services": [
+            "Self Drive AC Rental",
+            "AC Rental For Outstation",
+            "Monthly AC rental",
+            "Luxury AC Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Air Conditioner On Rent",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Furniture On Rent",
+        "slug": "furniture-on-rent",
         "category": "Hire On",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Furniture On Rent",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Refrigerator On Rent",
+        "slug": "refrigerator-on-rent",
         "category": "Hire On",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Refrigerator On Rent",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "LED TV On Rent",
+        "slug": "led-tv-on-rent",
         "category": "Hire On",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "LED TV On Rent",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Room On Rent",
+        "slug": "room-on-rent",
         "category": "Hire On",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Room On Rent",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Plumber",
+        "slug": "plumber",
         "category": "Daily Need",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Plumber",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Electricians",
+        "slug": "electricians",
         "category": "Daily Need",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Electricians",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Carpenters",
+        "slug": "carpenters",
         "category": "Daily Need",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Carpenters",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Accountant",
+        "slug": "accountant",
         "category": "Daily Need",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Accountant.",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Beauty Parlour",
+        "slug": "beauty-parlour",
         "category": "Personal Care",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Beauty Parlour",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Salons",
+        "slug": "salons",
         "category": "Personal Care",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Salons",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Beauty Spas",
+        "slug": "beauty-spas",
         "category": "Personal Care",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Beauty Spas",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Doctors",
+        "slug": "doctors",
         "category": "Medical",
+        "specialities": [
+            "Dentist",
+            "Gynecologist",
+            "Neurologist",
+            "Cardiologists",
+            "Audiologists"
+        ],
         "page_title": "Doctors",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Hospitals",
+        "slug": "hospitals",
         "category": "Medical",
+        "services": [],
         "page_title": "Hospitals",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Chemists",
+        "slug": "chemists",
         "category": "Medical",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Chemists",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Schools",
+        "slug": "schools",
         "category": "Education",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Schools",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Colleges",
+        "slug": "colleges",
         "category": "Education",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Colleges",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Universities",
+        "slug": "universities",
         "category": "Education",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Universities",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Cooks",
+        "slug": "cooks",
         "category": "House Hold",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Cooks",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Maids",
+        "slug": "maids",
         "category": "House Hold",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Maids",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Banks",
+        "slug": "banks",
         "category": "Public Services",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Banks",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Police Stations",
+        "slug": "police-stations",
         "category": "Public Services",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Police Stations",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Railway Station",
+        "slug": "railway-station",
         "category": "Public Services",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Railway Station",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Bus Stop",
+        "slug": "bus-stop",
         "category": "Public Services",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Bus Stop",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Post Office",
+        "slug": "post-office",
         "category": "Public Services",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Post Office",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Jail",
+        "slug": "jail",
         "category": "Public Services",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Jail",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Banquet Halls",
+        "slug": "banquet-halls",
         "category": "Marriage",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Banquet Halls",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Photographers",
+        "slug": "photographers",
         "category": "Marriage",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Banquet Halls",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "DJ Sound",
+        "slug": "dj-sound",
         "category": "Marriage",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "DJ Sound",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Dance Coaching Classes",
+        "slug": "dance-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Dance Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Music Coaching Classes",
+        "slug": "music-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Music Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Yoga Coaching Classes",
+        "slug": "yoga-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Yoga Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Tennis Coaching Classes",
+        "slug": "tennis-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Tennis Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Cricket Coaching Classes",
+        "slug": "cricket-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Cricket Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Swimming Coaching Classes",
+        "slug": "swimming-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Swimming Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Badminton Coaching Classes",
+        "slug": "badminton-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Badminton Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Football Coaching Classes",
+        "slug": "football-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Football Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Shooting Coaching Classes",
+        "slug": "shooting-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Shooting Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Archery Coaching Classes",
+        "slug": "archery-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Archery Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Skating Coaching Classes",
+        "slug": "skating-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Skating Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Snooker Coaching Classes",
+        "slug": "snooker-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Snooker Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Hockey Coaching Classes",
+        "slug": "hockey-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Hockey Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Baseball Coaching Classes",
+        "slug": "baseball-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Baseball Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Golf Coaching Classes",
+        "slug": "golf-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Golf Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Basket Ball Coaching Classes",
+        "slug": "basket-ball-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Basket Ball Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Volley Ball Coaching Classes",
+        "slug": "volley-ball-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Volley Ball Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Table Tennis Coaching Classes",
+        "slug": "table-tennis-coaching-classes",
         "category": "Sports Hobbies",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Table Tennis Coaching Classes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Internet Service Provider",
+        "slug": "internet-service-provider",
         "category": "Internet",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Internet Service Provider",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Cyber Cafes",
+        "slug": "cyber-cafes",
         "category": "Internet",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Cyber Cafes",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Afghani Restaurants",
+        "slug": "afghani-restaurants",
         "category": "Restaurant",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Afghani Restaurants",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "Chinese Restaurants",
+        "slug": "chinese-restaurants",
         "category": "Restaurant",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "Chinese Restaurants",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "South Indian Restaurants",
+        "slug": "",
         "category": "Restaurant",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "South Indian Restaurants",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     },
     {
         "name": "North Indian Restaurants",
+        "slug": "north-indian-restaurants",
         "category": "Restaurants",
+        "services": [
+            "Self Drive Car Rental",
+            "Car Rental For Outstation",
+            "Monthly Car rental",
+            "Luxury Car Rental",
+            "Commercial Vehicle Rental Services"
+        ],
         "page_title": "North Indian Restaurant",
-        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible"
+        "page_content": "Car rental services have revolutionized the way people travel, providing a flexible",
+        "status": "Active",
+        "createdAt": "2023-08-14T17:54:22.951+00:00",
+        "updatedAt": "2023-08-14T17:54:22.951+00:00"
     }
 ]
