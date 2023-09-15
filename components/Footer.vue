@@ -27,9 +27,9 @@ const changePage = (pageSlug) => {
                     <div>
                         <nav class="breadcrumb has-dot-separator" aria-label="breadcrumbs">
                             <ul>
-                                <li v-for="ttt in pages" :key="ttt.slug">
-                                    <nuxt-link :to="ttt.slug" @click="changePage(ttt.slug)" v-if="!city">{{ ttt.title }}</nuxt-link>
-                                    <!-- <nuxt-link :to="'http://192.168.101.61:3000/'+ttt.slug" @click="changePage(ttt.slug)" v-else>{{ ttt.title }}</nuxt-link> -->
+                                <li v-for="pageName in pages" :key="pageName.slug">
+                                    <nuxt-link :to="pageName.slug" @click="changePage(pageName.slug)" v-if="!city">{{ pageName.title }}</nuxt-link>
+                                    <!-- <nuxt-link :to="'http://192.168.101.61:3000/'+pageName.slug" @click="changePage(pageName.slug)" v-else>{{ pageName.title }}</nuxt-link> -->
                                 </li>
                             </ul>
                         </nav>
